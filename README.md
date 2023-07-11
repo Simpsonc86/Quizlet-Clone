@@ -1,4 +1,4 @@
-# Flask React Project
+# Quizlet Clone
 
 This is the starter for the Flask React project.
 
