@@ -1,6 +1,6 @@
-from app.models import db, User, Folder, environment, SCHEMA
+from app.models import db, Folder, environment, SCHEMA
 from sqlalchemy.sql import text
-import datetime
+
 
 
 def seed_folders():

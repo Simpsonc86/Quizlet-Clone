@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
-from .folder import seed_folders, undo_folders
+from .folders import seed_folders, undo_folders
+from .sets import seed_sets, undo_sets
 
 from app.models.db import db, environment, SCHEMA
 
@@ -20,12 +21,14 @@ def seed():
         undo_users()
     seed_users()
     seed_folders()
+    seed_sets()
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
+    undo_sets()
     undo_folders()
     undo_users()
     # Add other undo functions here
