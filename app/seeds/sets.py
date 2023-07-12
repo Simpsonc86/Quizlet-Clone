@@ -1,4 +1,5 @@
 from app.models import db, Set, environment, SCHEMA
+from sqlalchemy.sql import text
 
 def seed_sets():
     algebra = Set(
