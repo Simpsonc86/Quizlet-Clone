@@ -1,13 +1,13 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Question(db.Model):
-    __tablename__ = 'Questions'
+    __tablename__ = 'questions'
 
     if environment == "production":
         __table_args__ = {'schema':SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    set_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("Sets.id")))
+    set_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("sets.id")))
     description = db.Column(db.String(2000), nullable = False)
     favorite = db.Column(db.Boolean,nullable=False,default=False)
 
