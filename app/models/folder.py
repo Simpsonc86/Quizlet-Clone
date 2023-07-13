@@ -8,7 +8,7 @@ class Folder(db.Model):
         __table_args__ = {'schema':SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("Users.id")))
     title = db.Column(db.String(50), nullable = False)
     description = db.Column(db.String(2000), nullable = False)
     is_public = db.Column(db.Boolean, nullable = False, default=False)
