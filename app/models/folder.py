@@ -13,8 +13,8 @@ class Folder(db.Model):
     description = db.Column(db.String(2000), nullable = False)
     is_public = db.Column(db.Boolean, nullable = False, default=False)
 
-    user = db.relationship("User", back_populates="folder")
-    # set = db.relationship("Set", back_populates="folder")
+    user = db.relationship("User", back_populates="folders")
+    sets = db.relationship("Set", back_populates="folder")
 
     def to_dict(self):
         return {
