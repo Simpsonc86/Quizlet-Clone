@@ -21,7 +21,7 @@ def seed_questions():
     
     questions = [algq1, algq2, algq3, per1,per2,per3,sl1,sl2,sl3,st1,st2,st3,js1,js2,js3]
 
-    db.session.add(questions)
+    _ = [db.session.add(question) for question in questions]
     db.session.commit()
 
 def undo_questions():
