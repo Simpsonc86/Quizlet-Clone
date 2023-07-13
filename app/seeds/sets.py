@@ -27,7 +27,7 @@ def seed_sets():
 
 def undo_sets():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.Sets RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.sets RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM Sets"))
         

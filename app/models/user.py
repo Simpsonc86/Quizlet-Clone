@@ -4,7 +4,7 @@ from flask_login import UserMixin
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'Users'
+    __tablename__ = 'users'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -17,8 +17,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    folder = db.relationship("Folder", back_populates="user")
-    set = db.relationship("Set", back_populates="user")
+    # folder = db.relationship("Folder", back_populates="user")
+    # set = db.relationship("Set", back_populates="user")
 
     @property
     def password(self):
