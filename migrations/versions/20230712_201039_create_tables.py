@@ -8,6 +8,10 @@ Create Date: 2023-07-12 20:10:39.258946
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
 
 # revision identifiers, used by Alembic.
 revision = 'dfd90dbc8292'
@@ -30,6 +34,10 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE Users SET SCHEMA {SCHEMA};")
+
     op.create_table('Folders',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -39,6 +47,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['Users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE Folders SET SCHEMA {SCHEMA};")
+    
     op.create_table('Sets',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -49,6 +61,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['Users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE Sets SET SCHEMA {SCHEMA};")
+
     op.create_table('Questions',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('set_id', sa.Integer(), nullable=True),
@@ -57,6 +73,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['set_id'], ['Sets.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE Questions SET SCHEMA {SCHEMA};")
+
     op.create_table('Answers',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('question_id', sa.Integer(), nullable=True),
@@ -64,6 +84,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['question_id'], ['Questions.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE Answers SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
