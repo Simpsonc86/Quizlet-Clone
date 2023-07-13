@@ -13,8 +13,8 @@ class Set(db.Model):
     description = db.Column(db.String(2000), nullable = False)
 
     #Relationship attributes
-    user = db.relationship("User", back_populates= "sets")
-    folder = db.relationship("Folder", back_populates = "sets")
+    user = db.relationship("User", back_populates= "set")
+    folder = db.relationship("Folder", back_populates = "set")
 
 
     def to_dict(self):
