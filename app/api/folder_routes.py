@@ -1,7 +1,7 @@
 from flask import Blueprint,request
 from flask_login import login_required, current_user
 from app.models import Folder, db
-from app.forms import FolderForm
+from app.forms.folder_form import FolderForm
 
 folder_routes = Blueprint('folders', __name__)
 
