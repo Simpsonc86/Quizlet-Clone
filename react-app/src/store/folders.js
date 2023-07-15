@@ -5,9 +5,9 @@ const getAllFolders = (folders) => ({
     type: GET_ALL_FOLDERS,
     payload: folders
 })
-const getOneFolder = (folders) => ({
+const getOneFolder = (folder) => ({
     type: GET_ONE_FOLDER,
-    payload: folders
+    payload: folder
 })
 
 export const getAllFoldersThunk = () => async(dispatch)=>{
@@ -21,12 +21,25 @@ export const getAllFoldersThunk = () => async(dispatch)=>{
         dispatch(getAllFolders(folders))
     }
 }
+export const getOneFolderThunk = (folder_id) => async(dispatch)=>{
+    const res = await fetch(`api/folders/${folder_id}`, {
+        headers: {
+            "Content-Type":"application/json",
+        },
+    });
+    if (res.ok){
+        const folder = await res.json()
+        dispatch(getOneFolder(folder))
+    }
+}
 const initialState = {folders:{}, folder:{}}
 
 export default function reducer(state = initialState, action){
     switch (action.type){
         case GET_ALL_FOLDERS:
             return {folders:{...action.payload},folder: {}};
+        case GET_ONE_FOLDER:
+            return {folders:{},folder: {...action.payload}};
         default:
             return state;
     }
