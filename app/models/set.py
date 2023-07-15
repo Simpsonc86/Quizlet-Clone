@@ -15,13 +15,14 @@ class Set(db.Model):
     #Relationship attributes
     user = db.relationship("User", back_populates= "sets")
     folder = db.relationship("Folder", back_populates = "sets")
-
-
+    questions = db.relationship("Question", back_populates="set",cascade="all, delete-orphan")
+    
     def to_dict(self):
         return {
             "id":self.id,
             "user_id":self.user_id,
             "folder_id":self.folder_id,
             "title":self.title,
-            "description":self.description,          
+            "description":self.description,      
+            "questions":[question.to_dict() for question in self.questions]        
         }

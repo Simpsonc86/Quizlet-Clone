@@ -1,6 +1,7 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
 from app.models import Folder
+from sqlalchemy.orm import subqueryload
 
 folder_routes = Blueprint('folders', __name__)
 
@@ -9,8 +10,11 @@ def all_folders():
     '''
     Query for all folders and returns them in a list of dictionaries
     '''
-    folders = Folder.query.all()    
+    folders = Folder.query.all()
     folders_to_dict = [folder.to_dict() for folder in folders]
+    for folder in folders_to_dict:
+        folder["sets"]:folder.sets
+        
     return {folder["id"]:folder for folder in folders_to_dict}
 
 @folder_routes.route("/<int:id>")
@@ -27,4 +31,5 @@ def create_folder():
     '''
     Create a folder from the form 
     '''
+    
 

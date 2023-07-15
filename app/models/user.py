@@ -17,8 +17,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    folders = db.relationship("Folder", back_populates="user")
-    sets = db.relationship("Set", back_populates="user")
+    folders = db.relationship("Folder", back_populates="user",cascade="all, delete-orphan")
+    sets = db.relationship("Set", back_populates="user",cascade="all, delete-orphan")
 
     @property
     def password(self):

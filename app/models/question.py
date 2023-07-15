@@ -12,8 +12,8 @@ class Question(db.Model):
     favorite = db.Column(db.Boolean,nullable=False,default=False)
 
     #Relationship attributes
-    set = db.relationship("Set", backref=db.backref("questions", lazy=True))
-    answer = db.relationship("Answer", backref="question", uselist=False)
+    set = db.relationship("Set", back_populates="questions")
+    answer = db.relationship("Answer", back_populates="question", cascade="all, delete-orphan", uselist=False)
    
 
 
@@ -22,5 +22,6 @@ class Question(db.Model):
             "id":self.id,
             "set_id":self.set_id,
             "description":self.description,          
-            "favorite":self.favorite,          
+            "favorite":self.favorite,
+            "answer":self.answer.to_dict()          
         }

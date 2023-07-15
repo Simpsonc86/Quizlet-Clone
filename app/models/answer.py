@@ -9,6 +9,8 @@ class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("questions.id")))
     description = db.Column(db.String(2000), nullable = False)
+
+    question = db.relationship("Question", back_populates="answer")
     
 
     def to_dict(self):
