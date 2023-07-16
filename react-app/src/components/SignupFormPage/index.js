@@ -36,19 +36,19 @@ function SignupFormPage() {
     if (!validator.isEmail(email)) {
         err.push("Email must be valid!")        
     } 
-    // if (password !== confirmPassword) {
-    //     err.push("Passwords do not match!")        
-    // } 
+    if (password !== confirmPassword) {
+        err.push("Passwords do not match!")        
+    } 
     if(password===confirmPassword){
       const data = await dispatch(signUp(firstName,lastName,dateOfBirth,username,email,password));
       if(data){
         setErrors(data);
       }
     } else{
-      setErrors(["Passwords do not match!",])
+      setErrors(err);
     }
-
-    // setErrors(err);
+    
+    // setErrors(["Passwords do not match!",])
     
     // history.push("/dashboard")
   };
