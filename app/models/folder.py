@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from.set import Set
 
 
 class Folder(db.Model):
@@ -14,7 +15,7 @@ class Folder(db.Model):
     is_public = db.Column(db.Boolean, nullable = False, default=False)
 
     user = db.relationship("User", back_populates="folders")
-    sets = db.relationship("Set", back_populates="folder")
+    sets = db.relationship("Set", back_populates="folder",cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
@@ -23,6 +24,8 @@ class Folder(db.Model):
             "title":self.title,
             "description":self.description,
             "is_public":self.is_public,
+            "user":self.user.to_dict(),
+            "sets":[set.to_dict() for set in self.sets] 
         }
 
 

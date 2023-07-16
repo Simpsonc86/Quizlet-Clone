@@ -17,8 +17,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    folders = db.relationship("Folder", back_populates="user")
-    sets = db.relationship("Set", back_populates="user")
+    folders = db.relationship("Folder", back_populates="user",cascade="all, delete-orphan")
+    sets = db.relationship("Set", back_populates="user",cascade="all, delete-orphan")
 
     @property
     def password(self):
@@ -34,6 +34,9 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'first_name':self.first_name,
+            'last_name':self.last_name,
+            'date_of_birth':self.date_of_birth,
             'username': self.username,
             'email': self.email
         }

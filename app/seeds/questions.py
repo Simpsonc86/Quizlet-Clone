@@ -28,6 +28,6 @@ def undo_questions():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.questions RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM Questions"))
+        db.session.execute(text("DELETE FROM questions"))
         
     db.session.commit()
