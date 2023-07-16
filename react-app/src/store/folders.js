@@ -32,14 +32,14 @@ export const getOneFolderThunk = (folder_id) => async(dispatch)=>{
         dispatch(getOneFolder(folder))
     }
 }
-const initialState = {folders:{}, folder:{}}
+const initialState = {allFolders:{}, folder:{}}
 
 export default function reducer(state = initialState, action){
     switch (action.type){
         case GET_ALL_FOLDERS:
-            return {folders:{...action.payload},folder: {}};
+            return {allFolders:{...action.payload},folder: {}};
         case GET_ONE_FOLDER:
-            return {folders:{},folder: {...action.payload}};
+            return {allFolders:{},folder: {...action.payload}};
         default:
             return state;
     }
