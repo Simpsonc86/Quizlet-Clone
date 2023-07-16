@@ -5,10 +5,7 @@ import { getAllFoldersThunk } from "../../store/folders"
 
 export default function CreateFolder() {
     const dispatch = useDispatch()
-    const allFolders = useSelector((state) => {
-        // console.log("state from the store---->",state.folders.folders)
-        return state.folders.folders ? Object.values(state.folders.folders) : []
-    })
+    
 
     useEffect(() => {
         dispatch(getAllFoldersThunk());
