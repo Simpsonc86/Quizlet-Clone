@@ -123,7 +123,7 @@ function SignupFormPage() {
             required
           />
         </label>
-        <button type="submit" disabled={!!Object.values(errors).length}>Sign Up</button>
+        <button type="submit" >Sign Up</button>
       </form>
     </>
   );

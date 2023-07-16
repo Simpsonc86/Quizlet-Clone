@@ -24,6 +24,17 @@ function LoginFormPage() {
     history.push("/dashboard")
   };
 
+  const loginDemoUser = async (e) => {
+    e.preventDefault();
+    const email = "demo@aa.io";
+    const password = "password";
+    const data = await dispatch(login(email,password))
+    if (data){
+      setErrors(data);
+    }else{
+      history.push("/dashboard")
+    }
+  }
   return (
     <>
       <h1>Log In</h1>
@@ -52,6 +63,9 @@ function LoginFormPage() {
           />
         </label>
         <button type="submit">Log In</button>
+      <button onClick={loginDemoUser}>Demo User
+
+      </button>
       </form>
     </>
   );
