@@ -11,7 +11,8 @@ export default function Dashboard() {
         // console.log("state from the store---->",state.folders.folders)
         return state.folders.allFolders ? Object.values(state.folders.allFolders) : []
     })
-    allFolders && console.log("Current users folders",allFolders);
+    allFolders && console.log("Current users folders: ",allFolders);
+    sessionUser && console.log("Current user: ",sessionUser);
 
     useEffect(() => {
         dispatch(getAllFoldersThunk());
@@ -22,12 +23,13 @@ export default function Dashboard() {
     return (
         <>
             <h1>Dashboard</h1>
-            <NavLink to="/new_folder">Create a new folder</NavLink>
+            <NavLink to="/new-folder">Create a new folder</NavLink>
             <div>
+                <h2>{sessionUser.username}'s Folders</h2>
                 {userFolders.map((folder, index) => (
                     <NavLink key={index} to={`/folder/${folder.id}`}>
                         <div>
-                            <h2>{folder.title}</h2>
+                            <h3>{folder.title}</h3>
                         </div>
                     </NavLink>
                 ))}
