@@ -11,7 +11,7 @@ const getOneFolder = (folder) => ({
     payload: folder
 })
 const createFolder = (folder) => ({
-    type: GET_ONE_FOLDER,
+    type: CREATE_FOLDER,
     payload: folder
 })
 
@@ -47,6 +47,7 @@ export const createFolderThunk = (folder) => async(dispatch)=>{
         body:JSON.stringify(folder)
     });
     const resBody = await res.json();
+    console.log("resBody inside of the thunk=====>", resBody);
     if (res.ok){
         const folder = resBody;
         dispatch(createFolder(folder))
@@ -67,9 +68,9 @@ export default function reducer(state = initialState, action){
         case GET_ALL_FOLDERS:
             return {allFolders:{...action.payload},folder: {}};
         case GET_ONE_FOLDER:
-            return {allFolders:{},folder: {...action.payload}};
+            return {...state,folder: {...action.payload}};
         case CREATE_FOLDER:
-            return {allFolders:{},folder: {...action.payload}};
+            return {...state,folder: {...action.payload}};
         default:
             return state;
     }

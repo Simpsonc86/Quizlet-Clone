@@ -11,15 +11,15 @@ export default function Dashboard() {
         // console.log("state from the store---->",state.folders.folders)
         return state.folders.allFolders ? Object.values(state.folders.allFolders) : []
     })
-    allFolders && console.log("Current users folders: ",allFolders);
     sessionUser && console.log("Current user: ",sessionUser);
-
+    
     useEffect(() => {
         dispatch(getAllFoldersThunk());
     }, [dispatch]);
-
-
+    
+    
     const userFolders = allFolders.filter(folder => folder.user_id === sessionUser.id)
+    userFolders && console.log("Current users folders: ",userFolders);
     return (
         <>
             <h1>Dashboard</h1>

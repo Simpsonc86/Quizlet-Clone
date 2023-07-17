@@ -2,6 +2,7 @@ from flask import Blueprint,request
 from flask_login import login_required, current_user
 from app.models import Folder, User, db
 from app.forms.folder_form import FolderForm
+from .auth_routes import validation_errors_to_error_messages
 
 folder_routes = Blueprint('folders', __name__)
 
@@ -27,24 +28,27 @@ def get_folder_by_id(id):
 def create_folder():
     '''
     Create a folder from the form 
-    '''
-    if current_user.is_authenticated:
-        form = FolderForm()
-        form["csrf_token"].data = request.cookies["csrf_token"]
-        form.data["user_id"] = current_user.id
-        if form.validate_on_submit():
-            folder = Folder(
-                user_id = current_user.to_dict()['id'],
-                title = form.data['title'],
-                description = form.data['description'],
-                is_public = form.data['is_public'],
-            )
-            
-            db.session.add(folder)
-            db.session.commit()
+    '''    
+    form = FolderForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    # print("form:  ",form.data)
+    # print("form csrf", form["csrf_token"].data)
+    if form.validate_on_submit():
+        # print("Inside the validate on submit")
 
-            return folder.to_dict()
-        return {'errors': ['Unauthorized']}
+        # form.data["user_id"] = current_user.id
+        folder = Folder(
+            user_id = form.data["user_id"],
+            title = form.data['title'],
+            description = form.data['description'],
+            is_public = form.data['is_public']
+        )
+            
+        db.session.add(folder)
+        db.session.commit()
+
+        return folder.to_dict_without_sets_or_user()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     
 
 @folder_routes.route("/<int:id>/edit", methods=["PUT"])

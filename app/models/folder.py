@@ -12,7 +12,7 @@ class Folder(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     title = db.Column(db.String(50), nullable = False)
     description = db.Column(db.String(2000), nullable = False)
-    is_public = db.Column(db.Boolean, nullable = False, default=False)
+    is_public = db.Column(db.Boolean, nullable = False, default=True)
 
     user = db.relationship("User", back_populates="folders")
     sets = db.relationship("Set", back_populates="folder",cascade="all, delete-orphan")
@@ -26,6 +26,15 @@ class Folder(db.Model):
             "is_public":self.is_public,
             "user":self.user.to_dict(),
             "sets":[set.to_dict() for set in self.sets] 
+        }
+    
+    def to_dict_without_sets_or_user(self):
+        return {
+            "id":self.id,
+            "user_id":self.user_id,
+            "title":self.title,
+            "description":self.description,
+            "is_public":self.is_public
         }
 
 
