@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createFolderThunk, getAllFoldersThunk } from "../../store/folders";
+import { createFolderThunk } from "../../store/folders";
 import { useHistory } from "react-router-dom";
 
 
@@ -34,7 +34,7 @@ export default function CreateFolder() {
             }
 
             console.log("This is the created folder", folder)
-            const data = await dispatch(createFolderThunk(folder));
+            await dispatch(createFolderThunk(folder));
 
 
 

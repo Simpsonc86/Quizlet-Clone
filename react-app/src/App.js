@@ -32,9 +32,8 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/folders/:folder_id">
-            <FolderPage />
-          </Route>
+          <Route path="/folders/:folder_id" component={FolderPage}/>
+          
           <Route path="/folders">
             <Dashboard />
           </Route>

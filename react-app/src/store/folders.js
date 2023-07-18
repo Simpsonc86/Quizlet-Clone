@@ -89,7 +89,7 @@ export const editFolderThunk = (folder) => async(dispatch)=>{
             return {errors:resBody.errors}
         }
     } else{
-        return {errors: ['Something bad happened!']}, 400
+        return {errors: ['Something bad happened!']}
     }
 }
 export const deleteFolderThunk = (folder_id) => async(dispatch)=>{
@@ -116,6 +116,8 @@ export default function reducer(state = initialState, action){
             return {...state,folder: {...action.payload}};
         case EDIT_FOLDER:
             return {...state,folder: {...action.payload}};
+        case DELETE_FOLDER:
+            return {...state,folder: {}};
         default:
             return state;
     }

@@ -18,7 +18,7 @@ export default function LandingPage() {
 
             <h2>Most recent Folders</h2>
             {publicFolders.reverse().map((folder,idx)=>(
-                <NavLink key={idx} to={`/folders/${folder.id}`}>
+                <NavLink key={idx} to={`/folders/${folder.id}`}> 
                     <h2>{folder.title}</h2>
                     <p>{folder.description}</p>
                     <p>Number of sets in folder:{folder.sets.length}</p>

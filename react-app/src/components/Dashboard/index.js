@@ -1,7 +1,7 @@
 import { useSelector,useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { NavLink, useHistory } from "react-router-dom"
-import { getAllFoldersThunk,getOneFolderThunk } from "../../store/folders"
+import { getAllFoldersThunk} from "../../store/folders"
 import DeleteFormModal from "../DeleteFormModal"
 import OpenModalButton from "../OpenModalButton"
 

@@ -46,7 +46,7 @@ export default function EditFolder() {
             }
 
             console.log("This is the created folder", folder)
-            const data = await dispatch(editFolderThunk(folder));
+            await dispatch(editFolderThunk(folder));
 
 
            
