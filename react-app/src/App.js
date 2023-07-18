@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CreateFolder from "./components/CreateFolder";
+import CreateSet from "./components/CreateSet";
 import Library from "./components/Library";
 import EditFolder from "./components/EditFolder"
 import RecentFolders from "./components/RecentFolders";
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route path="/new-folder">
             <CreateFolder />
+          </Route>
+          <Route path="/new-folder">
+            <CreateSet />
           </Route>
           <Route exact path="/">
             <LandingPage />
