@@ -9,7 +9,7 @@ class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     set_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("sets.id")))
     description = db.Column(db.String(2000), nullable = False)
-    favorite = db.Column(db.Boolean,nullable=False,default=False)
+    favorite = db.Column(db.String,nullable=False,default="no")
 
     #Relationship attributes
     set = db.relationship("Set", back_populates="questions")
