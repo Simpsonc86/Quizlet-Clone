@@ -17,8 +17,8 @@ export default function RecentFolders() {
         dispatch(getAllFoldersThunk())
     }, [dispatch])
 
-    if (!Object.values(publicFolders)) {
-        return null
+    if (!Object.values(allFolders)) {
+        return <h1>Folders are loading...</h1>
     }
     return (
         <>

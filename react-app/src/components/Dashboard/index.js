@@ -23,7 +23,7 @@ export default function Dashboard() {
     }, [dispatch, allFolders.length]);
   
     const userFolders = allFolders.filter(folder => folder.user_id === sessionUser.id)
-    userFolders && console.log("Current users folders: ",userFolders);
+    // userFolders && console.log("Current users folders: ",userFolders);
 
     return (
         <>
