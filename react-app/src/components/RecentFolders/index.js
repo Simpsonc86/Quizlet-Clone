@@ -6,7 +6,7 @@ import OpenModalButton from "../OpenModalButton"
 import DeleteFormModal from "../DeleteFormModal"
 
 export default function RecentFolders() {
-    const sessionUser = useSelector((state)=>state.session.user)
+    const sessionUser = useSelector((state) => state.session.user)
     const allFolders = useSelector((state) => state.folders.allFolders ? Object.values(state.folders.allFolders) : [])
     const dispatch = useDispatch()
     const history = useHistory()
@@ -25,16 +25,18 @@ export default function RecentFolders() {
             <h1>This is the Most Recent Folders</h1>
 
             <h2>Most recent Folders</h2>
-            {publicFolders && publicFolders?.reverse().map((folder, idx) => (
-                <NavLink key={idx} to={`/folders/${folder.id}`}>
-                    <h2>{folder.title}</h2>
-                    <p>{folder.description}</p>
-                    <p>Number of sets in folder:{folder.sets.length}</p>
-                    {sessionUser?.id===folder?.user_id&&<div>
+            {(publicFolders) && publicFolders?.reverse().map((folder, idx) => (
+                <div key={idx} >
+                    <NavLink to={`/folders/${folder.id}`}>
+                        <h2>{folder.title}</h2>
+                        <p>{folder.description}</p>
+                        <p>Number of sets in folder:{folder.sets.length}</p>
+                    </NavLink>
+                    {(sessionUser?.id === folder?.user_id) && <div>
                         <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
                         <OpenModalButton id='delete-btn' buttonText='Delete' modalComponent={<DeleteFormModal folderId={folder.id} />} />
                     </div>}
-                </NavLink>
+                </div>
             ))}
         </>
     )

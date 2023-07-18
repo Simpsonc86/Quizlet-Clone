@@ -38,7 +38,7 @@ export default function FolderPage() {
             <ul>
                 {folder?.sets?.map((set, idx) => (
                     <li key={idx}>
-                        <p><Link to={`folders/${folder_id}/sets/${set.id}`}>{set.title}</Link> Created by {folder.user.username}</p>
+                        <p><Link exact to={`folders/${folder_id}/sets/${set.id}`}>{set.title}</Link> Created by {folder.user.username}</p>
                     </li>
                 ))}
             </ul>

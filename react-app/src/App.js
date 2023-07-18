@@ -32,16 +32,17 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/folders/:folder_id" component={FolderPage}/>
-          
+          <Route exact path="/edit-folder/:folder_id">
+            <EditFolder />
+          </Route>
+          <Route exact path="/folders/:folder_id">
+            <FolderPage/>
+          </Route>
           <Route path="/folders">
             <Dashboard />
           </Route>
           <Route path="/new-folder">
             <CreateFolder />
-          </Route>
-          <Route path="/edit-folder/:folder_id">
-            <EditFolder />
           </Route>
         </Switch>
       )}
