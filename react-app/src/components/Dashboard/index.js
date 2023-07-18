@@ -2,7 +2,9 @@ import { useSelector,useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { NavLink, useHistory } from "react-router-dom"
 import { getAllFoldersThunk,getOneFolderThunk } from "../../store/folders"
-// import { editFolderThunk } from "../../store/folders"
+import DeleteFormModal from "../DeleteFormModal"
+import OpenModalButton from "../OpenModalButton"
+
 
 
 export default function Dashboard() {
@@ -18,7 +20,7 @@ export default function Dashboard() {
     
     useEffect(() => {
         dispatch(getAllFoldersThunk());
-    }, [dispatch]);
+    }, [dispatch, allFolders.length]);
   
     const userFolders = allFolders.filter(folder => folder.user_id === sessionUser.id)
     userFolders && console.log("Current users folders: ",userFolders);
@@ -34,7 +36,7 @@ export default function Dashboard() {
                         <div>
                             <h3>{folder.title}</h3>
                             <button onClick={()=>history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                            <button onClick={()=>{}}>Delete Folder</button>
+                            <OpenModalButton id='delete-btn' buttonText='Delete' modalComponent={<DeleteFormModal folderId={folder.id}/>}/>
                         </div>
                     </div>
                 ))}

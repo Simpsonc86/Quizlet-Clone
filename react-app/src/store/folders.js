@@ -92,7 +92,17 @@ export const editFolderThunk = (folder) => async(dispatch)=>{
         return {errors: ['Something bad happened!']}, 400
     }
 }
-export const deleteFolderThunk = (folder)
+export const deleteFolderThunk = (folder_id) => async(dispatch)=>{
+    const res = await fetch(`/api/folders/${folder_id}/delete`,{
+        method:"DELETE"
+    })
+    if (res.ok){
+        return dispatch(deleteFolder())
+    }else{
+        const error = await res.json();
+        console.log("bad data======>", error);
+    }
+}
 
 const initialState = {allFolders:{}, folder:{}}
 

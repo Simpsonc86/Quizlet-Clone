@@ -37,21 +37,18 @@ export default function CreateFolder() {
             const data = await dispatch(createFolderThunk(folder));
 
 
-            if (data) {
-                setErrors(data);
-            }
-        }
-        history.push("/folders")
+
+            history.push("/folders")
+        } else setErrors(errObj)
     };
 
     return (
         <>
             <h1>Create a Folder</h1>
             <form onSubmit={handleSubmit}>
-                <ul>
-                    {!!errors.length && errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
+            <ul>
+                    {errors.title&&<p>3 characters required in title</p>}
+                    {errors.description&&<p>10 characters required in description</p>}
                 </ul>
                 <label>
                     Title
