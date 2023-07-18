@@ -12,7 +12,7 @@ class Folder(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     title = db.Column(db.String(50), nullable = False)
     description = db.Column(db.String(2000), nullable = False)
-    is_public = db.Column(db.Boolean, nullable = False, default=True)
+    is_public = db.Column(db.String, nullable = False, default="yes")
 
     user = db.relationship("User", back_populates="folders")
     sets = db.relationship("Set", back_populates="folder",cascade="all, delete-orphan")

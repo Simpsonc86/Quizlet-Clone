@@ -7,7 +7,7 @@ export default function RecentFolders() {
     const allFolders = useSelector((state) => state.folders.allFolders ? Object.values(state.folders.allFolders) : [])
     const dispatch = useDispatch()
 
-    const publicFolders = allFolders.filter((folder) => folder.is_public === true).slice(-3)
+    const publicFolders = allFolders.filter((folder) => folder.is_public === "yes").slice(-3)
 
     useEffect(() => {
         dispatch(getAllFoldersThunk())

@@ -7,4 +7,4 @@ class EditFolderForm(FlaskForm):
     # user_id = IntegerField("user_id")
     title = StringField('Title', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
-    is_public = BooleanField('Public', validators=[DataRequired()])
+    is_public = StringField('Public', validators=[DataRequired()])
