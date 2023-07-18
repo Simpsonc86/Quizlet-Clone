@@ -18,7 +18,7 @@ export default function EditFolder() {
 
     const oneFolder = Object.values(folders).find((folder)=>folder.id===Number(folder_id))
 
-    console.log("folder from the filter's title is =====>", oneFolder.title);
+    // console.log("folder from the filter's title is =====>", oneFolder.title);
     const [title, setTitle] = useState(oneFolder.title);
     const [description, setDescription] = useState(oneFolder.description);
     const [is_public, setIsPublic] = useState(oneFolder.is_public);
