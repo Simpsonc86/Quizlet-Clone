@@ -16,18 +16,21 @@ export default function RecentFolders() {
     useEffect(() => {
         dispatch(getAllFoldersThunk())
     }, [dispatch])
+
+    if (!Object.values(publicFolders)) {
+        return null
+    }
     return (
         <>
             <h1>This is the Most Recent Folders</h1>
 
             <h2>Most recent Folders</h2>
-            {publicFolders?.reverse().map((folder, idx) => (
+            {publicFolders && publicFolders?.reverse().map((folder, idx) => (
                 <NavLink key={idx} to={`/folders/${folder.id}`}>
                     <h2>{folder.title}</h2>
                     <p>{folder.description}</p>
                     <p>Number of sets in folder:{folder.sets.length}</p>
                     {sessionUser?.id===folder?.user_id&&<div>
-                        <NavLink to={`/folders/${folder.id}`}><h3>{folder.title}</h3></NavLink>
                         <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
                         <OpenModalButton id='delete-btn' buttonText='Delete' modalComponent={<DeleteFormModal folderId={folder.id} />} />
                     </div>}
