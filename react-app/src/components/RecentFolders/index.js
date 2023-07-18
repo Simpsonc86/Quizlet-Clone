@@ -25,7 +25,7 @@ export default function RecentFolders() {
             <h1>This is the Most Recent Folders</h1>
 
             <h2>Most recent Folders</h2>
-            {publicFolders && publicFolders?.reverse().map((folder, idx) => (
+            {(publicFolders) && publicFolders?.reverse().map((folder, idx) => (
                 <div key={idx} >
                     <NavLink to={`/folders/${folder.id}`}>
                         <h2>{folder.title}</h2>
