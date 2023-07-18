@@ -45,7 +45,7 @@ export default function EditFolder() {
                 is_public
             }
 
-            console.log("This is the created folder", folder)
+            // console.log("This is the created folder", folder)
             await dispatch(editFolderThunk(folder));
 
 
