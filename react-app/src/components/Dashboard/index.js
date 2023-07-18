@@ -32,9 +32,9 @@ export default function Dashboard() {
             <div>
                 <h2>{sessionUser.username}'s Folders</h2>
                 {userFolders.map((folder, index) => (
-                    <div key={index} to={`/folder/${folder.id}`}>
+                    <div key={index}>
                         <div>
-                            <h3>{folder.title}</h3>
+                            <NavLink to={`/folders/${folder.id}`}><h3>{folder.title}</h3></NavLink>
                             <button onClick={()=>history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
                             <OpenModalButton id='delete-btn' buttonText='Delete' modalComponent={<DeleteFormModal folderId={folder.id}/>}/>
                         </div>
