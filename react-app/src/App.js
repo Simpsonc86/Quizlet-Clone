@@ -46,7 +46,7 @@ function App() {
           <Route path="/new-folder">
             <CreateFolder />
           </Route>
-          <Route path="/new-folder">
+          <Route path="/new-set">
             <CreateSet />
           </Route>
           <Route exact path="/">

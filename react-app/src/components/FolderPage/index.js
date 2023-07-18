@@ -33,7 +33,8 @@ export default function FolderPage() {
             {/* {console.log("folder from above",folder)} */}
             {sessionUser?.id===folder?.user_id&&<div>
                 <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                <OpenModalButton id='delete-btn' buttonText='Delete' modalComponent={<DeleteFormModal folderId={folder.id} />} />
+                <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
+                <button onClick={()=>history.push(`/new-set`)}>Create a Set</button>
             </div>}
             <ul>
                 {folder?.sets?.map((set, idx) => (
