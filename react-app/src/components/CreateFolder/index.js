@@ -10,7 +10,7 @@ export default function CreateFolder() {
     const sessionUser = useSelector((state) => state.session.user)
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [is_public, setIsPublic] = useState(true);
+    const [is_public, setIsPublic] = useState("no");
     const [errors, setErrors] = useState([]);
 
 
@@ -33,7 +33,7 @@ export default function CreateFolder() {
                 is_public
             }
 
-            console.log("This is the created folder", folder)
+            // console.log("This is the created folder", folder)
             await dispatch(createFolderThunk(folder));
 
 
@@ -74,16 +74,15 @@ export default function CreateFolder() {
                         type="checkbox"
                         id="isPublicCheckbox"  
                         name="isPublicCheckbox"      
-                        defaultChecked
+                        // defaultChecked
                         onClick={(e) => {
                             const checkbox = document.querySelector('#isPublicCheckbox') 
-                            if (checkbox.checked)setIsPublic(true)
-                            else setIsPublic(false)
+                           checkbox.checked?setIsPublic("yes"):setIsPublic("no")
                             console.log("Value of checkbox variable",checkbox.checked);
                         }}
                     />
                 </label>
-                {/* {console.log("value of isPublic----->",isPublic)} */}
+                {console.log("value of isPublic----->",is_public)}
                 
                 <button type="submit">Submit</button>
 

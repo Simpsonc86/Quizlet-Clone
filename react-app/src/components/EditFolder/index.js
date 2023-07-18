@@ -83,20 +83,29 @@ export default function EditFolder() {
                 </label>
                 <label>
                     Public Folder?
-                    <input
+                    {is_public==="yes"?<input
                         type="checkbox"
                         id="isPublicCheckbox"
                         name="isPublicCheckbox"
-                        defaultChecked
+                        defaultChecked                 
                         onClick={(e) => {
                             const checkbox = document.querySelector('#isPublicCheckbox')
-                            if (checkbox.checked) setIsPublic(true)
-                            else setIsPublic(false)
+                            checkbox.checked?setIsPublic("yes"):setIsPublic("no")
                             console.log("Value of checkbox variable", checkbox.checked);
                         }}
                     />
+                     :<input
+                        type="checkbox"
+                        id="isPublicCheckbox"
+                        name="isPublicCheckbox"                                       
+                        onClick={(e) => {
+                            const checkbox = document.querySelector('#isPublicCheckbox')
+                            checkbox.checked?setIsPublic("yes"):setIsPublic("no")
+                            console.log("Value of checkbox variable", checkbox.checked);
+                        }}
+                    />}
                 </label>
-                {/* {console.log("value of isPublic----->",isPublic)} */}
+                {console.log("value of isPublic----->",is_public)}
 
                 <button type="submit">Submit</button>
 
