@@ -6,10 +6,11 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CreateFolder from "./components/CreateFolder";
-import Dashboard from "./components/Dashboard";
+import Library from "./components/Library";
 import EditFolder from "./components/EditFolder"
 import RecentFolders from "./components/RecentFolders";
 import FolderPage from "./components/FolderPage";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,10 +40,13 @@ function App() {
             <FolderPage/>
           </Route>
           <Route path="/folders">
-            <Dashboard />
+            <Library />
           </Route>
           <Route path="/new-folder">
             <CreateFolder />
+          </Route>
+          <Route exact path="/">
+            <LandingPage />
           </Route>
         </Switch>
       )}

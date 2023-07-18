@@ -7,7 +7,7 @@ import OpenModalButton from "../OpenModalButton"
 
 
 
-export default function Dashboard() {
+export default function Library() {
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -27,7 +27,7 @@ export default function Dashboard() {
 
     return (
         <>
-            <h1>Dashboard</h1>
+            <h1>Library</h1>
             <NavLink to="/new-folder">Create a new folder</NavLink>
             <div>
                 <h2>{sessionUser.username}'s Folders</h2>
