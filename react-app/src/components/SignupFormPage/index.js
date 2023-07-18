@@ -21,7 +21,7 @@ function SignupFormPage() {
 
   
 
-  if (sessionUser) return <Redirect to="/dashboard" />;
+  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

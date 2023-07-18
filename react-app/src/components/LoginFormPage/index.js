@@ -13,7 +13,7 @@ function LoginFormPage() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/dashboard" />;
+  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ function LoginFormPage() {
     if (data) {
       setErrors(data);
     }
-    history.push("/dashboard")
+    history.push("/")
   };
 
   const loginDemoUser = async (e) => {
@@ -32,7 +32,7 @@ function LoginFormPage() {
     if (data){
       setErrors(data);
     }else{
-      history.push("/dashboard")
+      history.push("/")
     }
   }
   return (
