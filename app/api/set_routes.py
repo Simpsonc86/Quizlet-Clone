@@ -52,7 +52,7 @@ def create_set():
         db.session.add(set)
         db.session.commit()
 
-        return set.to_dict_without_sets_or_user()
+        return set.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     
 
@@ -118,6 +118,6 @@ def create_set_questions():
         db.session.add(question)       
         db.session.commit()
 
-        return question.to_dict_without_sets_or_user()
+        return question.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     

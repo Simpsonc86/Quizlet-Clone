@@ -1,7 +1,7 @@
 import { useSelector,useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { NavLink, useHistory } from "react-router-dom"
-import { getAllFoldersThunk} from "../../store/folders"
+import { getAllFoldersThunk,getOneFolderThunk} from "../../store/folders"
 import DeleteFormModal from "../DeleteFormModal"
 import OpenModalButton from "../OpenModalButton"
 
@@ -37,7 +37,7 @@ export default function Library() {
                             <NavLink to={`/folders/${folder.id}`}><h3>{folder.title}</h3></NavLink>
                             <button onClick={()=>history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
                             <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id}/>}/>
-                            <button onClick={()=>history.push(`/new-set`)}>Create a Set</button>
+                            <button onClick={()=>dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
                         </div>
                     </div>
                 ))}
