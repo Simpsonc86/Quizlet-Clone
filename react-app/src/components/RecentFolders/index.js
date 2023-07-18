@@ -11,7 +11,8 @@ export default function RecentFolders() {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const publicFolders = allFolders.filter((folder) => folder.is_public === "yes").slice(-3)
+    const publicFolders = allFolders.filter((folder) => folder.is_public === "yes")
+    const recent = publicFolders.slice(-3)
 
     useEffect(() => {
         dispatch(getAllFoldersThunk())
@@ -25,7 +26,7 @@ export default function RecentFolders() {
             <h1>This is the Most Recent Folders</h1>
 
             <h2>Most recent Folders</h2>
-            {(publicFolders) && publicFolders?.reverse().map((folder, idx) => (
+            {recent.reverse().map((folder, idx) => (
                 <div key={idx} >
                     <NavLink to={`/folders/${folder.id}`}>
                         <h2>{folder.title}</h2>
