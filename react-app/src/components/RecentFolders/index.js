@@ -21,24 +21,34 @@ export default function RecentFolders() {
     if (!Object.values(allFolders)) {
         return <h1>Folders are loading...</h1>
     }
-    return (
-        <>
-            <h1>This is the Most Recent Folders</h1>
+    const manageFolder = (folder) => {
+        return ((sessionUser?.id === folder.user_id) &&
+            <div>
+                <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                <OpenModalButton id='delete-btn' buttonText='Delete' modalComponent={<DeleteFormModal folderId={folder.id} />} />
+            </div>
+        )
+    }
 
-            <h2>Most recent Folders</h2>
-            {recent.reverse().map((folder, idx) => (
+    const renderMap = () => {
+        return (
+            recent.reverse().map((folder, idx) => (
                 <div key={idx} >
                     <NavLink to={`/folders/${folder.id}`}>
                         <h2>{folder.title}</h2>
                         <p>{folder.description}</p>
                         <p>Number of sets in folder:{folder.sets.length}</p>
                     </NavLink>
-                    {(sessionUser?.id === folder?.user_id) && <div>
-                        <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                        <OpenModalButton id='delete-btn' buttonText='Delete' modalComponent={<DeleteFormModal folderId={folder.id} />} />
-                    </div>}
+                    {manageFolder(folder)}
                 </div>
-            ))}
+            )))
+    }
+
+    return (
+        <>
+            <h1>This is the Most Recent Folders</h1>
+            <h2>Most recent Folders</h2>
+            {renderMap()}
         </>
     )
 }
