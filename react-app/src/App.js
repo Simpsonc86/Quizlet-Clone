@@ -8,6 +8,8 @@ import Navigation from "./components/Navigation";
 import CreateFolder from "./components/CreateFolder";
 import Dashboard from "./components/Dashboard";
 import EditFolder from "./components/EditFolder"
+import LandingPage from "./components/LandingPage";
+import FolderPage from "./components/FolderPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,14 +23,17 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/" >
-            < />
+          <Route exact path={["/home","/","/folders/recent"]} >
+            <LandingPage />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/folders/:folder_id">
+            <FolderPage />
           </Route>
           <Route path="/folders">
             <Dashboard />
