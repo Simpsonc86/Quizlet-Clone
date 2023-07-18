@@ -1,11 +1,14 @@
 import { useSelector,useDispatch } from "react-redux"
 import { useEffect } from "react"
-import { NavLink } from "react-router-dom/cjs/react-router-dom"
-import { getAllFoldersThunk } from "../../store/folders"
+import { NavLink, useHistory } from "react-router-dom"
+import { getAllFoldersThunk,getOneFolderThunk } from "../../store/folders"
+// import { editFolderThunk } from "../../store/folders"
+
 
 export default function Dashboard() {
 
     const dispatch = useDispatch()
+    const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user ? state.session.user : [])
     const allFolders = useSelector((state) => {
         // console.log("state from the store---->",state.folders.folders)
@@ -16,10 +19,10 @@ export default function Dashboard() {
     useEffect(() => {
         dispatch(getAllFoldersThunk());
     }, [dispatch]);
-    
-    
+  
     const userFolders = allFolders.filter(folder => folder.user_id === sessionUser.id)
     userFolders && console.log("Current users folders: ",userFolders);
+
     return (
         <>
             <h1>Dashboard</h1>
@@ -27,11 +30,13 @@ export default function Dashboard() {
             <div>
                 <h2>{sessionUser.username}'s Folders</h2>
                 {userFolders.map((folder, index) => (
-                    <NavLink key={index} to={`/folder/${folder.id}`}>
+                    <div key={index} to={`/folder/${folder.id}`}>
                         <div>
                             <h3>{folder.title}</h3>
+                            <button onClick={()=>history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                            <button onClick={()=>{}}>Delete Folder</button>
                         </div>
-                    </NavLink>
+                    </div>
                 ))}
             </div>
 

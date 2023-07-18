@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CreateFolder from "./components/CreateFolder";
 import Dashboard from "./components/Dashboard";
+import EditFolder from "./components/EditFolder"
 
 function App() {
   const dispatch = useDispatch();
@@ -26,11 +27,14 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/dashboard">
+          <Route path="/folders">
             <Dashboard />
           </Route>
           <Route path="/new-folder">
             <CreateFolder />
+          </Route>
+          <Route path="/edit-folder/:folder_id">
+            <EditFolder />
           </Route>
         </Switch>
       )}

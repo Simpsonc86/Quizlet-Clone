@@ -2,6 +2,7 @@ from flask import Blueprint,request
 from flask_login import login_required, current_user
 from app.models import Folder, User, db
 from app.forms.folder_form import FolderForm
+from app.forms.edit_folder_form import EditFolderForm
 from .auth_routes import validation_errors_to_error_messages
 
 folder_routes = Blueprint('folders', __name__)
@@ -57,20 +58,19 @@ def edit_folder(id):
     '''
     Edit a folder based on Id if user is authenticated
     '''
-    form = FolderForm()
+    form = EditFolderForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    if current_user.is_authenticated:
-        if form.valdate_on_submit():
-            folder = Folder.query.get(id)
-            if current_user.id == folder.user_id:
-                folder.title = form.data["title"]
-                folder.description = form.data["description"]
-                folder.is_public = form.data["is_public"]
+    if form.validate_on_submit():
+        folder = Folder.query.get(id)
+        if current_user.id == folder.user_id:
+            folder.title = form.data["title"]
+            folder.description = form.data["description"]
+            folder.is_public = form.data["is_public"]
 
-                db.session.commit()
-                return folder.to_dict()
-        return {'errors':['Unauthorized']}
-    return{'errors':['Unauthenticated']}
+            db.session.commit()
+            return folder.to_dict_without_sets_or_user()
+    return {'errors':['Unauthorized']}
+    # return{'errors':['Unauthenticated']}
 
 
 

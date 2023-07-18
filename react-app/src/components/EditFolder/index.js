@@ -1,16 +1,27 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createFolderThunk, getAllFoldersThunk } from "../../store/folders";
+import { editFolderThunk } from "../../store/folders";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 
-export default function CreateFolder() {
+
+export default function EditFolder() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user)
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [is_public, setIsPublic] = useState(true);
+    const {folder_id} = useParams()
+    const folders = useSelector((state) => {
+        // console.log("all folder from the store:=========>", state.folders.allFolders);
+        return state.folders.allFolders ? Object.values(state.folders.allFolders) : {}
+    })
+
+    const oneFolder = Object.values(folders).find((folder)=>folder.id===Number(folder_id))
+
+    console.log("folder from the filter's title is =====>", oneFolder.title);
+    const [title, setTitle] = useState(oneFolder.title);
+    const [description, setDescription] = useState(oneFolder.description);
+    const [is_public, setIsPublic] = useState(oneFolder.is_public);
     const [errors, setErrors] = useState([]);
 
 
@@ -22,36 +33,35 @@ export default function CreateFolder() {
         e.preventDefault();
 
         const errObj = {};
-        if (!title.length|| title.length<3) errObj.title = "Title length of 3 or more is required"
+        if (!title.length || title.length < 3) errObj.title = "Title length of 3 or more is required"
         if (!description.length || description.length < 10) errObj.description = "Description length of 10 or more is required"
 
         if (!Object.values(errObj).length) {
             const folder = {
-                user_id: sessionUser.id,
+                id:oneFolder.id,
+                user_id:sessionUser.id,
                 title,
                 description,
                 is_public
             }
 
             console.log("This is the created folder", folder)
-            const data = await dispatch(createFolderThunk(folder));
+            const data = await dispatch(editFolderThunk(folder));
 
 
-            if (data) {
-                setErrors(data);
-            }
-        }
-        history.push("/folders")
+           
+            history.push(`/folders`)
+        } else setErrors(errObj)
+
     };
 
     return (
         <>
-            <h1>Create a Folder</h1>
+            <h1>Edit your Folder</h1>
             <form onSubmit={handleSubmit}>
                 <ul>
-                    {!!errors.length && errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
+                    {errors.title&&<p>3 characters required in title</p>}
+                    {errors.description&&<p>10 characters required in description</p>}
                 </ul>
                 <label>
                     Title
@@ -75,19 +85,19 @@ export default function CreateFolder() {
                     Public Folder?
                     <input
                         type="checkbox"
-                        id="isPublicCheckbox"  
-                        name="isPublicCheckbox"      
+                        id="isPublicCheckbox"
+                        name="isPublicCheckbox"
                         defaultChecked
                         onClick={(e) => {
-                            const checkbox = document.querySelector('#isPublicCheckbox') 
-                            if (checkbox.checked)setIsPublic(true)
+                            const checkbox = document.querySelector('#isPublicCheckbox')
+                            if (checkbox.checked) setIsPublic(true)
                             else setIsPublic(false)
-                            console.log("Value of checkbox variable",checkbox.checked);
+                            console.log("Value of checkbox variable", checkbox.checked);
                         }}
                     />
                 </label>
                 {/* {console.log("value of isPublic----->",isPublic)} */}
-                
+
                 <button type="submit">Submit</button>
 
             </form>
