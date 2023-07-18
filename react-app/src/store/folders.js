@@ -1,5 +1,8 @@
 const GET_ALL_FOLDERS = "GET_ALL_FOLDERS"
 const GET_ONE_FOLDER = "GET_ONE_FOLDER"
+const CREATE_FOLDER = "CREATE_FOLDER"
+const EDIT_FOLDER = "EDIT_FOLDER"
+const DELETE_FOLDER = "DELETE_FOLDER"
 
 const getAllFolders = (folders) => ({
     type: GET_ALL_FOLDERS,
@@ -9,9 +12,21 @@ const getOneFolder = (folder) => ({
     type: GET_ONE_FOLDER,
     payload: folder
 })
+const createFolder = (folder) => ({
+    type: CREATE_FOLDER,
+    payload: folder
+})
+const editFolder = (folder) => ({
+    type: EDIT_FOLDER,
+    payload: folder
+})
+const deleteFolder = () => ({
+    type: DELETE_FOLDER,
+    
+})
 
 export const getAllFoldersThunk = () => async(dispatch)=>{
-    const res = await fetch("api/folders/", {
+    const res = await fetch("/api/folders/", {
         headers: {
             "Content-Type":"application/json",
         },
@@ -22,7 +37,7 @@ export const getAllFoldersThunk = () => async(dispatch)=>{
     }
 }
 export const getOneFolderThunk = (folder_id) => async(dispatch)=>{
-    const res = await fetch(`api/folders/${folder_id}`, {
+    const res = await fetch(`/api/folders/${folder_id}`, {
         headers: {
             "Content-Type":"application/json",
         },
@@ -32,14 +47,77 @@ export const getOneFolderThunk = (folder_id) => async(dispatch)=>{
         dispatch(getOneFolder(folder))
     }
 }
+
+export const createFolderThunk = (folder) => async(dispatch)=>{
+    const res = await fetch(`/api/folders/create`, {
+        method:'POST',
+        headers: {
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify(folder)
+    });
+    const resBody = await res.json();
+    console.log("resBody inside of the thunk=====>", resBody);
+    if (res.ok){
+        const folder = resBody;
+        dispatch(createFolder(folder))
+        return folder;
+    } else if (res.status < 500){
+        if(resBody.errors){
+            return {errors:resBody.errors}
+        }
+    } else{
+        return {errors: ['Something bad happened!']}
+    }
+}
+export const editFolderThunk = (folder) => async(dispatch)=>{
+    const res = await fetch(`/api/folders/${folder.id}/edit`, {
+        method:'PUT',
+        headers: {
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify(folder)
+    });
+    const resBody = await res.json();
+    console.log("resBody inside of the thunk=====>", resBody);
+    if (res.ok){
+        const folder = resBody;
+        dispatch(editFolder(folder))
+        return folder;
+    } else if (res.status < 500){
+        if(resBody.errors){
+            return {errors:resBody.errors}
+        }
+    } else{
+        return {errors: ['Something bad happened!']}
+    }
+}
+export const deleteFolderThunk = (folder_id) => async(dispatch)=>{
+    const res = await fetch(`/api/folders/${folder_id}/delete`,{
+        method:"DELETE"
+    })
+    if (res.ok){
+        return dispatch(deleteFolder())
+    }else{
+        const error = await res.json();
+        console.log("bad data======>", error);
+    }
+}
+
 const initialState = {allFolders:{}, folder:{}}
 
 export default function reducer(state = initialState, action){
     switch (action.type){
         case GET_ALL_FOLDERS:
-            return {allFolders:{...action.payload},folder: {}};
+            return {...state,allFolders:{...action.payload}};
         case GET_ONE_FOLDER:
-            return {allFolders:{},folder: {...action.payload}};
+            return {...state,folder: {...action.payload}};
+        case CREATE_FOLDER:
+            return {...state,folder: {...action.payload}};
+        case EDIT_FOLDER:
+            return {...state,folder: {...action.payload}};
+        case DELETE_FOLDER:
+            return {...state,folder: {}};
         default:
             return state;
     }

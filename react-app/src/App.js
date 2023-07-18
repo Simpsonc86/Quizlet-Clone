@@ -7,6 +7,9 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CreateFolder from "./components/CreateFolder";
 import Dashboard from "./components/Dashboard";
+import EditFolder from "./components/EditFolder"
+import RecentFolders from "./components/RecentFolders";
+import FolderPage from "./components/FolderPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,17 +23,25 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path={["/folders/recent"]} >
+            <RecentFolders />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/dashboard">
+          <Route path="/folders/:folder_id" component={FolderPage}/>
+          
+          <Route path="/folders">
             <Dashboard />
           </Route>
           <Route path="/new-folder">
             <CreateFolder />
+          </Route>
+          <Route path="/edit-folder/:folder_id">
+            <EditFolder />
           </Route>
         </Switch>
       )}

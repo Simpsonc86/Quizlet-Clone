@@ -1,7 +1,9 @@
 from flask import Blueprint,request
 from flask_login import login_required, current_user
-from app.models import Folder, db
+from app.models import Folder, User, db
 from app.forms.folder_form import FolderForm
+from app.forms.edit_folder_form import EditFolderForm
+from .auth_routes import validation_errors_to_error_messages
 
 folder_routes = Blueprint('folders', __name__)
 
@@ -22,26 +24,71 @@ def get_folder_by_id(id):
     folder = Folder.query.get(id)
     return folder.to_dict()
 
-@folder_routes.route("/new", methods=['POST'])
+@folder_routes.route("/create", methods=['POST'])
 @login_required
 def create_folder():
     '''
     Create a folder from the form 
-    '''
+    '''    
     form = FolderForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    form.data["user_id"] = current_user.id
+    # print("form:  ",form.data)
+    # print("form csrf", form["csrf_token"].data)
     if form.validate_on_submit():
+        # print("Inside the validate on submit")
+
+        # form.data["user_id"] = current_user.id
         folder = Folder(
-            user_id = current_user.to_dict()['id'],
+            user_id = form.data["user_id"],
             title = form.data['title'],
             description = form.data['description'],
-            is_public = form.data['is_public'],
+            is_public = form.data['is_public']
         )
-         
+            
         db.session.add(folder)
         db.session.commit()
 
-        return folder.to_dict()
-    return {'errors': ['Unauthorized']}, 401
+        return folder.to_dict_without_sets_or_user()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    
+
+@folder_routes.route("/<int:id>/edit", methods=["PUT"])
+@login_required
+def edit_folder(id):
+    '''
+    Edit a folder based on Id if user is authenticated
+    '''
+    form = EditFolderForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        folder = Folder.query.get(id)
+        if current_user.id == folder.user_id:
+            folder.title = form.data["title"]
+            folder.description = form.data["description"]
+            folder.is_public = form.data["is_public"]
+
+            db.session.commit()
+            return folder.to_dict_without_sets_or_user()
+    return {'errors':['Unauthorized']}
+    # return{'errors':['Unauthenticated']}
+
+
+
+
+@folder_routes.route("/<int:id>/delete", methods=["DELETE"])
+@login_required
+def delete_folder(id):
+    '''
+    Delete a folder based on Id if user is authenticated
+    '''
+    if current_user.is_authenticated:
+        folder = Folder.query.get(id)
+
+        if folder:
+            db.session.delete(folder)
+            db.session.commit()
+            return {"message":"folder deleted successfully"}
+        else:{'errors':['Unauthorized']}
+    
+    else:{'errors':['Unauthenticated']}
 
