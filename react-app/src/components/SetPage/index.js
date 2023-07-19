@@ -9,6 +9,7 @@ import DeleteSetModal from "../DeleteSetModal"
 // import EditSet from "../EditSet"
 import { getAllSetsThunk, getOneSetThunk } from "../../store/sets"
 import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders";
+import CreateQuestionModal from "../CreateQuestionModal";
 
 
 export default function SetPage() {
@@ -31,7 +32,7 @@ export default function SetPage() {
             .then(dispatch(getOneSetThunk(set_id)))
     }, [dispatch, folder_id, set_id])
 
-    if (!Object.values(sets).length||!Object.values(folders).length) {
+    if (!Object.values(sets).length || !Object.values(folders).length) {
         return <h1>Set details are loading...</h1>
     }
 
@@ -46,17 +47,22 @@ export default function SetPage() {
                 {/* <button onClick={() => dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
             </div>}
             <ul>
-    {set?.questions?.map((question, idx) => (
-        <li key={idx}>
-            <p>
-                <span>Question: {question.description} </span>
+                {set.questions?.map((question, idx) => (
+                    <li key={idx}>
+                        <p>
+                            <span>Question: {question.description} </span>
 
-                {/* {console.log("question object", question.answer)} */}
-                <span>Answer: {question.answer}</span>
-            </p>
-        </li>
-    ))}
-</ul>
+                            {/* {console.log("question object", question.answer)} */}
+                            <span>Answer: {question.answer}</span>
+                            
+                        </p>
+                    </li>
+                ))}
+            </ul>
+            {sessionUser?.id===set?.user_id &&
+            <div>
+                <OpenModalButton id='add-question-btn' buttonText='Add a Question' modalComponent={<CreateQuestionModal folderId={folder.id} setId={set.id} />} />
+            </div>}
 
         </>
     )
