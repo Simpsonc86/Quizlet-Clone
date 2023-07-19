@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllFoldersThunk } from "../../store/folders"
+import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders"
 import { NavLink, useHistory } from "react-router-dom"
 import OpenModalButton from "../OpenModalButton"
 import DeleteFormModal from "../DeleteFormModal"
@@ -24,8 +24,10 @@ export default function RecentFolders() {
     const manageFolder = (folder) => {
         return ((sessionUser?.id === folder.user_id) &&
             <div>
+                
                 <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                <OpenModalButton id='delete-btn' buttonText='Delete' modalComponent={<DeleteFormModal folderId={folder.id} />} />
+                <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
+                <button onClick={()=>dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
             </div>
         )
     }

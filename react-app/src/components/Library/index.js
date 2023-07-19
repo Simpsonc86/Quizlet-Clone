@@ -1,9 +1,10 @@
 import { useSelector,useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { NavLink, useHistory } from "react-router-dom"
-import { getAllFoldersThunk} from "../../store/folders"
+import { getAllFoldersThunk,getOneFolderThunk} from "../../store/folders"
 import DeleteFormModal from "../DeleteFormModal"
 import OpenModalButton from "../OpenModalButton"
+import { getAllSetsThunk } from "../../store/sets"
 
 
 
@@ -16,11 +17,13 @@ export default function Library() {
         // console.log("state from the store---->",state.folders.folders)
         return state.folders.allFolders ? Object.values(state.folders.allFolders) : []
     })
-    sessionUser && console.log("Current user: ",sessionUser);
+    const allSets = useSelector((state)=>state.sets.allSets)
+    // sessionUser && console.log("Current user: ",sessionUser);
     
     useEffect(() => {
-        dispatch(getAllFoldersThunk());
-    }, [dispatch, allFolders.length]);
+        dispatch(getAllFoldersThunk())
+        .then(dispatch(getAllSetsThunk()))
+    }, [dispatch, allFolders.length, allSets.length]);
   
     const userFolders = allFolders.filter(folder => folder.user_id === sessionUser.id)
     // userFolders && console.log("Current users folders: ",userFolders);
@@ -36,7 +39,8 @@ export default function Library() {
                         <div>
                             <NavLink to={`/folders/${folder.id}`}><h3>{folder.title}</h3></NavLink>
                             <button onClick={()=>history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                            <OpenModalButton id='delete-btn' buttonText='Delete' modalComponent={<DeleteFormModal folderId={folder.id}/>}/>
+                            <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id}/>}/>
+                            <button onClick={()=>dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
                         </div>
                     </div>
                 ))}
