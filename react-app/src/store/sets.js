@@ -1,11 +1,8 @@
 const GET_ALL_SETS = "GET_ALL_SETS"
 const GET_ONE_SET = "GET_ONE_SET"
 const CREATE_SET = "CREATE_SET"
-const CREATE_QUESTION = "CREATE_QUESTION"
 const EDIT_SET = "EDIT_SET"
-const EDIT_QUESTION = "EDIT_QUESTION"
 const DELETE_SET = "DELETE_SET"
-const DELETE_QUESTION = "DELETE_QUESTION"
 
 const getAllSets = (sets) => ({
     type: GET_ALL_SETS,
@@ -19,147 +16,114 @@ const createSet = (set) => ({
     type: CREATE_SET,
     payload: set
 })
-const createQuestion = (question) =>({
-    type: CREATE_QUESTION,
-    payload: question
-})
+
 const editSet = (set) => ({
     type: EDIT_SET,
     payload: set
 })
-const editQuestion = (set) => ({
-    type: EDIT_QUESTION,
-    payload: set
-})
+
 const deleteSet = () => ({
     type: DELETE_SET,
-    
-})
-const deleteQuestion = () => ({
-    type: DELETE_QUESTION,
-    
+
 })
 
-export const getAllSetsThunk = () => async(dispatch)=>{
+
+export const getAllSetsThunk = () => async (dispatch) => {
     const res = await fetch("/api/sets/", {
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
         },
     });
-    if (res.ok){
+    if (res.ok) {
         const sets = await res.json()
         dispatch(getAllSets(sets))
     }
 }
 
-export const getOneSetThunk = (set_id) => async(dispatch)=>{
+export const getOneSetThunk = (set_id) => async (dispatch) => {
     const res = await fetch(`/api/sets/${set_id}`, {
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
         },
     });
-    if (res.ok){
+    if (res.ok) {
         const set = await res.json()
         dispatch(getOneSet(set))
     }
 }
 
-export const createSetThunk = (set) => async(dispatch)=>{
+export const createSetThunk = (set) => async (dispatch) => {
     const res = await fetch(`/api/sets/create`, {
-        method:'POST',
+        method: 'POST',
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
         },
-        body:JSON.stringify(set)
+        body: JSON.stringify(set)
     });
     const resBody = await res.json();
     console.log("resBody inside of the thunk=====>", resBody);
-    if (res.ok){
+    if (res.ok) {
         const set = resBody;
         dispatch(createSet(set))
         return set;
-    } else if (res.status < 500){
-        if(resBody.errors){
-            return {errors:resBody.errors}
+    } else if (res.status < 500) {
+        if (resBody.errors) {
+            return { errors: resBody.errors }
         }
-    } else{
-        return {errors: ['Something bad happened!']}
+    } else {
+        return { errors: ['Something bad happened!'] }
     }
 }
-export const editSetThunk = (set) => async(dispatch)=>{
+export const editSetThunk = (set) => async (dispatch) => {
     const res = await fetch(`/api/sets/${set.id}/edit`, {
-        method:'PUT',
+        method: 'PUT',
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
         },
-        body:JSON.stringify(set)
+        body: JSON.stringify(set)
     });
     const resBody = await res.json();
     console.log("resBody inside of the thunk=====>", resBody);
-    if (res.ok){
+    if (res.ok) {
         const set = resBody;
         dispatch(editSet(set))
         return set;
-    } else if (res.status < 500){
-        if(resBody.errors){
-            return {errors:resBody.errors}
+    } else if (res.status < 500) {
+        if (resBody.errors) {
+            return { errors: resBody.errors }
         }
-    } else{
-        return {errors: ['Something bad happened!']}
+    } else {
+        return { errors: ['Something bad happened!'] }
     }
 }
-export const deleteSetThunk = (set_id) => async(dispatch)=>{
-    const res = await fetch(`/api/sets/${set_id}/delete`,{
-        method:"DELETE"
+export const deleteSetThunk = (set_id) => async (dispatch) => {
+    const res = await fetch(`/api/sets/${set_id}/delete`, {
+        method: "DELETE"
     })
-    if (res.ok){
+    if (res.ok) {
         return dispatch(deleteSet())
-    }else{
+    } else {
         const error = await res.json();
         console.log("bad data======>", error);
     }
 }
-export const createQuestionThunk = (question) => async(dispatch)=>{
-    const res = await fetch(`/api/sets/create/questions`, {
-        method:'POST',
-        headers: {
-            "Content-Type":"application/json",
-        },
-        body:JSON.stringify(question)
-    });
-    const resBody = await res.json();
-    console.log("resBody inside of the thunk=====>", resBody);
-    if (res.ok){
-        const question = resBody;
-        dispatch(createQuestion(question))
-        return question;
-    } else if (res.status < 500){
-        if(resBody.errors){
-            return {errors:resBody.errors}
-        }
-    } else{
-        return {errors: ['Something bad happened!']}
-    }
-}
 
-const initialState = {allSets:{}, set:{}}
+const initialState = { allSets: {}, set: {} }
 
-export default function reducer(state = initialState, action){
-    switch (action.type){
+export default function reducer(state = initialState, action) {
+    switch (action.type) {
         case GET_ALL_SETS:
-            return {...state,allSets:{...action.payload}};
+            return { ...state, allSets: { ...action.payload } };
         case GET_ONE_SET:
-            return {...state,set: {...action.payload}};
+            return { ...state, set: { ...action.payload } };
         case CREATE_SET:
-            return {...state,set: {...action.payload}};
-        case CREATE_QUESTION:
-            return {...state,set: {...action.payload}};
+            return { ...state, set: { ...action.payload } };
         case EDIT_SET:
-            const newState = {...state,set: {...action.payload}};
-            newState.allSets[action.payload.id]=action.payload;
+            const newState = { ...state, set: { ...action.payload } };
+            newState.allSets[action.payload.id] = action.payload;
             return newState;
         case DELETE_SET:
-            return {...state,set: {}};
+            return { ...state, set: {} };
         default:
             return state;
     }

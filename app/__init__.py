@@ -9,6 +9,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.folder_routes import folder_routes
 from .api.set_routes import set_routes
+from .api.question_routes import question_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -32,6 +33,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(folder_routes, url_prefix='/api/folders')
 app.register_blueprint(set_routes, url_prefix='/api/sets')
+app.register_blueprint(question_routes, url_prefix='/api/questions')
 
 db.init_app(app)
 Migrate(app, db)

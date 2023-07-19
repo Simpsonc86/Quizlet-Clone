@@ -3,9 +3,10 @@ import thunk from 'redux-thunk';
 import session from './session'
 import folders from './folders'
 import sets from './sets'
+import questions from './questions'
 
 const rootReducer = combineReducers({
-  session, folders, sets
+  session, folders, sets,questions
 });
 
 
