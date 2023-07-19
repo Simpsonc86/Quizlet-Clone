@@ -4,6 +4,7 @@ import { NavLink, useHistory } from "react-router-dom"
 import { getAllFoldersThunk,getOneFolderThunk} from "../../store/folders"
 import DeleteFormModal from "../DeleteFormModal"
 import OpenModalButton from "../OpenModalButton"
+import { getAllSetsThunk } from "../../store/sets"
 
 
 
@@ -16,11 +17,13 @@ export default function Library() {
         // console.log("state from the store---->",state.folders.folders)
         return state.folders.allFolders ? Object.values(state.folders.allFolders) : []
     })
-    sessionUser && console.log("Current user: ",sessionUser);
+    const allSets = useSelector((state)=>state.sets.allSets)
+    // sessionUser && console.log("Current user: ",sessionUser);
     
     useEffect(() => {
-        dispatch(getAllFoldersThunk());
-    }, [dispatch, allFolders.length]);
+        dispatch(getAllFoldersThunk())
+        .then(dispatch(getAllSetsThunk()))
+    }, [dispatch, allFolders.length, allSets.length]);
   
     const userFolders = allFolders.filter(folder => folder.user_id === sessionUser.id)
     // userFolders && console.log("Current users folders: ",userFolders);

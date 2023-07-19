@@ -116,7 +116,9 @@ export default function reducer(state = initialState, action){
         case CREATE_SET:
             return {...state,set: {...action.payload}};
         case EDIT_SET:
-            return {...state,set: {...action.payload}};
+            const newState = {...state,set: {...action.payload}};
+            newState.allSets[action.payload.id]=action.payload;
+            return newState;
         case DELETE_SET:
             return {...state,set: {}};
         default:
