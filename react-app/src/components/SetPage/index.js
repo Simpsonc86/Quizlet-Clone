@@ -8,12 +8,12 @@ import OpenModalButton from "../OpenModalButton";
 import DeleteSetModal from "../DeleteSetModal"
 // import EditSet from "../EditSet"
 import { getAllSetsThunk, getOneSetThunk } from "../../store/sets"
-import { getOneFolderThunk } from "../../store/folders";
+import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders";
 
 
-export default function SetPage(){
+export default function SetPage() {
 
-    const { folder_id,set_id } = useParams();
+    const { folder_id, set_id } = useParams();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user ? state.session.user : null)
     const folders = useSelector((state) => state.folders.allFolders)
@@ -25,13 +25,17 @@ export default function SetPage(){
 
     useEffect(() => {
         // console.log("Hitting useEffect here");
-        dispatch(getAllSetsThunk())
-        .then(dispatch(getAllSetsThunk()))
-        .then(dispatch(getOneFolderThunk(folder_id)))
-        .then(dispatch(getOneSetThunk(set_id)))
-    }, [dispatch, folder_id,set_id])
+        dispatch(getAllFoldersThunk())
+            .then(dispatch(getAllSetsThunk()))
+            .then(dispatch(getOneFolderThunk(folder_id)))
+            .then(dispatch(getOneSetThunk(set_id)))
+    }, [dispatch, folder_id, set_id])
 
-    return(
+    if (!Object.values(sets).length||!Object.values(folders).length) {
+        return <h1>Set details are loading...</h1>
+    }
+
+    return (
         <>
             <h1>{set.title} Set</h1>
             {/* {console.log("folder from above",folder)} */}
@@ -41,20 +45,20 @@ export default function SetPage(){
                 <button onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
                 {/* <button onClick={() => dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
             </div>}
+            <ul>
+    {set?.questions?.map((question, idx) => (
+        <li key={idx}>
+            <p>
+                <span>Question: {question.description} </span>
+
+                {/* {console.log("question object", question.answer)} */}
+                <span>Answer: {question.answer}</span>
+            </p>
+        </li>
+    ))}
+</ul>
 
         </>
     )
 }
 
-{/* <ul>
-{set?.questions?.map((question, idx) => (
-    <li key={idx}>
-        <p>
-            <span>Question: {question.description} </span>
-
-            {console.log("question object",question.answer.description)}
-            <span>Answer: {question.answer.description}</span>
-        </p>
-    </li>
-))}
-</ul> */}

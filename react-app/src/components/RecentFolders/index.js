@@ -18,7 +18,7 @@ export default function RecentFolders() {
         dispatch(getAllFoldersThunk())
     }, [dispatch])
 
-    if (!Object.values(allFolders)) {
+    if (!Object.values(allFolders).length) {
         return <h1>Folders are loading...</h1>
     }
     const manageFolder = (folder) => {
