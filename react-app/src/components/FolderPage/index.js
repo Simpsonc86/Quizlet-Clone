@@ -52,7 +52,7 @@ export default function FolderPage() {
                                 {set.title}
                             </Link> 
                             {/* Created by {folder.user.username} */}
-                            <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id}set={set}/>} />
+                            {sessionUser?.id === folder?.user_id&&<OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id}set={set}/>} />}
                         </p>
                     </li>
                 ))}
