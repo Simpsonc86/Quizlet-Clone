@@ -1,6 +1,6 @@
 from flask import Blueprint,request
 from flask_login import login_required, current_user
-from app.models import Set, Question,Answer, db
+from app.models import Set, Question, db
 from app.forms.set_form import SetForm
 from app.forms.edit_set_form import EditSetForm
 from app.forms.question_form import QuestionForm
