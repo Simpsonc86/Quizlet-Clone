@@ -9,11 +9,12 @@ class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     set_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("sets.id")))
     description = db.Column(db.String(2000), nullable = False)
+    answer = db.Column(db.String(2000), nullable = False)
     favorite = db.Column(db.String,nullable=False,default="no")
 
     #Relationship attributes
     set = db.relationship("Set", back_populates="questions")
-    answer = db.relationship("Answer", back_populates="question", cascade="all, delete-orphan", uselist=False)
+    # answer = db.relationship("Answer", back_populates="question", cascade="all, delete-orphan", uselist=False)
    
 
 
@@ -22,6 +23,7 @@ class Question(db.Model):
             "id":self.id,
             "set_id":self.set_id,
             "description":self.description,          
+            "answer":self.answer,          
             "favorite":self.favorite,
-            "answer":self.answer.to_dict()          
+            # "answer":self.answer.to_dict()          
         }

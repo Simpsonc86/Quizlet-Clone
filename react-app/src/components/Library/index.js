@@ -28,6 +28,10 @@ export default function Library() {
     const userFolders = allFolders.filter(folder => folder.user_id === sessionUser.id)
     // userFolders && console.log("Current users folders: ",userFolders);
 
+    if (!Object.values(allSets).length||!Object.values(allFolders).length) {
+        return <h1> {sessionUser.first_name}'s' Library details are loading...</h1>
+    }
+
     return (
         <>
             <h1>Library</h1>
