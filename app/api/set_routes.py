@@ -1,8 +1,10 @@
 from flask import Blueprint,request
 from flask_login import login_required, current_user
-from app.models import Set, User, db
-from app.forms.folder_form import FolderForm
-from app.forms.edit_folder_form import EditFolderForm
+from app.models import Set, Question,Answer, db
+from app.forms.set_form import SetForm
+from app.forms.edit_set_form import EditSetForm
+from app.forms.question_form import QuestionForm
+from app.forms.answer_form import AnswerForm
 from .auth_routes import validation_errors_to_error_messages
 
 set_routes = Blueprint('sets', __name__)
@@ -26,11 +28,11 @@ def get_set_by_id(id):
 
 @set_routes.route("/create", methods=['POST'])
 @login_required
-def create_folder():
+def create_set():
     '''
     Create a set from the form 
     '''    
-    form = FolderForm()
+    form = SetForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     # print("form:  ",form.data)
     # print("form csrf", form["csrf_token"].data)
@@ -45,29 +47,29 @@ def create_folder():
             description = form.data['description'],
           
         )
+        
             
         db.session.add(set)
         db.session.commit()
 
-        return set.to_dict_without_sets_or_user()
+        return set.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     
 
 @set_routes.route("/<int:id>/edit", methods=["PUT"])
 @login_required
-def edit_folder(id):
+def edit_set(id):
     '''
     Edit a set based on Id if user is authenticated
     '''
-    form = EditFolderForm()
+    form = EditSetForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         set = Set.query.get(id)
         if current_user.id == set.user_id:
             set.title = form.data["title"]
             set.description = form.data["description"]
-            set.is_public = form.data["is_public"]
-
+            
             db.session.commit()
             return set.to_dict()
     return {'errors':['Unauthorized']}
@@ -76,7 +78,7 @@ def edit_folder(id):
 
 @set_routes.route("/<int:id>/delete", methods=["DELETE"])
 @login_required
-def delete_folder(id):
+def delete_set(id):
     '''
     Delete a folder based on Id if user is authenticated
     '''
@@ -91,3 +93,31 @@ def delete_folder(id):
     
     else:{'errors':['Unauthenticated']}
 
+@set_routes.route("/create/questions", methods=['POST'])
+@login_required
+def create_set_questions():
+    '''
+    Create a question from the form 
+    '''    
+    form = QuestionForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    # print("form:  ",form.data)
+    # print("form csrf", form["csrf_token"].data)
+    if form.validate_on_submit():
+        # print("Inside the validate on submit")
+
+        # form.data["user_id"] = current_user.id
+        question = Question(
+          
+            set_id = form.data['set_id'],
+            description = form.data['description'],
+            favorite = form.data['favorite'],
+          
+        )        
+            
+        db.session.add(question)       
+        db.session.commit()
+
+        return question.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    
