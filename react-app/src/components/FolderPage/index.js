@@ -17,7 +17,7 @@ export default function FolderPage() {
     const sessionUser = useSelector((state) => state.session.user ? state.session.user : null)
     const folder = useSelector((state) => state.folders.folder ? state.folders.folder : null)
     const sets = useSelector((state) => Object.values(state.sets.allSets))
-    console.log("sets from store ",sets);
+    // console.log("sets from store ",sets);
     const filteredSets = sets.filter((set)=> set.folder_id===Number(folder_id))  
 
     const history = useHistory();
@@ -31,8 +31,8 @@ export default function FolderPage() {
         .then(dispatch(getAllSetsThunk()))
     }, [dispatch, folder_id])
 
-    if (!Object.values(folder)) {
-        return null
+    if (!Object.values(folder).length) {
+        return <h3>Loading...</h3>
     }
 
     return (

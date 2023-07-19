@@ -20,7 +20,7 @@ export default function SetPage(){
     const folder = folders[folder_id]
     const sets = useSelector((state) => state.sets.allSets)
     const set = sets[set_id]
-    console.log("Set from the store",set);
+    // console.log("Set from the store",set);
     const history = useHistory();
 
     useEffect(() => {
