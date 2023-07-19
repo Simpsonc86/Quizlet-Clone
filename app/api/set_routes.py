@@ -4,7 +4,6 @@ from app.models import Set, Question,Answer, db
 from app.forms.set_form import SetForm
 from app.forms.edit_set_form import EditSetForm
 from app.forms.question_form import QuestionForm
-from app.forms.answer_form import AnswerForm
 from .auth_routes import validation_errors_to_error_messages
 
 set_routes = Blueprint('sets', __name__)
@@ -111,6 +110,7 @@ def create_set_questions():
           
             set_id = form.data['set_id'],
             description = form.data['description'],
+            answer = form.data['answer'],
             favorite = form.data['favorite'],
           
         )        

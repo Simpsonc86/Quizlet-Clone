@@ -41,18 +41,20 @@ export default function SetPage(){
                 <button onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
                 {/* <button onClick={() => dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
             </div>}
-            <ul>
-                {set?.questions?.map((question, idx) => (
-                    <li key={idx}>
-                        <p>
-                            <span>Question: {question.description} </span>
 
-                            {/* {console.log("question object",question.answer.description)} */}
-                            <span>Answer: {question.answer.description}</span>
-                        </p>
-                    </li>
-                ))}
-            </ul>
         </>
     )
 }
+
+{/* <ul>
+{set?.questions?.map((question, idx) => (
+    <li key={idx}>
+        <p>
+            <span>Question: {question.description} </span>
+
+            {console.log("question object",question.answer.description)}
+            <span>Answer: {question.answer.description}</span>
+        </p>
+    </li>
+))}
+</ul> */}
