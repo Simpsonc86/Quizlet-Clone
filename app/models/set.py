@@ -24,5 +24,5 @@ class Set(db.Model):
             "folder_id":self.folder_id,
             "title":self.title,
             "description":self.description,      
-            "questions":[question.to_dict() for question in self.questions]        
+            "questions":{question["id"]:question.to_dict() for question in self.questions}        
         }

@@ -25,7 +25,7 @@ class Folder(db.Model):
             "description":self.description,
             "is_public":self.is_public,
             "user":self.user.to_dict(),
-            "sets":[set.to_dict() for set in self.sets] 
+            "sets":{set["id"]:set.to_dict() for set in self.sets} 
         }
     
     def to_dict_without_sets_or_user(self):
