@@ -1,9 +1,9 @@
 from flask import Blueprint,request
 from flask_login import login_required, current_user
-from app.models import Set, Question, db
+from app.models import Set, db
 from app.forms.set_form import SetForm
 from app.forms.edit_set_form import EditSetForm
-from app.forms.question_form import QuestionForm
+
 from .auth_routes import validation_errors_to_error_messages
 
 set_routes = Blueprint('sets', __name__)
@@ -72,7 +72,6 @@ def edit_set(id):
             db.session.commit()
             return set.to_dict()
     return {'errors':['Unauthorized']}
-    # return{'errors':['Unauthenticated']}
 
 
 @set_routes.route("/<int:id>/delete", methods=["DELETE"])
@@ -92,32 +91,3 @@ def delete_set(id):
     
     else:{'errors':['Unauthenticated']}
 
-@set_routes.route("/create/questions", methods=['POST'])
-@login_required
-def create_set_questions():
-    '''
-    Create a question from the form 
-    '''    
-    form = QuestionForm()
-    form["csrf_token"].data = request.cookies["csrf_token"]
-    # print("form:  ",form.data)
-    # print("form csrf", form["csrf_token"].data)
-    if form.validate_on_submit():
-        # print("Inside the validate on submit")
-
-        # form.data["user_id"] = current_user.id
-        question = Question(
-          
-            set_id = form.data['set_id'],
-            description = form.data['description'],
-            answer = form.data['answer'],
-            favorite = form.data['favorite'],
-          
-        )        
-            
-        db.session.add(question)       
-        db.session.commit()
-
-        return question.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    
