@@ -2,6 +2,7 @@ import React,{ useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { getAllFoldersThunk } from "../../store/folders"
 import { getAllSetsThunk } from "../../store/sets"
+import { getAllQuestionsThunk } from "../../store/questions"
 
 
 export default function LandingPage(){
@@ -10,6 +11,7 @@ export default function LandingPage(){
     useEffect(()=>{
         dispatch(getAllFoldersThunk())
         .then(dispatch(getAllSetsThunk()))
+        .then(dispatch(getAllQuestionsThunk()))
     },[dispatch])
 
     return (

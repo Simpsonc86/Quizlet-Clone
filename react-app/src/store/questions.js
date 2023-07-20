@@ -20,8 +20,9 @@ const editQuestion = (question) => ({
     type: EDIT_QUESTION,
     payload: question
 })
-const deleteQuestion = () => ({
+const deleteQuestion = (question_id) => ({
     type: DELETE_QUESTION,
+    payload:question_id
 
 })
 
@@ -71,7 +72,7 @@ export const createQuestionThunk = (question) => async (dispatch) => {
         return { errors: ['Something bad happened!'] }
     }
 }
-export const deleteSetQuestionThunk = (question_id) => async (dispatch) => {
+export const deleteQuestionThunk = (question_id) => async (dispatch) => {
     const res = await fetch(`/api/questions/${question_id}/delete`, {
         method: "DELETE"
     })
@@ -114,13 +115,14 @@ export default function reducer(state = initialState, action) {
         case GET_ONE_QUESTION:
             return { ...state, question: { ...action.payload } };
         case CREATE_QUESTION:
-            return { ...state, question: { ...action.payload } };
+            return { ...state, allQuestions:{...state.allQuestions,[action.payload.id]:action.payload},question: { ...action.payload } };
         case EDIT_QUESTION:
-            const newState = { ...state, question: { ...action.payload } };
-            newState.allQuestions[action.payload.id] = action.payload;
-            return newState;
+            return { ...state, allQuestions:{...state.allQuestions,[action.payload.id]:action.payload},question: { ...action.payload } };
+            
         case DELETE_QUESTION:
-            return { ...state, question: {} };
+            const currQuestion = state.allQuestions;
+            delete currQuestion[action.payload]
+            return { ...state, allQuestions:{...currQuestion}, question: {} };
         default:
             return state;
     }

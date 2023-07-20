@@ -70,7 +70,6 @@ def edit_questions(id):
         db.session.commit()
         return question.to_dict()
     return {'errors':['Unauthorized']}
-    # return{'errors':['Unauthenticated']}
 
 @question_routes.route("/<int:id>/delete", methods=["DELETE"])
 @login_required

@@ -72,7 +72,6 @@ def edit_set(id):
             db.session.commit()
             return set.to_dict()
     return {'errors':['Unauthorized']}
-    # return{'errors':['Unauthenticated']}
 
 
 @set_routes.route("/<int:id>/delete", methods=["DELETE"])

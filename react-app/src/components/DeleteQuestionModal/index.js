@@ -5,9 +5,9 @@ import{useModal} from "../../context/Modal"
 // import { useHistory } from "react-router-dom";
 // import { getAllFoldersThunk } from "../../store/folders";
 import {getAllSetsThunk } from "../../store/sets";
-import { deleteSetQuestionThunk } from "../../store/questions";
+import { deleteQuestionThunk } from "../../store/questions";
 
-export default function DeleteQuestionModal({set,folderId,question}){
+export default function DeleteQuestionModal({question}){
     const dispatch = useDispatch();
     // const history = useHistory();
     const {closeModal}= useModal();
@@ -16,7 +16,7 @@ export default function DeleteQuestionModal({set,folderId,question}){
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        dispatch(deleteSetQuestionThunk(question.id,set))
+        dispatch(deleteQuestionThunk(question.id))
         .then(dispatch(getAllSetsThunk()))
         .then(closeModal())
         // history.push(`/folders/${folderId}/sets/${set.id}`)
