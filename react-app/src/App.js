@@ -14,6 +14,7 @@ import RecentFolders from "./components/RecentFolders";
 import FolderPage from "./components/FolderPage";
 import LandingPage from "./components/LandingPage";
 import SetPage from "./components/SetPage";
+import RecentSets from "./components/RecentSets";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,23 +31,26 @@ function App() {
           <Route exact path={["/folders/recent"]} >
             <RecentFolders />
           </Route>
+          <Route exact path={["/sets/recent"]} >
+            <RecentSets />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path="/edit-folder/:folder_id">
+          <Route path="/edit-folder/:folder_id">
             <EditFolder />
           </Route>
-          <Route exact path="/edit-set/:set_id">
+          <Route path="/edit-set/:set_id">
             <EditSet />
           </Route>
-          <Route exact path="/folders/:folder_id">
-            <FolderPage/>
-          </Route>
-          <Route exact path="/folders/:folder_id/sets/:set_id">
+          <Route path="/folders/:folder_id/sets/:set_id">
             <SetPage/>
+          </Route>
+          <Route path="/folders/:folder_id">
+            <FolderPage/>
           </Route>
           <Route path="/folders">
             <Library />

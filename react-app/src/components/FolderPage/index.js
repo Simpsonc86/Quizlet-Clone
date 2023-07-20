@@ -8,6 +8,7 @@ import OpenModalButton from "../OpenModalButton";
 import DeleteFormModal from "../DeleteFormModal"
 import EditSet from "../EditSet"
 import { getAllSetsThunk } from "../../store/sets"
+import DeleteSetModal from "../DeleteSetModal"
 
 
 export default function FolderPage() {
@@ -18,7 +19,7 @@ export default function FolderPage() {
     const folder = useSelector((state) => state.folders.folder ? state.folders.folder : null)
     const sets = useSelector((state) => Object.values(state.sets.allSets))
     // console.log("sets from store ",sets);
-    const filteredSets = sets.filter((set)=> set.folder_id===Number(folder_id))  
+    const filteredSets = sets.filter((set) => set.folder_id === Number(folder_id))
 
     const history = useHistory();
 
@@ -27,8 +28,8 @@ export default function FolderPage() {
     useEffect(() => {
         // console.log("Hitting useEffect here");
         dispatch(getAllFoldersThunk())
-        .then(dispatch(getOneFolderThunk(folder_id)))
-        .then(dispatch(getAllSetsThunk()))
+            .then(dispatch(getOneFolderThunk(folder_id)))
+            .then(dispatch(getAllSetsThunk()))
     }, [dispatch, folder_id])
 
     if (!Object.values(folder).length) {
@@ -43,6 +44,8 @@ export default function FolderPage() {
                 <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
                 <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
                 <button onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                <button onClick={() => history.push(`/folders`)}>Return to library</button>
+                
             </div>}
             <ul>
                 {filteredSets.map((set, idx) => (
@@ -50,9 +53,13 @@ export default function FolderPage() {
                         <p>
                             <Link exact to={`/folders/${folder_id}/sets/${set.id}`}>
                                 {set.title}
-                            </Link> 
+                            </Link>
                             {/* Created by {folder.user.username} */}
-                            {sessionUser?.id === folder?.user_id&&<OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id}set={set}/>} />}
+                            {sessionUser?.id === folder?.user_id &&
+                                <>
+                                    <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
+                                    <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
+                                </>}
                         </p>
                     </li>
                 ))}

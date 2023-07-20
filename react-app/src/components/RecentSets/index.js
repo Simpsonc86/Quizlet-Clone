@@ -1,47 +1,48 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders"
+// import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders"
 import { NavLink, useHistory } from "react-router-dom"
 import OpenModalButton from "../OpenModalButton"
 import DeleteFormModal from "../DeleteFormModal"
+import { getAllSetsThunk,getOneSetThunk } from "../../store/sets"
 
 export default function RecentSets(){
     const sessionUser = useSelector((state) => state.session.user)
-    const allFolders = useSelector((state) => state.folders.allFolders ? Object.values(state.folders.allFolders) : [])
+    const allSets = useSelector((state) => Object.values(state.sets.allSets))
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const publicFolders = allFolders.filter((folder) => folder.is_public === "yes")
-    const recent = publicFolders.slice(-3)
+    
+    const recent = allSets.slice(-6)
 
     useEffect(() => {
-        dispatch(getAllFoldersThunk())
+        dispatch(getAllSetsThunk())
     }, [dispatch])
 
-    if (!Object.values(allFolders)) {
-        return <h1>Folders are loading...</h1>
+    if (!Object.values(allSets).length) {
+        return <h1>Sets are loading...</h1>
     }
-    const manageFolder = (folder) => {
-        return ((sessionUser?.id === folder.user_id) &&
+    const manageSet = (set) => {
+        return ((sessionUser?.id === set.user_id) &&
             <div>
                 
-                <button onClick={() => history.push(`/edit-set/${folder.id}`)}>Edit Folder</button>
-                <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
-                <button onClick={()=>dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                <button onClick={() => history.push(`/edit-set/${set.id}`)}>Edit set</button>
+                <OpenModalButton id='delete-btn' buttonText='Delete set' modalComponent={<DeleteFormModal setId={set.id} />} />
+                <button onClick={()=>dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button>
             </div>
         )
     }
 
     const renderMap = () => {
         return (
-            recent.reverse().map((folder, idx) => (
+            recent.reverse().map((set, idx) => (
                 <div key={idx} >
-                    <NavLink to={`/folders/${folder.id}`}>
-                        <h2>{folder.title}</h2>
-                        <p>{folder.description}</p>
-                        <p>Number of sets in folder:{folder.sets.length}</p>
+                    <NavLink to={`/folders/${set.folder_id}/sets/${set.id}`}>
+                        <h2>{set.title}</h2>
+                        <p>{set.description}</p>
+                        <p>Number of questions in set:{set.questions.length}</p>
                     </NavLink>
-                    {manageFolder(folder)}
+                    {manageSet(set)}
                 </div>
             )))
     }

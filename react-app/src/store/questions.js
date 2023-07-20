@@ -59,7 +59,7 @@ export const createQuestionThunk = (question) => async (dispatch) => {
         body: JSON.stringify(question)
     });
     const resBody = await res.json();
-    console.log("resBody inside of the thunk=====>", resBody);
+    // console.log("resBody inside of the thunk=====>", resBody);
     if (res.ok) {
         const question = resBody;
         dispatch(createQuestion(question))
@@ -92,7 +92,7 @@ export const editQuestionThunk = (question) => async (dispatch) => {
         body: JSON.stringify(question)
     });
     const resBody = await res.json();
-    console.log("resBody inside of the thunk=====>", resBody);
+    // console.log("resBody inside of the thunk=====>", resBody);
     if (res.ok) {
         const question = resBody;
         dispatch(editQuestion(question))

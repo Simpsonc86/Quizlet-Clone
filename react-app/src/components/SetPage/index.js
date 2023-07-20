@@ -76,7 +76,7 @@ export default function SetPage() {
                                 </p>
                             </li>
                         )
-                    }
+                    } else return null
                 })}
             </ul>
             {sessionUser?.id === set?.user_id &&

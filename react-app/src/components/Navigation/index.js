@@ -13,11 +13,14 @@ function Navigation({ isLoaded }) {
 				<div className='home-link'>
 					<NavLink exact to="/">Home</NavLink>
 				</div>
-				{sessionUser&&<div className='folders-link'>
+				{sessionUser&&<div className='library'>
 					<NavLink exact to="/folders">Library</NavLink>
 				</div>}
-				<div className='folders-link'>
-					<NavLink exact to="/folders/recent">Recent Folders</NavLink>
+				<div className='recent-folders'>
+					<NavLink to="/folders/recent">Recent Folders</NavLink>
+				</div>
+				<div className='recent-sets'>
+					<NavLink to="/sets/recent">Recent Sets</NavLink>
 				</div>
 			</div>
 			{isLoaded && (

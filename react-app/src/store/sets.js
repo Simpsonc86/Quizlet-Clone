@@ -22,7 +22,7 @@ const editSet = (set) => ({
     payload: set
 })
 
-const deleteSet = () => ({
+const deleteSet = (set_id) => ({
     type: DELETE_SET,
 
 })
@@ -61,7 +61,7 @@ export const createSetThunk = (set) => async (dispatch) => {
         body: JSON.stringify(set)
     });
     const resBody = await res.json();
-    console.log("resBody inside of the thunk=====>", resBody);
+    // console.log("resBody inside of the thunk=====>", resBody);
     if (res.ok) {
         const set = resBody;
         dispatch(createSet(set))
@@ -83,7 +83,7 @@ export const editSetThunk = (set) => async (dispatch) => {
         body: JSON.stringify(set)
     });
     const resBody = await res.json();
-    console.log("resBody inside of the thunk=====>", resBody);
+    // console.log("resBody inside of the thunk=====>", resBody);
     if (res.ok) {
         const set = resBody;
         dispatch(editSet(set))
@@ -121,7 +121,9 @@ export default function reducer(state = initialState, action) {
         case EDIT_SET:
             return { ...state, allSets:{...state.allSets,[action.payload.id]:action.payload},set: { ...action.payload } };
         case DELETE_SET:
-            return { ...state, set: {} };
+            const currSet = state.allSets;
+            delete currSet[action.payload]
+            return { ...state, allSets:{...currSet}, set: {} };
         default:
             return state;
     }

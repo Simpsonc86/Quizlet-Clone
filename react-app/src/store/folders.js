@@ -57,7 +57,7 @@ export const createFolderThunk = (folder) => async(dispatch)=>{
         body:JSON.stringify(folder)
     });
     const resBody = await res.json();
-    console.log("resBody inside of the thunk=====>", resBody);
+    // console.log("resBody inside of the thunk=====>", resBody);
     if (res.ok){
         const folder = resBody;
         dispatch(createFolder(folder))
@@ -79,7 +79,7 @@ export const editFolderThunk = (folder) => async(dispatch)=>{
         body:JSON.stringify(folder)
     });
     const resBody = await res.json();
-    console.log("resBody inside of the thunk=====>", resBody);
+    // console.log("resBody inside of the thunk=====>", resBody);
     if (res.ok){
         const folder = resBody;
         dispatch(editFolder(folder))
