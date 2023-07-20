@@ -44,6 +44,8 @@ export default function FolderPage() {
                 <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
                 <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
                 <button onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                <button onClick={() => history.push(`/folders`)}>Return to library</button>
+                
             </div>}
             <ul>
                 {filteredSets.map((set, idx) => (
