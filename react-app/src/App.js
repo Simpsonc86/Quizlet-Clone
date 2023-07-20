@@ -36,16 +36,16 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path="/edit-folder/:folder_id">
+          <Route path="/edit-folder/:folder_id">
             <EditFolder />
           </Route>
-          <Route exact path="/edit-set/:set_id">
+          <Route path="/edit-set/:set_id">
             <EditSet />
           </Route>
-          <Route exact path="/folders/:folder_id">
+          <Route path="/folders/:folder_id">
             <FolderPage/>
           </Route>
-          <Route exact path="/folders/:folder_id/sets/:set_id">
+          <Route path="/folders/:folder_id/sets/:set_id">
             <SetPage/>
           </Route>
           <Route path="/folders">

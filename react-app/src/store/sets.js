@@ -61,7 +61,7 @@ export const createSetThunk = (set) => async (dispatch) => {
         body: JSON.stringify(set)
     });
     const resBody = await res.json();
-    console.log("resBody inside of the thunk=====>", resBody);
+    // console.log("resBody inside of the thunk=====>", resBody);
     if (res.ok) {
         const set = resBody;
         dispatch(createSet(set))
@@ -83,7 +83,7 @@ export const editSetThunk = (set) => async (dispatch) => {
         body: JSON.stringify(set)
     });
     const resBody = await res.json();
-    console.log("resBody inside of the thunk=====>", resBody);
+    // console.log("resBody inside of the thunk=====>", resBody);
     if (res.ok) {
         const set = resBody;
         dispatch(editSet(set))

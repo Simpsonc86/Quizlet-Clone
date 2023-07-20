@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import{useModal} from "../../context/Modal"
 // import { deleteFolderThunk } from "../../store/folders";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 // import { getAllFoldersThunk } from "../../store/folders";
 import { deleteSetThunk, getAllSetsThunk } from "../../store/sets";
 
