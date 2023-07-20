@@ -46,11 +46,11 @@ function App() {
           <Route path="/edit-set/:set_id">
             <EditSet />
           </Route>
-          <Route path="/folders/:folder_id">
-            <FolderPage/>
-          </Route>
           <Route path="/folders/:folder_id/sets/:set_id">
             <SetPage/>
+          </Route>
+          <Route path="/folders/:folder_id">
+            <FolderPage/>
           </Route>
           <Route path="/folders">
             <Library />

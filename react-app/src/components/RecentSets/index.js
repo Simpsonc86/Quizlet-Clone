@@ -37,7 +37,7 @@ export default function RecentSets(){
         return (
             recent.reverse().map((set, idx) => (
                 <div key={idx} >
-                    <NavLink to={`/sets/${set.id}`}>
+                    <NavLink to={`/folders/${set.folder_id}/sets/${set.id}`}>
                         <h2>{set.title}</h2>
                         <p>{set.description}</p>
                         <p>Number of questions in set:{set.questions.length}</p>
