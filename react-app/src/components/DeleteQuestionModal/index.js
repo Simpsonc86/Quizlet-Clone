@@ -12,7 +12,7 @@ export default function DeleteQuestionModal({question}){
     // const history = useHistory();
     const {closeModal}= useModal();
 
-    console.log("question id from prop", question.id);
+    // console.log("question id from prop", question.id);
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -25,10 +25,10 @@ export default function DeleteQuestionModal({question}){
     return(
         <div>
             <h1>Confirm Delete?</h1>
-            <p>Are you sure you want to delete this folder?</p>
+            <p>Are you sure you want to delete this question?</p>
             <form onSubmit={handleSubmit}>
-                <button type="submit">Yes (Delete Folder)</button>
-                <button onClick={closeModal}>No (Keep Folder)</button>
+                <button type="submit">Yes (Delete Question)</button>
+                <button onClick={closeModal}>No (Keep Question)</button>
             </form>
         </div>
     )
