@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
 import validator from 'validator'
@@ -19,7 +19,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  
+
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -27,29 +27,44 @@ function SignupFormPage() {
     e.preventDefault();
     //Validations
     let err = [];
-    if (firstName.length<2) {
-        err.push("First name must be longer than 2 characters")        
-    } 
-    if (lastName.length<3) {
-        err.push("Last name must be longer than 3 characters")        
-    } 
+    if (firstName.length < 2) {
+      err.push("First name must be longer than 2 characters")
+    }
+    if (firstName.length > 50) {
+      err.push("First name must be shorter than 50 characters")
+    }
+    if (lastName.length < 3) {
+      err.push("Last name must be longer than 3 characters")
+    }
+    if (lastName.length > 50) {
+      err.push("Last name must be shorter than 50 characters")
+    }
+    if (username.length < 3) {
+      err.push("Username must be longer than 3 characters")
+    }
+    if (username.length > 40) {
+      err.push("Username must be shorter than 40 characters")
+    }
     if (!validator.isEmail(email)) {
-        err.push("Email must be valid!")        
-    } 
+      err.push("Email must be valid!")
+    }
+    if (password.length < 8) {
+      err.push("Password must be longer than 8 characters")
+    }
     if (password !== confirmPassword) {
-        err.push("Passwords do not match!")        
-    } 
-    if(password===confirmPassword){
-      const data = await dispatch(signUp(firstName,lastName,dateOfBirth,username,email,password));
-      if(data){
+      err.push("Passwords do not match!")
+    }
+    if (password === confirmPassword&& !err.length) {
+      const data = await dispatch(signUp(firstName, lastName, dateOfBirth, username, email, password));
+      if (data) {
         setErrors(data);
       }
-    } else{
+    } else {
       setErrors(err);
     }
-    
+
     // setErrors(["Passwords do not match!",])
-    
+
     // history.push("/dashboard")
   };
 
