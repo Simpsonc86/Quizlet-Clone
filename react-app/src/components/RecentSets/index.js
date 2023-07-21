@@ -28,7 +28,7 @@ export default function RecentSets(){
                 
                 <button onClick={() => history.push(`/edit-set/${set.id}`)}>Edit set</button>
                 <OpenModalButton id='delete-btn' buttonText='Delete set' modalComponent={<DeleteFormModal setId={set.id} />} />
-                <button onClick={()=>dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                {/* <button onClick={()=>dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
             </div>
         )
     }
