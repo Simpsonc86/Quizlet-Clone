@@ -36,11 +36,11 @@ export default function EditSet({set,folderId}) {
 
             // console.log("This is the created folder", folder)
             await dispatch(editSetThunk(editSet))
+            .then(closeModal())
             // .then(dispatch(getAllSetsThunk()))          
             // history.push(`/folders/${folderId}/`)
             
         } else setErrors(errObj)
-        closeModal()
 
     };
 
