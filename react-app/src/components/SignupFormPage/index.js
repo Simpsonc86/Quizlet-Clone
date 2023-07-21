@@ -39,6 +39,9 @@ function SignupFormPage() {
     if (lastName.length > 50) {
       err.push("Last name must be shorter than 50 characters")
     }
+    if (dateOfBirth.substring(-4) > "2016") {
+      err.push("Must be born before 2016 to register")
+    }
     if (username.length < 3) {
       err.push("Username must be longer than 3 characters")
     }
