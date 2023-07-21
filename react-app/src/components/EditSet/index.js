@@ -49,8 +49,8 @@ export default function EditSet({set,folderId}) {
             <h1>Edit your Set</h1>
             <form onSubmit={handleSubmit}>
                 <ul>
-                    {errors.title&&<p>3 characters required in title</p>}
-                    {errors.description&&<p>10 characters required in description</p>}
+                    {errors.title&&<p>{errors.title}</p>}
+                    {errors.description&&<p>{errors.description}</p>}
                 </ul>
                 <label>
                     Title
