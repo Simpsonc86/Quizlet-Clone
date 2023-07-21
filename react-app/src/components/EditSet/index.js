@@ -18,8 +18,11 @@ export default function EditSet({set,folderId}) {
         e.preventDefault();
 
         const errObj = {};
-        if (!title.length || title.length < 3) errObj.title = "Title length of 3 or more is required"
+
+        if (!title.length|| title.length<3) errObj.title = "Title length of 3 or more is required"
+        if (title.length>49) errObj.title = "Title length less than 50 characters is required"
         if (!description.length || description.length < 10) errObj.description = "Description length of 10 or more is required"
+        if (description.length>1999) errObj.description = "Description length less than 2000 characters is required"
 
         if (!Object.values(errObj).length) {
             const editSet = {
