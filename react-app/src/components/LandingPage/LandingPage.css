@@ -43,6 +43,8 @@
     /* padding: 15%; */
     opacity: 95%;
     border-radius: 1rem;
+    box-shadow: 0 0 3px 0px #000000;
+
 }
 
 .landing-page-inner{

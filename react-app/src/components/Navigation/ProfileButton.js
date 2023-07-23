@@ -4,7 +4,8 @@ import { logout } from "../../store/session";
 // import OpenModalButton from "../OpenModalButton";
 // import LoginFormModal from "../LoginFormModal";
 // import SignupFormModal from "../SignupFormModal";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, NavLink } from "react-router-dom/cjs/react-router-dom.min";
+
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -44,22 +45,27 @@ function ProfileButton({ user }) {
     <>
 
       {user ? (
-        <>
-          
-          <button id="user-btn"onClick={openMenu}>
+        <div className="loggedin-nav-container">
+
+          <button className="nav-button create_button" onClick={openMenu}>+</button>
+          <button id="user-btn" onClick={openMenu}>
             {/* <i className="fas fa-user-circle" /> */}
             <div className="user-logo">
-              {user.first_name.toUpperCase().slice(0,1)}
+              {user.first_name.toUpperCase().slice(0, 1)}
             </div>
           </button>
           <div className={ulClassName} ref={ulRef}>
+            <div className="create-assets-profile-dropdown">
+              <NavLink className="nav-link" id="ca" to="/new-folder">Create a folder</NavLink>
+              {/* <NavLink className="nav-link" id="ca"to="/new-set">Create a Set</NavLink> */}
+            </div>
             <p>Username : {user.username}</p>
             <p>Email : {user.email}</p>
             <p>
               <button className="nav-button log_out_button" onClick={handleLogout}>Log Out</button>
             </p>
           </div>
-        </>
+        </div>
       ) : (
         <>
           {/* <OpenModalButton

@@ -2,9 +2,11 @@ import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { createSetThunk } from "../../store/sets";
 import { useHistory } from "react-router-dom";
+import "./CreateSet.css"
+// import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function CreateSet() {
-
+    // const {folder_id}= useParams()
     const dispatch = useDispatch();
     const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user);
@@ -42,32 +44,43 @@ export default function CreateSet() {
 
     return (
         <>
-            <h1>Create a Set</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.title && <p>{errors.title}</p>}
-                    {errors.description && <p>{errors.description}</p>}
-                </ul>
-                <label>
-                    Title
-                    <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Description
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit">Submit</button>
-            </form>
+            <div className="create-form-container">
+
+                <form className="create-form" onSubmit={handleSubmit}>
+                    <h1>Create a Set</h1>
+                    <ul>
+                        {errors.title && <p className="validation-errors">{errors.title}</p>}
+                        {errors.description && <p className="validation-errors">{errors.description}</p>}
+                    </ul>
+                    <div className="form-inputs">
+
+                        <label>
+                            Title
+                        </label>
+                        <input
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <br />
+                    <div className="form-inputs">
+
+                        <label>
+                            Description
+                        </label>
+                        <input
+                            type="text"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <br />
+                    <button className="nav-button" type="submit">Submit</button>
+                </form>
+            </div>
         </>
     )
 }

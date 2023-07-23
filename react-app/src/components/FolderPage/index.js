@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders"
 import { useEffect } from "react"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -41,6 +41,7 @@ export default function FolderPage() {
             <h1>{folder.title} Sets</h1>
             {/* {console.log("folder from above",folder)} */}
             {sessionUser?.id === folder?.user_id && <div>
+                {/* <NavLink to="/new-set">Create a Set</NavLink> */}
                 <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
                 <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
                 <button onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
