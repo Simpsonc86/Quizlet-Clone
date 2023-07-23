@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useHistory } from "react-router-dom"
 import OpenModalButton from "../OpenModalButton"
 import DeleteFormModal from "../DeleteFormModal"
-import { getAllSetsThunk,getOneSetThunk } from "../../store/sets"
+import { getAllSetsThunk } from "../../store/sets"
 
 export default function RecentSets(){
     const sessionUser = useSelector((state) => state.session.user)

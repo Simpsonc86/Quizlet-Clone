@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
+
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 
@@ -11,16 +12,18 @@ function Navigation({ isLoaded }) {
 		<div className='nav-div-container'>
 			<div className='left-nav-div'>
 				<div className='home-link'>
-					<NavLink exact to="/">Home</NavLink>
+					<NavLink className="nav-link" exact to="/">
+						<h2 className="home-logo" src="/Homelogo.png">Wizlet</h2>
+					</NavLink>
 				</div>
 				{sessionUser&&<div className='library'>
-					<NavLink exact to="/folders">Library</NavLink>
+					<NavLink className="nav-link" exact to="/folders">Library</NavLink>
 				</div>}
 				<div className='recent-folders'>
-					<NavLink to="/folders/recent">Recent Folders</NavLink>
+					<NavLink className="nav-link" to="/folders/recent">Recent Folders</NavLink>
 				</div>
 				<div className='recent-sets'>
-					<NavLink to="/sets/recent">Recent Sets</NavLink>
+					<NavLink className="nav-link" to="/sets/recent">Recent Sets</NavLink>
 				</div>
 			</div>
 			{isLoaded && (

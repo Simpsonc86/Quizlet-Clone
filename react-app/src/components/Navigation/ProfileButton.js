@@ -45,16 +45,20 @@ function ProfileButton({ user }) {
 
       {user ? (
         <>
-          <button onClick={openMenu}>
-            <i className="fas fa-user-circle" />
+          
+          <button id="user-btn"onClick={openMenu}>
+            {/* <i className="fas fa-user-circle" /> */}
+            <div className="user-logo">
+              {user.first_name.toUpperCase().slice(0,1)}
+            </div>
           </button>
-          <ul className={ulClassName} ref={ulRef}>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button className="log_out_button" onClick={handleLogout}>Log Out</button>
-            </li>
-          </ul>
+          <div className={ulClassName} ref={ulRef}>
+            <p>Username : {user.username}</p>
+            <p>Email : {user.email}</p>
+            <p>
+              <button className="nav-button log_out_button" onClick={handleLogout}>Log Out</button>
+            </p>
+          </div>
         </>
       ) : (
         <>
@@ -70,9 +74,10 @@ function ProfileButton({ user }) {
               modalComponent={<SignupFormModal />}
             /> */}
 
-          <div className="buttons">
-            <button className="sign_in_button" onClick={() => history.push('/signup')}>SIGN UP</button>
-            <button className="log_in_button" onClick={() => history.push('/login')}>LOG IN</button>
+          <div className="right-nav-buttons">
+            <button className="nav-button create_button" onClick={() => history.push('/login')}>+</button>
+            <button className="nav-button log_in_button" onClick={() => history.push('/login')}>LOG IN</button>
+            <button className="nav-button sign_in_button" onClick={() => history.push('/signup')}>SIGN UP</button>
           </div>
         </>
       )}
