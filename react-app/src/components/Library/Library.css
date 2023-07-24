@@ -67,7 +67,7 @@
     padding: 0;
     font-weight: bolder;
     word-wrap: normal;
-    z-index: 6;
+    z-index: 0;
   }
   .nav-link:hover{
     color:#101010;
