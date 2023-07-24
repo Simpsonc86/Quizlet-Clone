@@ -50,16 +50,31 @@ export default function SetPage() {
 
                     <div className="set-page-header">
 
-                    <h1>{set.title} Set</h1>
-                    {/* {console.log("folder from above",folder)} */}
-                    {sessionUser?.id === set?.user_id && <div className="set-btns-div">
-                        <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
-                        <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
-                        <button onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
-                        {/* <button onClick={() => dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
-                    </div>}
+                        <h1>{set.title} Set</h1>
+                        {/* {console.log("folder from above",folder)} */}
+                        {sessionUser?.id === set?.user_id && <div className="set-btns-div">
+                            <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
+                            <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
+                            <button onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
+                            {/* <button onClick={() => dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
+                        </div>}
                     </div>
-                    <hr/>
+                    <hr />
+                    <div className="card-flip-carosel-div">
+                        <div className="card-flip-carosel">
+                            <div className="card-text">
+                                Feature Comming Soon!
+                                <br /><br /><br />
+                                Question/Answer Card Carosel
+                            </div>
+                        </div>
+                        <span>
+
+                            <button>{"<"}</button>
+                            <button>{">"}</button>
+                        </span>
+                    </div>
+                    <hr />
                     <ol className="questions-inner-div">
                         {questions?.map((question, idx) => {
                             if (question.set_id === set.id) {
@@ -69,24 +84,23 @@ export default function SetPage() {
                                     <li key={idx}>
                                         <p className="question-card-div">
                                             <div className="question-text-div">
-                                            <span className="question-text">Question: {question.description} </span>
+                                                <span className="question-text">Question: {question.description} </span>
 
-                                            {/* {console.log("question object", question.answer)} */}
-                                            <br/>
-                                            <span className="answer-text">Answer: {question.answer} </span>
+                                                {/* {console.log("question object", question.answer)} */}
+                                                <br />
+                                                <span className="answer-text">Answer: {question.answer} </span>
                                             </div>
                                             {(sessionUser?.id === set?.user_id) &&
-                                            <div className="question-btns">
+                                                <div className="question-btns">
                                                     <span>
                                                         <OpenModalButton id='edit-question-btn' buttonText='Edit Question' modalComponent={<EditQuestionModal question={question} folderId={folder.id} set={set} />} />
                                                     </span>
                                                     <span>
                                                         <OpenModalButton id='delete-question-btn' buttonText='Delete Question' modalComponent={<DeleteQuestionModal question={question} folderId={folder.id} set={set} />} />
                                                     </span>
-                                            </div>
-                                                }
-                                                {/* </div> */}
-                                                {/* <hr/> */}
+                                                </div>
+                                            }
+
                                         </p>
                                     </li>
                                 )

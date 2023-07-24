@@ -19,7 +19,7 @@
 }
 .create-assets-profile-dropdown {
   position: absolute;
-  transform:translate(-13rem, -5.5rem) ;
+  transform:translate(-13rem, -7rem) ;
   /* transform:translateY(12rem); */
   display: flex;
   flex-direction: column;
@@ -154,3 +154,4 @@ color:#29BE83;
 .new-assets{
   transform:translateX(-1rem) ;
 }
+
