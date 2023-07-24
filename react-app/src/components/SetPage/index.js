@@ -71,8 +71,8 @@ export default function SetPage() {
                         </div>
                         <span>
 
-                            <button>{"<"}</button>
-                            <button>{">"}</button>
+                            <button onClick={()=>alert("Feature Comming Soon")}>{"<"}</button>
+                            <button onClick={()=>alert("Feature Comming Soon")}>{">"}</button>
                         </span>
                     </div>
                     <hr />
