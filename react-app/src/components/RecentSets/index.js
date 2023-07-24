@@ -7,6 +7,7 @@ import DeleteFormModal from "../DeleteFormModal"
 import { getAllSetsThunk } from "../../store/sets"
 import "../Library/Library.css"
 import DeleteSetModal from "../DeleteSetModal"
+import EditSet from "../EditSet"
 
 export default function RecentSets() {
     const sessionUser = useSelector((state) => state.session.user)
@@ -28,7 +29,7 @@ export default function RecentSets() {
         return ((sessionUser?.id === set.user_id) &&
             <div className="folder-card-div">
 
-                <button className="log_out_button nav-button" onClick={() => history.push(`/edit-set/${set.id}`)}>Edit set</button>
+                <button className="log_out_button nav-button" ><OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={set.folder_id} set={set} />} /></button>
                 <br/>
                 <button className="log_out_button nav-button"><OpenModalButton  id='delete-btn' buttonText='Delete set' modalComponent={<DeleteSetModal setId={set.id} />} /></button>
                 {/* <button onClick={()=>dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
