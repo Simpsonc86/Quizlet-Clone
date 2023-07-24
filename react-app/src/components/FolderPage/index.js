@@ -58,7 +58,7 @@ export default function FolderPage() {
                     </div>
                 </div>
                 <div className="set-cards-container-div">
-                    {`Total sets in folder: ${folder.sets.length}`}
+                    {folder?.sets.length && `Total sets in folder: ${folder.sets.length}`}
                     <div className="set-cards-inner-div">
                         {filteredSets.map((set, idx) => (
                             <div className="set-card-container" key={idx}>
