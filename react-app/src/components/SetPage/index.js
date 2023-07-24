@@ -55,11 +55,12 @@ export default function SetPage() {
                         {sessionUser?.id === set?.user_id && <div className="set-btns-div">
                             <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
                             <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
-                            <button onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
+                            <button className="log_out_button nav-button"  onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
                             {/* <button onClick={() => dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
                         </div>}
                     </div>
                     <hr />
+                    {`Total Questions in Set: ${set.questions.length}`}
                     <div className="card-flip-carosel-div">
                         <div className="card-flip-carosel">
                             <div className="card-text">

@@ -54,9 +54,12 @@ export default function Library() {
                                     </NavLink>
                                     
                                     <br/>
-                                    <button className="log_out_button nav-link"onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                                    <button className="log_out_button nav-link"onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
-                                    <button className="log_out_button nav-link">
+                                    <button className="log_out_button nav-buttons"onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                                    <br/>
+                                    <button className="log_out_button nav-buttons"onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                                    <br/>
+                                    <button className="log_out_button nav-buttons">
+                                    <br/>
                                     <OpenModalButton className="nav-link" id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
 
                                     </button>

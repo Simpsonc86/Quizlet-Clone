@@ -26,8 +26,10 @@ export default function RecentFolders() {
         return ((sessionUser?.id === folder.user_id) &&
             <div className="folder-card-div">
 
-                <button className="log_out_button nav-link" onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                <button className="log_out_button nav-link" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                <button className="log_out_button nav-button" onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                <br/>
+                <button className="log_out_button nav-button" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                <br/>
                 <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
             </div>
         )
@@ -42,7 +44,7 @@ export default function RecentFolders() {
                             <NavLink className="nav-link" to={`/folders/${folder.id}`}>
                                 <h2>{folder.title}</h2>
                                 <p>{folder.description}</p>
-                                <p>Number of sets in folder:{folder.sets.length}</p>
+                                <p>Sets in Folder:{folder.sets.length}</p>
                             </NavLink>
                             <br />
                             {manageFolder(folder)}

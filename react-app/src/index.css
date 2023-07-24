@@ -18,8 +18,11 @@ input, textarea{
     border-radius: .5rem;
     border:none;
     background-color: #e6e6e6;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #101010;;
     font-size: 200%;
 
+}
+body{
+    color: #101010;;
 }
 
