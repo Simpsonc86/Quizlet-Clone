@@ -48,32 +48,35 @@ export default function FolderPage() {
                         {/* {console.log("folder from above",folder)} */}
                         {sessionUser?.id === folder?.user_id && <div className="folder-btns-div">
                             {/* <NavLink to="/new-set">Create a Set</NavLink> */}
-                            <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                            <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
-                            <button onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
-                            <button onClick={() => history.push(`/library`)}>Return to library</button>
+                            <button className="log_out_button nav-button" onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                            <button className="log_out_button nav-button"><OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} /></button>
+                            <button className="log_out_button nav-button" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                            <button className="log_out_button nav-button" onClick={() => history.push(`/library`)}>Return to library</button>
 
                         </div>}
                         <hr />
                     </div>
                 </div>
                 <div className="set-cards-container-div">
-                    {`Total sets in folder: ${folder.sets.length}`}
+                    {folder?.sets.length && `Total sets in folder: ${folder.sets.length}`}
                     <div className="set-cards-inner-div">
                         {filteredSets.map((set, idx) => (
-                            <div className="set-card-container"key={idx}>
+                            <div className="set-card-container" key={idx}>
                                 <div className="set-card-div">
-                                    <Link className="nav-link-green bigger"exact to={`/folders/${folder_id}/sets/${set.id}`}>
+                                    <Link className="nav-link-green bigger" exact to={`/folders/${folder_id}/sets/${set.id}`}>
                                         {set.title}
                                     </Link>
+                                    <p>{set.description}</p>
+                                    <p>Total Questions: {set.questions.length}</p>
                                     {/* Created by {folder.user.username} */}
                                     {sessionUser?.id === folder?.user_id &&
                                         <>
                                             {/* <br /> */}
                                             <br />
                                             <div className="set-btns">
-                                                <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
-                                                <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
+                                                <button className="log_out_button nav-button" ><OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} /></button>
+                                                <br/>
+                                                <button className="log_out_button nav-button" ><OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} /></button>
                                             </div>
                                         </>
                                     }

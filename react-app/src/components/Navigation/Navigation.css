@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color:  #101010;;
+  background-color:  #101010;
   color: #ffffff;
   border-radius: 1rem;
   padding: 1rem;
@@ -14,7 +14,7 @@
   /* opacity: 95%; */
   font-weight: bolder;
   z-index: 10;
-  box-shadow: 0 0 3px 0px #000000;
+  box-shadow: 0 0 3px 0px #101010;
 
 }
 .create-assets-profile-dropdown {
@@ -33,7 +33,7 @@
   /* opacity: 95%; */
   font-weight: bolder;
   z-index: 5;
-  box-shadow: 0 0 3px 0px #000000;
+  box-shadow: 0 0 3px 0px #101010;
   text-decoration: none;
   /* color:#ffffff; */
 
@@ -70,6 +70,8 @@ color:#29BE83;
 
 .nav-link,#delete-btn{
   text-decoration: none;
+  border: 0;
+  background-color: transparent;
   text-decoration-color: #ffffff;
   color:#ffffff;
   margin: 0;
@@ -79,7 +81,7 @@ color:#29BE83;
   z-index: 6;
 }
 .nav-link:hover{
-  color:#000000;
+  color:#101010;
   font-weight: bolder;
 }
 
@@ -114,12 +116,12 @@ color:#29BE83;
   font-size: 1rem;
 }
 .log_out_button:hover{
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 .sign_in_button{
   border:none;
   background-color: #f9cc05;
-  color:#000000;
+  color:#101010;
   border-radius: .8rem;
 }
 .right-nav-buttons{
@@ -143,7 +145,7 @@ color:#29BE83;
   border: none;
   border-radius: 50%;
   padding:15px 20px;
-  box-shadow: 0 0 3px 0px #000000;
+  box-shadow: 0 0 3px 0px #101010;
 }
 #user-btn,.log_out_button:hover{
   cursor: pointer;

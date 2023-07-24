@@ -24,7 +24,7 @@ function SignupFormPage() {
 
 
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/library" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

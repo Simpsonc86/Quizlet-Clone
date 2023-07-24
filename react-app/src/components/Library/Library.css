@@ -40,7 +40,7 @@
     max-height: fit-content;
     box-shadow: 0 0 3px ;
     border-radius: 1rem;
-    background-color: #29BE83;
+    background-color: #118c5b;
     gap:1rem;
     text-overflow: clip;
 }
@@ -58,4 +58,32 @@
     align-items: center;
     gap:2rem;
 }
+
+.nav-link,#delete-btn{
+    text-decoration: none;
+    text-decoration-color: #ffffff;
+    color:#ffffff;
+    margin: 0;
+    padding: 0;
+    font-weight: bolder;
+    word-wrap: normal;
+    z-index: 6;
+  }
+  .nav-link:hover{
+    color:#101010;
+    font-weight: bolder;
+  }
+
+  .log_out_button{
+    display: flex;
+    justify-content: center;
+    border:none;
+    background-color: #29BE83;
+    border-radius: .5rem;
+    padding:.5rem 1rem;
+    font-size: 1rem;
+  }
+  .log_out_button:hover{
+    color: #ffffff;
+  }
 

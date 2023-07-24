@@ -48,7 +48,7 @@
     width: 100%;
     /* box-shadow: 0 0 3px 1px; */
     padding: 0 1rem;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #101010;
     /* border-radius: 1rem; */
     /* padding: 1rem; */
     display: flex;
@@ -70,7 +70,7 @@
     font-weight: bolder;
   }
   .nav-link-green:hover{
-    color:#000000;
+    color:#101010;
     font-weight: bolder;
   }
   .add-question-btn{

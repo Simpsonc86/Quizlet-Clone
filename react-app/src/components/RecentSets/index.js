@@ -28,8 +28,9 @@ export default function RecentSets() {
         return ((sessionUser?.id === set.user_id) &&
             <div className="folder-card-div">
 
-                <button className="log_out_button nav-link" onClick={() => history.push(`/edit-set/${set.id}`)}>Edit set</button>
-                <OpenModalButton className="log_out_button nav-link" id='delete-btn' buttonText='Delete set' modalComponent={<DeleteSetModal setId={set.id} />} />
+                <button className="log_out_button nav-button" onClick={() => history.push(`/edit-set/${set.id}`)}>Edit set</button>
+                <br/>
+                <button className="log_out_button nav-button"><OpenModalButton  id='delete-btn' buttonText='Delete set' modalComponent={<DeleteSetModal setId={set.id} />} /></button>
                 {/* <button onClick={()=>dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
             </div>
         )
@@ -41,10 +42,10 @@ export default function RecentSets() {
                 {recent.reverse().map((set, idx) => (
                     <div className="folder-card-container" key={idx} >
                         <div className="folder-card-div">
-                           <NavLink className="nav-link" to={`/folders/${set.folder_id}/sets/${set.id}`}>
+                           <NavLink className="nav-link " to={`/folders/${set.folder_id}/sets/${set.id}`}>
                                 <h2>{set.title}</h2>
                                 <p>{set.description}</p>
-                                <p>Number of questions in set:{set.questions.length}</p>
+                                <p>Total Questions: {set.questions.length}</p>
                             </NavLink>
                             {manageSet(set)}
                         </div>
