@@ -2,8 +2,8 @@
     width: 100%;
     /* max-width: 100%; */
     object-fit: cover;
-    opacity: 75%;
-    background-color: black;
+    /* opacity: 75%; */
+    background-color: #118c5b;
     /* border: 3px dotted blue;  */
 
     
@@ -34,14 +34,14 @@
     /* transform: translate(50%, 50%); */
     font-size: 1rem;
     z-index: 3;
-    background-color: black;
+    background-color: #118c5b;
     color:#ffffff;
     /* border: 3px dotted blue;  */
     padding: 2%;
     margin-left: 10%;
     margin-top: 10%;
     /* padding: 15%; */
-    opacity: 95%;
+    /* opacity: 95%; */
     border-radius: 1rem;
     box-shadow: 0 0 3px 0px #000000;
 
