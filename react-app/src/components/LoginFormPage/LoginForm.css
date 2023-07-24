@@ -2,17 +2,18 @@
     max-width: 100%;
     width: auto;
     max-height: 100%;
-    height:100vh;
+    /* height:100vh; */
     display: flex;
     /* border:3px solid red; */
 }
 
 .login-img{
     max-width:50%;
-    /* height:100%; */
+    width:100%;
     object-fit: cover;
 }
 .login-form-div{
+    /* height: 80%; */
     padding:4rem;
     display: flex;
     max-width: 50%;
