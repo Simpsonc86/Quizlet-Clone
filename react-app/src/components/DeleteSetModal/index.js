@@ -24,9 +24,9 @@ export default function DeleteSetModal({setId,folderId}){
             <h1>Confirm Delete?</h1>
             <p>Are you sure you want to delete this set?</p>
             <form className="create-form" onSubmit={handleSubmit}>
-                <button className="log_out_button nav-link"type="submit">Yes (Delete Set)</button>
+                <button className="log_out_button nav-button"type="submit">Yes (Delete Set)</button>
                 <br/>
-                <button className="log_out_button nav-link"onClick={closeModal}>No (Keep Set)</button>
+                <button className="log_out_button nav-button"onClick={closeModal}>No (Keep Set)</button>
             </form>
         </div>
     )

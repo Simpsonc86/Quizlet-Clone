@@ -41,7 +41,7 @@ export default function Library() {
                     <div className="library-header">
 
                         <h1>Library</h1>
-                        <NavLink className="nav-button"to="/new-folder">Create a new folder</NavLink>
+                        <NavLink className="log_out_button nav-button"to="/new-folder">Create A New Folder</NavLink>
                     </div>
                         <h2>{sessionUser.username}'s Folders</h2>
                     <div className="folder-user-details-div">
@@ -52,14 +52,15 @@ export default function Library() {
                                         <h3>{folder?.title}</h3>
                                         <h4 >{folder?.description}</h4>
                                         <h4>Total Sets: {folder?.sets.length}</h4>
-                                    </NavLink>
-                                    
-                                    <br/>
-                                    <button className="log_out_button nav-buttons"onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                                    </NavLink>                               
+                                  <button className="log_out_button nav-buttons"onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                                    &nbsp;
                                     <br/>
                                     <button className="log_out_button nav-buttons"onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                                    &nbsp;
                                     <br/>
                                     <button className="log_out_button nav-buttons">
+                                    &nbsp;
                                     <br/>
                                     <OpenModalButton className="nav-link" id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
 

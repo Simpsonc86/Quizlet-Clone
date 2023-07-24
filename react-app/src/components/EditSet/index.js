@@ -79,8 +79,8 @@ export default function EditSet({set,folderId}) {
             required
         />
     </div>
-    <br />
-    <button className="log_out_button nav-link" type="submit">Submit</button>
+    &nbsp;
+    <button className="log_out_button nav-button" type="submit">Submit</button>
 </form>
 </div>
         </>

@@ -111,8 +111,8 @@ export default function EditFolder() {
                         />
                     </div>
                     {/* {console.log("value of isPublic----->",is_public)} */}
-                    <br/>
-                    <button className="log_out_button submit nav-link"type="submit">Submit</button>
+                    &nbsp;
+                    <button className="log_out_button submit nav-button"type="submit">Submit</button>
 
                 </form>
             </div>

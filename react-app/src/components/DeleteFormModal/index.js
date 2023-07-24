@@ -23,9 +23,9 @@ export default function DeleteFormModal({folderId}){
             <h1>Confirm Delete?</h1>
             <p>Are you sure you want to delete this folder?</p>
             <form className="create-form" onSubmit={handleSubmit}>
-                <button className="log_out_button nav-link" type="submit">Yes (Delete Folder)</button>
-                <br/>
-                <button className="log_out_button nav-link" onClick={closeModal}>No (Keep Folder)</button>
+                <button className="log_out_button nav-button" type="submit">Yes (Delete Folder)</button>
+                &nbsp;
+                <button className="log_out_button nav-button" onClick={closeModal}>No (Keep Folder)</button>
             </form>
         </div>
     )
