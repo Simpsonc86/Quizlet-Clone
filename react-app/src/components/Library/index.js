@@ -49,8 +49,9 @@ export default function Library() {
                             <div className="folder-card-container" key={index}>
                                 <div className="folder-card-div">
                                     <NavLink className="nav-link"to={`/folders/${folder.id}`}>
-                                        <h3>{folder.title}</h3>
-                                        <h4 >{folder.description}</h4>
+                                        <h3>{folder?.title}</h3>
+                                        <h4 >{folder?.description}</h4>
+                                        <h4>Total Sets: {folder?.sets.length}</h4>
                                     </NavLink>
                                     
                                     <br/>
