@@ -52,66 +52,70 @@ export default function EditFolder() {
 
 
            
-            history.push(`/folders`)
+            history.push(`/library`)
         } else setErrors(errObj)
 
     };
 
     return (
         <>
-            <h1>Edit your Folder</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.title&&<p>{errors.title}</p>}
-                    {errors.description&&<p>{errors.description}</p>}
-                </ul>
-                <label>
-                    Title
-                    <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Description
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Public Folder?
-                    {(is_public==="yes")?(<input
-                        type="checkbox"
-                        id="isPublicCheckbox"
-                        name="isPublicCheckbox"
-                        defaultChecked                 
-                        onClick={(e) => {
-                            const checkbox = document.querySelector('#isPublicCheckbox')
-                            checkbox.checked?setIsPublic("yes"):setIsPublic("no")
-                            // console.log("Value of checkbox variable", checkbox.checked);
-                        }}
-                    />)
-                     :(<input
-                        type="checkbox"
-                        id="isPublicCheckbox"
-                        name="isPublicCheckbox"                                       
-                        onClick={(e) => {
-                            const checkbox = document.querySelector('#isPublicCheckbox')
-                            checkbox.checked?setIsPublic("yes"):setIsPublic("no")
-                            // console.log("Value of checkbox variable", checkbox.checked);
-                        }}
-                    />)}
-                </label>
-                {/* {console.log("value of isPublic----->",is_public)} */}
+             <div className="create-form-container">
+                <form className="create-form" onSubmit={handleSubmit}>
+                    <h1>Edit your Folder</h1>
+                    <ul >
+                        {errors.title && <p className="validation-errors">{errors.title}</p>}
 
-                <button type="submit">Submit</button>
+                        {errors.description && <p className="validation-errors"   >{errors.description}</p>}
+                    </ul>
+                    <div className="form-inputs">
 
-            </form>
+                        <label>
+                            Title
+                        </label>
+                        <textarea
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <br />
+                    <div className="form-inputs">
+
+                        <label>
+                            Description
+                        </label>
+                        <textarea
+                            type="text"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <br />
+                    <div className="form-inputs-public">
+
+                        <label>
+                            Public Folder?
+                        </label>
+                        <input
+                            type="checkbox"
+                            id="isPublicCheckbox"
+                            name="isPublicCheckbox"
+                            // defaultChecked
+                            onClick={(e) => {
+                                const checkbox = document.querySelector('#isPublicCheckbox')
+                                checkbox.checked ? setIsPublic("yes") : setIsPublic("no")
+                                // console.log("Value of checkbox variable",checkbox.checked);
+                            }}
+                        />
+                    </div>
+                    {/* {console.log("value of isPublic----->",is_public)} */}
+                    <br/>
+                    <button className="log_out_button submit nav-link"type="submit">Submit</button>
+
+                </form>
+            </div>
         </>
     )
 }

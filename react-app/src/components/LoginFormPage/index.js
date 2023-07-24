@@ -20,54 +20,60 @@ function LoginFormPage() {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else{
+      history.push("/")
+
     }
-    history.push("/")
   };
 
   const loginDemoUser = async (e) => {
     e.preventDefault();
     const email = "demo@aa.io";
     const password = "password";
-    const data = await dispatch(login(email,password))
-    if (data){
+    const data = await dispatch(login(email, password))
+    if (data) {
       setErrors(data);
-    }else{
+    } else {
       history.push("/")
     }
   }
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
+    <div className="login-page-container">
+      <img className="login-img" src="concept-student.jpg"></img>
+      <div className="login-form-div">
+
+        <h1>Log In</h1>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => (
+              <li className="validation-error" key={idx}>{error}</li>
+            ))}
+          </ul>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
+          <label>
+            Email
+          </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          <label>
           Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      <button onClick={loginDemoUser}>Demo User
+          </label>
+          <button className="login-buttons" type="submit">Log In</button>
+          <button className="login-buttons" onClick={loginDemoUser}>Demo User
 
-      </button>
-      </form>
-    </>
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
 

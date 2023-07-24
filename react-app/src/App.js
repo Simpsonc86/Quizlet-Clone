@@ -52,7 +52,7 @@ function App() {
           <Route path="/folders/:folder_id">
             <FolderPage/>
           </Route>
-          <Route path="/folders">
+          <Route path={["/library","/users/:user_id/folders"]}>
             <Library />
           </Route>
           <Route path="/new-folder">

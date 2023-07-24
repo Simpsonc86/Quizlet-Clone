@@ -4,6 +4,7 @@ import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders"
 import { NavLink, useHistory } from "react-router-dom"
 import OpenModalButton from "../OpenModalButton"
 import DeleteFormModal from "../DeleteFormModal"
+import "../Library/Library.css"
 
 export default function RecentFolders() {
     const sessionUser = useSelector((state) => state.session.user)
@@ -23,34 +24,47 @@ export default function RecentFolders() {
     }
     const manageFolder = (folder) => {
         return ((sessionUser?.id === folder.user_id) &&
-            <div>
-                
-                <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+            <div className="folder-card-div">
+
+                <button className="log_out_button nav-link" onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                <button className="log_out_button nav-link" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
                 <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
-                <button onClick={()=>dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
             </div>
         )
     }
 
     const renderMap = () => {
         return (
-            recent.reverse().map((folder, idx) => (
-                <div key={idx} >
-                    <NavLink to={`/folders/${folder.id}`}>
-                        <h2>{folder.title}</h2>
-                        <p>{folder.description}</p>
-                        <p>Number of sets in folder:{folder.sets.length}</p>
-                    </NavLink>
-                    {manageFolder(folder)}
-                </div>
-            )))
+            <div className="folder-user-details-div">
+                {recent.reverse().map((folder, idx) => (
+                    <div className="folder-card-container" key={idx} >
+                        <div className="folder-card-div">
+                            <NavLink className="nav-link" to={`/folders/${folder.id}`}>
+                                <h2>{folder.title}</h2>
+                                <p>{folder.description}</p>
+                                <p>Number of sets in folder:{folder.sets.length}</p>
+                            </NavLink>
+                            <br />
+                            {manageFolder(folder)}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        )
     }
 
     return (
         <>
-            <h1>This is the Most Recent Folders</h1>
-            <h2>Most recent Folders</h2>
-            {renderMap()}
+            <div className="library-container-div">
+                <div className="library-inner-div">
+                    <h1>Most Recent Folders</h1>
+                    <div className="header">
+
+                        {/* <h2>Most recent Folders</h2> */}
+                        {renderMap()}
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
