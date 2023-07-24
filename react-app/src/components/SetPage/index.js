@@ -36,7 +36,7 @@ export default function SetPage() {
             .then(dispatch(getOneFolderThunk(folder_id)))
             .then(dispatch(getOneSetThunk(set_id)))
             .then(dispatch(getAllQuestionsThunk()))
-    }, [dispatch, folder_id, set_id])
+    }, [dispatch, folder_id, set_id, set.questions.length])
 
     if (!Object.values(sets).length || !Object.values(folders).length) {
         return <h1>Set details are loading...</h1>
@@ -60,7 +60,7 @@ export default function SetPage() {
                         </div>}
                     </div>
                     <hr />
-                    {`Total Questions in Set: ${set.questions.length}`}
+                    {set.questions.length && `Total Questions in Set: ${set.questions.length}`}
                     <div className="card-flip-carosel-div">
                         <div className="card-flip-carosel">
                             <div className="card-text">
