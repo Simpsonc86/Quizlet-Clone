@@ -1,0 +1,36 @@
+.validation-errors{
+    color: red;
+}
+
+.create-form-container{
+    display: flex;
+    justify-content: center;
+    /* border: 3px solid red; */
+    border-radius: 20%;
+    padding:1rem;
+}
+.create-form{
+    /* position: absolute; */
+    /* transform: translateX(40vw); */
+    /* margin:2rem 4rem;  */
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:1rem;
+    /* align-items: center; */
+
+}
+
+.form-inputs{
+    display: flex;
+    /* width:100% ; */
+    justify-content: space-between;
+    font-weight: bolder;
+}
+.form-inputs-public{
+    display: flex;
+    /* flex-direction: ; */
+    justify-content: right;
+}

@@ -46,33 +46,43 @@ export default function EditSet({set,folderId}) {
 
     return (
         <>
-            <h1>Edit your Set</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.title&&<p>{errors.title}</p>}
-                    {errors.description&&<p>{errors.description}</p>}
-                </ul>
-                <label>
-                    Title
-                    <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Description
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </label>                
-                <button type="submit" >Submit</button>
+                      <div className="create-form-container">
 
-            </form>
+<form className="create-form" onSubmit={handleSubmit}>
+    <h1>Edit your Set</h1>
+    <ul>
+        {errors.title && <p className="validation-errors">{errors.title}</p>}
+        {errors.description && <p className="validation-errors">{errors.description}</p>}
+    </ul>
+    <div className="form-inputs">
+
+        <label>
+            Title
+        </label>
+        <textarea
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+        />
+    </div>
+    <br />
+    <div className="form-inputs">
+
+        <label>
+            Description
+        </label>
+        <textarea
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+        />
+    </div>
+    <br />
+    <button className="log_out_button nav-link" type="submit">Submit</button>
+</form>
+</div>
         </>
     )
 }

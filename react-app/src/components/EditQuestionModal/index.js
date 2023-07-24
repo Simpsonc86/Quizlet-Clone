@@ -52,37 +52,49 @@ export default function EditQuestionModal({ question,set, folderId }) {
 
     return (
         <div>
-            <h1>Type your question and answer</h1>
-            {/* <p>Are you sure you want to delete this folder?</p> */}
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.description && <p>{errors.description}</p>}
-                    {errors.answer && <p>{errors.answer}</p>}
-                </ul>
-                <label>
-                    Question
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Answer
-                    <input
-                        type="text"
-                        value={answer}
-                        onChange={(e) => setAnswer(e.target.value)}
-                        required
-                    />
-                </label>
-                <div>
-                    <button type="submit">Edit (Modify Question)</button>
-                    <button onClick={closeModal}>Cancel (Back to Set)</button>
+            <div className="create-form-container">
 
-                </div>
-            </form>
+             
+                <form className="create-form" onSubmit={handleSubmit}>
+                    <h1>Type a Question and Answer</h1>
+                    <ul>
+                        {errors.description && <p className="validation-errors">{errors.description}</p>}
+                        {errors.answer && <p className="validation-errors">{errors.answer}</p>}
+                    </ul>
+                    <div className="form-inputs">
+                        <label>
+                            Question
+                        </label>
+
+                        <textarea
+                            type="text"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <br />
+                    <div className="form-inputs">
+
+                        <label>
+                            Answer
+                        </label>
+                        <textarea
+                            type="text"
+                            value={answer}
+                            onChange={(e) => setAnswer(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <br />
+                    <button className="log_out_button nav-link" type="submit">Yes (Create Question)</button>
+                    <br />
+                    <button className="log_out_button nav-link" onClick={closeModal}>No (Back to Set)</button>
+                    <br />
+
+                    {/* </div> */}
+                </form>
+            </div>
         </div>
     )
 }

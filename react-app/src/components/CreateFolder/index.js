@@ -60,7 +60,7 @@ export default function CreateFolder() {
                         <label>
                             Title
                         </label>
-                        <input
+                        <textarea
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
@@ -73,7 +73,7 @@ export default function CreateFolder() {
                         <label>
                             Description
                         </label>
-                        <input
+                        <textarea
                             type="text"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
@@ -100,7 +100,7 @@ export default function CreateFolder() {
                     </div>
                     {/* {console.log("value of isPublic----->",is_public)} */}
                     <br/>
-                    <button className="nav-button"type="submit">Submit</button>
+                    <button className="log_out_button submit nav-link"type="submit">Submit</button>
 
                 </form>
             </div>

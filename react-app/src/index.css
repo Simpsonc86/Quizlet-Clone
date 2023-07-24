@@ -13,7 +13,7 @@ button:hover{
     cursor: pointer;
 }
 
-input{
+input, textarea{
     /* width: 50%; */
     border-radius: .5rem;
     border:none;

@@ -57,7 +57,7 @@ export default function CreateSet() {
                         <label>
                             Title
                         </label>
-                        <input
+                        <textarea
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
@@ -70,7 +70,7 @@ export default function CreateSet() {
                         <label>
                             Description
                         </label>
-                        <input
+                        <textarea
                             type="text"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
@@ -78,7 +78,7 @@ export default function CreateSet() {
                         />
                     </div>
                     <br />
-                    <button className="nav-button" type="submit">Submit</button>
+                    <button className="log_out_button nav-link" type="submit">Submit</button>
                 </form>
             </div>
         </>
