@@ -105,7 +105,8 @@ color:#29BE83;
  }
 .log_in_button{
   border:none;
-  background-color: #29BE83;
+  background-color: transparent;
+  border-radius: .8rem;
 }
 .log_out_button{
   display: flex;
