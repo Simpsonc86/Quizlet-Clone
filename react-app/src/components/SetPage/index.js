@@ -13,6 +13,7 @@ import CreateQuestionModal from "../CreateQuestionModal";
 import EditQuestionModal from "../EditQuestionModal";
 import DeleteQuestionModal from "../DeleteQuestionModal";
 import { getAllQuestionsThunk } from "../../store/questions";
+import "./SetPage.css"
 
 
 export default function SetPage() {
@@ -43,47 +44,62 @@ export default function SetPage() {
 
     return (
         <>
-            <h1>{set.title} Set</h1>
-            {/* {console.log("folder from above",folder)} */}
-            {sessionUser?.id === set?.user_id && <div>
-                <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
-                <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
-                <button onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
-                {/* <button onClick={() => dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
-            </div>}
-            <ul>
-                {questions?.map((question, idx) => {
-                    if (question.set_id === set.id) {
+            <div className="set-page-container-div">
 
-                        return (
+                <div className="set-page-inner-div">
 
-                            <li key={idx}>
-                                <p>
-                                    <span>Question: {question.description} </span>
+                    <div className="set-page-header">
 
-                                    {/* {console.log("question object", question.answer)} */}
-                                    <span>Answer: {question.answer}</span>
-                                    {(sessionUser?.id === set?.user_id) &&
-                                        <>
-                                            <span>
-                                                <OpenModalButton id='edit-question-btn' buttonText='Edit Question' modalComponent={<EditQuestionModal question={question} folderId={folder.id} set={set} />} />
-                                            </span>
-                                            <span>
-                                                <OpenModalButton id='delete-question-btn' buttonText='Delete Question' modalComponent={<DeleteQuestionModal question={question} folderId={folder.id} set={set} />} />
-                                            </span>
-                                        </>
-                                    }
-                                </p>
-                            </li>
-                        )
-                    } else return null
-                })}
-            </ul>
-            {sessionUser?.id === set?.user_id &&
-                <div>
-                    <OpenModalButton id='add-question-btn' buttonText='Add a Question' modalComponent={<CreateQuestionModal folderId={folder.id} setId={set.id} />} />
-                </div>}
+                    <h1>{set.title} Set</h1>
+                    {/* {console.log("folder from above",folder)} */}
+                    {sessionUser?.id === set?.user_id && <div className="set-btns-div">
+                        <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
+                        <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
+                        <button onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
+                        {/* <button onClick={() => dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
+                    </div>}
+                    </div>
+                    <hr/>
+                    <ol className="questions-inner-div">
+                        {questions?.map((question, idx) => {
+                            if (question.set_id === set.id) {
 
+                                return (
+
+                                    <li key={idx}>
+                                        <p className="question-card-div">
+                                            <div className="question-text-div">
+                                            <span className="question-text">Question: {question.description} </span>
+
+                                            {/* {console.log("question object", question.answer)} */}
+                                            <br/>
+                                            <span className="answer-text">Answer: {question.answer} </span>
+                                            </div>
+                                            {(sessionUser?.id === set?.user_id) &&
+                                            <div className="question-btns">
+                                                    <span>
+                                                        <OpenModalButton id='edit-question-btn' buttonText='Edit Question' modalComponent={<EditQuestionModal question={question} folderId={folder.id} set={set} />} />
+                                                    </span>
+                                                    <span>
+                                                        <OpenModalButton id='delete-question-btn' buttonText='Delete Question' modalComponent={<DeleteQuestionModal question={question} folderId={folder.id} set={set} />} />
+                                                    </span>
+                                            </div>
+                                                }
+                                                {/* </div> */}
+                                                {/* <hr/> */}
+                                        </p>
+                                    </li>
+                                )
+                            } else return null
+                        })}
+                    </ol>
+                    {sessionUser?.id === set?.user_id &&
+                        <div className="add-question-btn">
+                            <OpenModalButton id='add-question-btn' buttonText='Add a Question' modalComponent={<CreateQuestionModal folderId={folder.id} setId={set.id} />} />
+                        </div>}
+
+                </div>
+            </div>
         </>
     )
 }

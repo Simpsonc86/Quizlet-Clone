@@ -5,14 +5,16 @@ import { NavLink, useHistory } from "react-router-dom"
 import OpenModalButton from "../OpenModalButton"
 import DeleteFormModal from "../DeleteFormModal"
 import { getAllSetsThunk } from "../../store/sets"
+import "../Library/Library.css"
+import DeleteSetModal from "../DeleteSetModal"
 
-export default function RecentSets(){
+export default function RecentSets() {
     const sessionUser = useSelector((state) => state.session.user)
     const allSets = useSelector((state) => Object.values(state.sets.allSets))
     const dispatch = useDispatch()
     const history = useHistory()
 
-    
+
     const recent = allSets.slice(-6)
 
     useEffect(() => {
@@ -24,10 +26,10 @@ export default function RecentSets(){
     }
     const manageSet = (set) => {
         return ((sessionUser?.id === set.user_id) &&
-            <div>
-                
-                <button onClick={() => history.push(`/edit-set/${set.id}`)}>Edit set</button>
-                <OpenModalButton id='delete-btn' buttonText='Delete set' modalComponent={<DeleteFormModal setId={set.id} />} />
+            <div className="folder-card-div">
+
+                <button className="log_out_button nav-link" onClick={() => history.push(`/edit-set/${set.id}`)}>Edit set</button>
+                <OpenModalButton className="log_out_button nav-link" id='delete-btn' buttonText='Delete set' modalComponent={<DeleteSetModal setId={set.id} />} />
                 {/* <button onClick={()=>dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
             </div>
         )
@@ -35,22 +37,33 @@ export default function RecentSets(){
 
     const renderMap = () => {
         return (
-            recent.reverse().map((set, idx) => (
-                <div key={idx} >
-                    <NavLink to={`/folders/${set.folder_id}/sets/${set.id}`}>
-                        <h2>{set.title}</h2>
-                        <p>{set.description}</p>
-                        <p>Number of questions in set:{set.questions.length}</p>
-                    </NavLink>
-                    {manageSet(set)}
-                </div>
-            )))
+            <div className="folder-user-details-div">
+                {recent.reverse().map((set, idx) => (
+                    <div className="folder-card-container" key={idx} >
+                        <div className="folder-card-div">
+                           <NavLink className="nav-link" to={`/folders/${set.folder_id}/sets/${set.id}`}>
+                                <h2>{set.title}</h2>
+                                <p>{set.description}</p>
+                                <p>Number of questions in set:{set.questions.length}</p>
+                            </NavLink>
+                            {manageSet(set)}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        )
     }
 
     return (
         <>
-            <h1>Most Recent Sets</h1>
-            {renderMap()}
+            <div className="library-container-div">
+                <div className="library-inner-div">
+                    <h1>Most Recent Sets</h1>
+                    <div className="header">
+                        {renderMap()}
+                    </div>
+                </div>
+            </div>
         </>
     )
 

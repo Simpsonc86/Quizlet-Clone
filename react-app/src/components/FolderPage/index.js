@@ -9,6 +9,7 @@ import DeleteFormModal from "../DeleteFormModal"
 import EditSet from "../EditSet"
 import { getAllSetsThunk } from "../../store/sets"
 import DeleteSetModal from "../DeleteSetModal"
+import "./FolderPage.css"
 
 
 export default function FolderPage() {
@@ -38,33 +39,50 @@ export default function FolderPage() {
 
     return (
         <>
-            <h1>{folder.title} Sets</h1>
-            {/* {console.log("folder from above",folder)} */}
-            {sessionUser?.id === folder?.user_id && <div>
-                {/* <NavLink to="/new-set">Create a Set</NavLink> */}
-                <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
-                <button onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
-                <button onClick={() => history.push(`/library`)}>Return to library</button>
-                
-            </div>}
-            <ul>
-                {filteredSets.map((set, idx) => (
-                    <li key={idx}>
-                        <p>
-                            <Link exact to={`/folders/${folder_id}/sets/${set.id}`}>
-                                {set.title}
-                            </Link>
-                            {/* Created by {folder.user.username} */}
-                            {sessionUser?.id === folder?.user_id &&
-                                <>
-                                    <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
-                                    <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
-                                </>}
-                        </p>
-                    </li>
-                ))}
-            </ul>
+            <div className="folder-page-container-div">
+                <div className="folder-page-inner-div">
+                    <div className="folder-page-header">
+
+                        <h1>{folder.title} Sets</h1>
+                        <h2>Folder Description: {folder.description}</h2>
+                        {/* {console.log("folder from above",folder)} */}
+                        {sessionUser?.id === folder?.user_id && <div className="folder-btns-div">
+                            {/* <NavLink to="/new-set">Create a Set</NavLink> */}
+                            <button onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                            <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
+                            <button onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                            <button onClick={() => history.push(`/library`)}>Return to library</button>
+
+                        </div>}
+                        <hr />
+                    </div>
+                </div>
+                <div className="set-cards-container-div">
+                    {`Total sets in folder: ${folder.sets.length}`}
+                    <div className="set-cards-inner-div">
+                        {filteredSets.map((set, idx) => (
+                            <div className="set-card-container"key={idx}>
+                                <div className="set-card-div">
+                                    <Link className="nav-link-green bigger"exact to={`/folders/${folder_id}/sets/${set.id}`}>
+                                        {set.title}
+                                    </Link>
+                                    {/* Created by {folder.user.username} */}
+                                    {sessionUser?.id === folder?.user_id &&
+                                        <>
+                                            {/* <br /> */}
+                                            <br />
+                                            <div className="set-btns">
+                                                <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
+                                                <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
+                                            </div>
+                                        </>
+                                    }
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
