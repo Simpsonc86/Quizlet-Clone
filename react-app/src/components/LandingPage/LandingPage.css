@@ -59,7 +59,7 @@
     background-color: #29BE83;
     padding:.5rem;
     border-radius: .5rem;
-    opacity: 100%;
-    z-index: 4;
+    /* opacity: 100%; */
+    z-index: 6;
 
 }
