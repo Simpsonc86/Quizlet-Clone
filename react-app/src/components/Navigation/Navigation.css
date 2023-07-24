@@ -56,7 +56,7 @@ color:#29BE83;
   margin:0;
   max-height: 80px;
 
-  background-color: #29BE83;
+  background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
   /* color:#ffffff; */
   font-size: 1.5rem;
 }
@@ -79,6 +79,7 @@ color:#29BE83;
   font-weight: bolder;
   word-wrap: normal;
   z-index: 6;
+  font-size: 125%;
 }
 .nav-link:hover{
   color:#101010;
@@ -86,7 +87,7 @@ color:#29BE83;
 }
 
 .nav-button{
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-decoration: none;
   padding:1.5rem;
   cursor: pointer;
@@ -110,13 +111,13 @@ color:#29BE83;
   display: flex;
   justify-content: center;
   border:none;
-  background-color: #29BE83;
+  /* background-color: #29BE83; */
   border-radius: .5rem;
   padding:.5rem 1rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .log_out_button:hover{
-  /* color: #ffffff; */
+  color: #ffffff;
 }
 .sign_in_button{
   border:none;
@@ -160,4 +161,18 @@ color:#29BE83;
 .new-assets{
   transform:translateX(-1rem) ;
 }
+.modal-button{
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  color:#118c5b
+}
 
+.modal-button:hover{
+  /* color:#ffffff */
+  color:#101010;
+}
+
+#modal{
+  
+}

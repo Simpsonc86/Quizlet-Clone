@@ -75,7 +75,7 @@ export default function FolderPage() {
                                             <br />
                                             <div className="set-btns">
                                                 <button className="log_out_button nav-button" ><OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} /></button>
-                                                <br/>
+                                                &nbsp;
                                                 <button className="log_out_button nav-button" ><OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} /></button>
                                             </div>
                                         </>

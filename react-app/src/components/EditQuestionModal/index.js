@@ -86,10 +86,12 @@ export default function EditQuestionModal({ question,set, folderId }) {
                             required
                         />
                     </div>
+                    &nbsp;
+                    <button className="log_out_button nav-button" type="submit">Yes (Create Question)</button>
+                    &nbsp;
                     <br />
-                    <button className="log_out_button nav-link" type="submit">Yes (Create Question)</button>
-                    <br />
-                    <button className="log_out_button nav-link" onClick={closeModal}>No (Back to Set)</button>
+                    <button className="log_out_button nav-button" onClick={closeModal}>No (Back to Set)</button>
+                    &nbsp;
                     <br />
 
                     {/* </div> */}

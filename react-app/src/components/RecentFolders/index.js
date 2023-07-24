@@ -27,8 +27,9 @@ export default function RecentFolders() {
             <div className="folder-card-div">
 
                 <button className="log_out_button nav-button" onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                <br/>
+                &nbsp;
                 <button className="log_out_button nav-button" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                &nbsp;
                 <br/>
                 <button className="log_out_button nav-button"><OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} /></button>
             </div>

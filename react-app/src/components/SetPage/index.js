@@ -94,10 +94,10 @@ export default function SetPage() {
                                             {(sessionUser?.id === set?.user_id) &&
                                                 <div className="question-btns">
                                                     <span>
-                                                        <OpenModalButton id='edit-question-btn' buttonText='Edit Question' modalComponent={<EditQuestionModal question={question} folderId={folder.id} set={set} />} />
+                                                        <OpenModalButton id='edit-question-btn' buttonText='Edit' modalComponent={<EditQuestionModal question={question} folderId={folder.id} set={set} />} />
                                                     </span>
                                                     <span>
-                                                        <OpenModalButton id='delete-question-btn' buttonText='Delete Question' modalComponent={<DeleteQuestionModal question={question} folderId={folder.id} set={set} />} />
+                                                        <OpenModalButton id='delete-question-btn' buttonText='Delete' modalComponent={<DeleteQuestionModal question={question} folderId={folder.id} set={set} />} />
                                                     </span>
                                                 </div>
                                             }
