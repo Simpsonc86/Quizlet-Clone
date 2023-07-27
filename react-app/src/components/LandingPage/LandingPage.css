@@ -24,26 +24,30 @@
 
     position: absolute;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
-    /* max-width: 1024px; */
+    max-width: 240px;
     /* height: 80%; */
-    width: 25%;
+    width: 100%;
     /* transform: translateX(100%); */
     /* transform: translate(50%, 50%); */
     font-size: 1rem;
     z-index: 3;
-    background-color: #118c5b;
+    background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
     color:#ffffff;
     /* border: 3px dotted blue;  */
     padding: 2%;
-    margin-left: 10%;
-    margin-top: 10%;
+    margin:10% 2%;
+    /* margin-left: 10%; */
+    /* margin-top: 10%; */
     /* padding: 15%; */
     /* opacity: 95%; */
     border-radius: 1rem;
     box-shadow: 0 0 3px 0px #101010;
+    
+   
 
 }
 

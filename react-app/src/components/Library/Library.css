@@ -6,7 +6,7 @@
     max-width: 100%;
     width:100%;
     background-color: #e6e6e6;
-    height: 100%;
+    /* height: 100%; */
     padding-bottom:10rem ;
     /* border: 3px solid red; */
 }
@@ -37,27 +37,29 @@
     display: flex;
     justify-content: center;
     max-width: fit-content;
-    max-height: fit-content;
+    height: fit-content;
     box-shadow: 0 0 3px ;
     border-radius: 1rem;
     background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
     gap:1rem;
     text-overflow: clip;
+    transition-duration: .5;
   }
   
   .folder-card-container:hover{
-    transition: ease 1s;
   background-image: linear-gradient(0deg, #118c5b 0%, #49e9aa 100%);
 
 }
 .folder-card-div{
-    word-wrap: normal;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
+  word-wrap: normal;
+  display: flex;
+  flex-shrink: 5;
+  width: 100%;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding-bottom:1rem;
+  height: fit-content;
 
 }
 .library-header{
@@ -75,6 +77,10 @@
     font-weight: bolder;
     word-wrap: normal;
     z-index: 0;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .nav-link:hover{
     color:#101010;
@@ -90,6 +96,7 @@
     padding:.5rem 1rem;
     font-size: 1.5rem;
     color:#118c5b;
+    word-wrap: normal;
   }
   .log_out_button:hover{
     /* color: #ffffff; */

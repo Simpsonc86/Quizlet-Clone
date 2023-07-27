@@ -1,9 +1,9 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 // import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders"
-import { NavLink, useHistory } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import OpenModalButton from "../OpenModalButton"
-import DeleteFormModal from "../DeleteFormModal"
+// import DeleteFormModal from "../DeleteFormModal"
 import { getAllSetsThunk } from "../../store/sets"
 import "../Library/Library.css"
 import DeleteSetModal from "../DeleteSetModal"
@@ -13,7 +13,7 @@ export default function RecentSets() {
     const sessionUser = useSelector((state) => state.session.user)
     const allSets = useSelector((state) => Object.values(state.sets.allSets))
     const dispatch = useDispatch()
-    const history = useHistory()
+    // const history = useHistory()
 
 
     const recent = allSets.slice(-6)

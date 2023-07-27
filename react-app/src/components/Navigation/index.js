@@ -10,31 +10,38 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<div className='nav-div-container'>
-			<div className='left-nav-div'>
-				<div className='home-link'>
-					<NavLink className="nav-link" exact to="/">
-						<h2 className="home-logo" src="/Homelogo.png">Wizlet</h2>
-					</NavLink>
+			<div className='nav-div-inner'>
+				<div className='left-nav-div'>
+
+					<div className='home-link'>
+						<NavLink className="nav-link" exact to="/">
+							<h2 className="home-logo" src="/Homelogo.png">Wizlet</h2>
+						</NavLink>
+					</div>
+					{sessionUser &&
+						<div className='library'>
+							<NavLink className="nav-link" exact to="/library">Library</NavLink>
+						</div>}
+					<div className='recent-folders'>
+						<NavLink className="nav-link" to="/folders/recent">Recent Folders</NavLink>
+					</div>
+					<div className='recent-sets'>
+						<NavLink className="nav-link" to="/sets/recent">Recent Sets</NavLink>
+					</div>
 				</div>
-				{sessionUser && <div className='library'>
-					<NavLink className="nav-link" exact to="/library">Library</NavLink>
-				</div>}
-				<div className='recent-folders'>
-					<NavLink className="nav-link" to="/folders/recent">Recent Folders</NavLink>
-				</div>
-				<div className='recent-sets'>
-					<NavLink className="nav-link" to="/sets/recent">Recent Sets</NavLink>
+				<div className='right-nav-div'>
+
+					{isLoaded && (
+						<>
+
+							<div className='user-links'>
+
+								<ProfileButton user={sessionUser} />
+							</div>
+						</>
+					)}
 				</div>
 			</div>
-			{isLoaded && (
-				<>
-					
-					<div className='user-links'>
-						
-						<ProfileButton user={sessionUser} />
-					</div>
-				</>
-			)}
 		</div>
 	);
 }
