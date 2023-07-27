@@ -96,8 +96,8 @@ export default function SetPage() {
                                                 &nbsp;
                                                 <div>
 
-                                                <span>Answer: {"Hover to reveal--->"}</span>
-                                                <span className="answer-text">{"     "}{"   "+question.answer+"   "} </span>
+                                                <span >{"Hover to Reveal Answer --->"}</span>
+                                                <span className="answer-text" >{"     "}{"   "+question.answer+"   "} </span>
                                                 <span>{"<---"}</span>
                                                 </div>
                                             </div>
