@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders"
 import { useEffect } from "react"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -42,16 +42,17 @@ export default function FolderPage() {
             <div className="folder-page-container-div">
                 <div className="folder-page-inner-div">
                     <div className="folder-page-header">
-
-                        <h1>{folder.title} Sets</h1>
-                        <h2>Folder Description: {folder.description}</h2>
+                            <h1>{folder.title} Sets</h1>
+                            <h2>Folder Description: {folder.description}</h2>
                         {/* {console.log("folder from above",folder)} */}
                         {sessionUser?.id === folder?.user_id && <div className="folder-btns-div">
+                        <div className="folder-page-header-info">
                             {/* <NavLink to="/new-set">Create a Set</NavLink> */}
                             <button className="log_out_button nav-button" onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
                             <button className="log_out_button nav-button"><OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} /></button>
                             <button className="log_out_button nav-button" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
                             <button className="log_out_button nav-button" onClick={() => history.push(`/library`)}>Return to library</button>
+                        </div>
 
                         </div>}
                         <hr />

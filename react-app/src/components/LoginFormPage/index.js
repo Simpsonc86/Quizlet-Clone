@@ -39,7 +39,7 @@ function LoginFormPage() {
   }
   return (
     <div className="login-page-container">
-      <img className="login-img" src="concept-student.jpg"></img>
+      <img className="login-img" src="concept-student.jpg" alt=""></img>
       <div className="login-form-div">
 
         <h1>Log In</h1>

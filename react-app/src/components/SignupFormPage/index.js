@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
 import validator from 'validator'
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function SignupFormPage() {
   const sessionUser = useSelector((state) => state.session.user);
 
 
-  const history = useHistory()
+  // const history = useHistory()
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
@@ -77,10 +77,10 @@ function SignupFormPage() {
   return (
     <>
       <div className="signup-page-container">
-        <img className="signup-img" src="concept-student.jpg"></img>
+        <img className="signup-img" src="concept-student.jpg" alt=""></img>
         <div className="signup-form-div">
 
-          <h1>Sign Up</h1>
+          <h1 className="signup-title">Sign Up</h1>
           <form className="signup-form" onSubmit={handleSubmit}>
             <ul>
               {errors?.map((error, idx) => <li className="validation-error" key={idx}>{error}</li>)}

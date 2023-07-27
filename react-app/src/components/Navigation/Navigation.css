@@ -45,27 +45,38 @@ color:#29BE83;
 .hidden {
   display: none;
 }
+.nav-div-inner{
+  display: flex;
+  padding: 0 2rem;
+  justify-content: space-between;
+  max-width: 100%;
+  width:100%;
+  flex-wrap:wrap;
+  align-items: center;
+}
 
 .nav-div-container{
   display: flex;
   max-width: 100%;
-  width:auto;
-  justify-content: space-between;
+  width:100%;
   align-items: center;
-  padding: 1rem 2rem;
+  margin:0 2rem;
   margin:0;
-  max-height: 80px;
+  /* max-height: 80px; */
+  flex-wrap:wrap;
 
   background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
   /* color:#ffffff; */
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
 }
 .left-nav-div{
   display: flex;
-  gap:0 2rem;
+  justify-content: center;
   align-items: center;
+  gap:0 2rem;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap;
 }
 
 .nav-link,#delete-btn{
@@ -80,6 +91,8 @@ color:#29BE83;
   word-wrap: normal;
   z-index: 6;
   font-size: 125%;
+  transition: color .5s;
+
 }
 .nav-link:hover{
   color:#101010;
@@ -100,8 +113,9 @@ color:#29BE83;
   margin:0;
   border-radius: 50%;
   /* text-size-adjust: 300%; */
-  font-size: 300%;
+  font-size: 245%;
   line-height: 0%;
+  display: flex;
  }
 .log_in_button{
   border:none;
@@ -116,6 +130,8 @@ color:#29BE83;
   border-radius: .5rem;
   padding:.5rem 1rem;
   font-size: 1.5rem;
+  transition: color .5s;
+
 }
 .log_out_button:hover{
   color: #ffffff;
@@ -125,6 +141,7 @@ color:#29BE83;
   background-color: #f9cc05;
   color:#101010;
   border-radius: .8rem;
+  margin: 1rem;
 }
 .right-nav-buttons{
   display: flex;
@@ -133,14 +150,18 @@ color:#29BE83;
   padding:0;
   margin: 0;
   gap: 0 1rem;
+  flex-wrap: wrap;
 }
 .home-logo{
   font-size: 4rem;
+  padding: 0;
+  margin:0;
 }
 
 .user-logo{
   font-size: 2rem;
   color: #29BE83;
+  /* margin: 1rem 0; */
 }
 #user-btn{
   font-size: 2rem;
@@ -148,6 +169,7 @@ color:#29BE83;
   border-radius: 50%;
   padding:15px 20px;
   box-shadow: 0 0 3px 0px #101010;
+  margin:1rem 0;
 }
 #user-btn,.log_out_button:hover{
   cursor: pointer;
@@ -166,7 +188,9 @@ color:#29BE83;
   border: none;
   background-color: transparent;
   font-size: 1.5rem;
-  color:#118c5b
+  color:#118c5b;
+  transition: color .5s;
+
 }
 
 .modal-button:hover{
@@ -174,6 +198,11 @@ color:#29BE83;
   color:#101010;
 }
 
-#modal{
-  
+.home-link{
+  padding: 0;
+  margin: 0;
+}
+
+.user-links{
+  display: flex;
 }
