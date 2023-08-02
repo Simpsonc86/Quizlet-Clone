@@ -28,6 +28,8 @@ export default function SetPage() {
     console.log(sets);
     const set = sets[Number(set_id)]
     const questions = useSelector((state) => Object.values(state.questions.allQuestions))
+    console.log('questions array', questions[0], ":    set id from params", set_id);
+    const setQuestions = questions.filter((question)=>question.set_id === Number(set_id))
     // console.log("Set from the store",set);
     const history = useHistory();
     const [questionArrayIndex, setQuestionArrayIndex] = useState(0);
@@ -67,16 +69,22 @@ export default function SetPage() {
                     <div className="card-flip-carosel-div">
                         <div className="card-flip-carosel">
                             <div className="card-text question">
-                                Question: {questions[questionArrayIndex].description}
+                                Question: {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].description}
                             </div>
                             <div className="card-text answer">
-                                Answer: {questions[questionArrayIndex].answer}
+                                Answer: {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].answer}
                             </div>
                         </div>
                         <span>
 
-                            <button onClick={() => questionArrayIndex<=0?setQuestionArrayIndex(0):setQuestionArrayIndex(questionArrayIndex-1)}>{"<"}</button>
-                            <button onClick={() => questionArrayIndex>=questions.length-1?setQuestionArrayIndex(questions.length-1):setQuestionArrayIndex(questionArrayIndex-1)}>{">"}</button>
+                            <button onClick={() => {
+                                console.log("value of questionArrayIndex:", questionArrayIndex);
+                                questionArrayIndex <= 0 ? setQuestionArrayIndex(0) : setQuestionArrayIndex(questionArrayIndex - 1)
+                            }}>{"<"}</button>
+                            <button onClick={() => {
+                                console.log("value of questionArrayIndex:", questionArrayIndex);
+                                questionArrayIndex >= setQuestions.length - 1 ? setQuestionArrayIndex(setQuestions.length - 1) : setQuestionArrayIndex(questionArrayIndex + 1)
+                            }}>{">"}</button>
                         </span>
                     </div>
                     <hr />
