@@ -14,6 +14,7 @@ import EditQuestionModal from "../EditQuestionModal";
 import DeleteQuestionModal from "../DeleteQuestionModal";
 import { getAllQuestionsThunk } from "../../store/questions";
 import "./SetPage.css"
+import { useState } from "react";
 
 
 export default function SetPage() {
@@ -29,6 +30,7 @@ export default function SetPage() {
     const questions = useSelector((state) => Object.values(state.questions.allQuestions))
     // console.log("Set from the store",set);
     const history = useHistory();
+    const [questionArrayIndex, setQuestionArrayIndex] = useState(0);
 
     useEffect(() => {
         console.log("Hitting useEffect here");
@@ -56,7 +58,7 @@ export default function SetPage() {
                         {sessionUser?.id === set?.user_id && <div className="set-btns-div">
                             <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
                             <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
-                            <button className="log_out_button nav-button"  onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
+                            <button className="log_out_button nav-button" onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
                             {/* <button onClick={() => dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
                         </div>}
                     </div>
@@ -64,16 +66,17 @@ export default function SetPage() {
                     {set.questions.length && `Total Questions in Set: ${set.questions.length}`}
                     <div className="card-flip-carosel-div">
                         <div className="card-flip-carosel">
-                            <div className="card-text">
-                                Feature Comming Soon!
-                                <br/>
-                                Question/Answer Card Carosel
+                            <div className="card-text question">
+                                Question: {questions[questionArrayIndex].description}
+                            </div>
+                            <div className="card-text answer">
+                                Answer: {questions[questionArrayIndex].answer}
                             </div>
                         </div>
                         <span>
 
-                            <button onClick={()=>alert("Feature Comming Soon")}>{"<"}</button>
-                            <button onClick={()=>alert("Feature Comming Soon")}>{">"}</button>
+                            <button onClick={() => questionArrayIndex<=0?setQuestionArrayIndex(0):setQuestionArrayIndex(questionArrayIndex-1)}>{"<"}</button>
+                            <button onClick={() => questionArrayIndex>=questions.length-1?setQuestionArrayIndex(questions.length-1):setQuestionArrayIndex(questionArrayIndex-1)}>{">"}</button>
                         </span>
                     </div>
                     <hr />
@@ -86,34 +89,34 @@ export default function SetPage() {
                                     <li key={idx}>
                                         <p className="question-card-div">
                                             <div className="question-text-div">
-                                            <div className="question-info-div">
+                                                <div className="question-info-div">
 
-                                            
-                                                <span className="question-text">Question: {question.description} </span>
 
-                                                {/* {console.log("question object", question.answer)} */}
-                                                {/* <br /> */}
-                                                &nbsp;
-                                                <div>
+                                                    <span className="question-text">Question: {question.description} </span>
 
-                                                <span >{"Hover to Reveal Answer --->"}</span>
-                                                <span className="answer-text" >{"     "}{"   "+question.answer+"   "} </span>
-                                                <span>{"<---"}</span>
+                                                    {/* {console.log("question object", question.answer)} */}
+                                                    {/* <br /> */}
+                                                    &nbsp;
+                                                    <div>
+
+                                                        <span >{"Hover to Reveal Answer --->"}</span>
+                                                        <span className="answer-text" >{"     "}{"   " + question.answer + "   "} </span>
+                                                        <span>{"<---"}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            
-                                            <div className="question-btns">
-                                            {(sessionUser?.id === set?.user_id) &&
-                                            <>
-                                                    <span>
-                                                        <OpenModalButton id='edit-question-btn' buttonText='Edit' modalComponent={<EditQuestionModal question={question} folderId={folder.id} set={set} />} />
-                                                    </span>
-                                                    <span>
-                                                        <OpenModalButton id='delete-question-btn' buttonText='Delete' modalComponent={<DeleteQuestionModal question={question} folderId={folder.id} set={set} />} />
-                                                    </span>
-                                            </>
-                                            }
-                                            </div>
+
+                                                <div className="question-btns">
+                                                    {(sessionUser?.id === set?.user_id) &&
+                                                        <>
+                                                            <span>
+                                                                <OpenModalButton id='edit-question-btn' buttonText='Edit' modalComponent={<EditQuestionModal question={question} folderId={folder.id} set={set} />} />
+                                                            </span>
+                                                            <span>
+                                                                <OpenModalButton id='delete-question-btn' buttonText='Delete' modalComponent={<DeleteQuestionModal question={question} folderId={folder.id} set={set} />} />
+                                                            </span>
+                                                        </>
+                                                    }
+                                                </div>
                                             </div>
 
                                         </p>

@@ -84,6 +84,9 @@
   }
  .question-btns{
     width:10%;
+    display: flex;
+    flex-wrap: wrap;
+
   }
   .question-text-div{
     width:90%;
@@ -97,6 +100,9 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 91%;
+    /* width:; */
   }
   .answer-text{
     /* display: flex; */
