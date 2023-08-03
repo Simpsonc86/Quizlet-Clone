@@ -48,7 +48,7 @@ color:#29BE83;
 }
 .nav-div-inner{
   display: flex;
-  padding: 0 2rem;
+  /* padding: 0 2rem; */
   justify-content: space-between;
   max-width: 100%;
   width:100%;
@@ -61,7 +61,7 @@ color:#29BE83;
   max-width: 100%;
   width:100%;
   align-items: center;
-  margin:0 2rem;
+  /* margin:0 2rem; */
   margin:0;
   /* max-height: 80px; */
   flex-wrap:wrap;
@@ -91,7 +91,7 @@ color:#29BE83;
   font-weight: bolder;
   word-wrap: normal;
   z-index: 6;
-  font-size: 125%;
+  font-size: 5vh;
   transition: color .5s;
 
 }
@@ -127,7 +127,7 @@ color:#29BE83;
   background-color: transparent;
   border-radius: .8rem;
   font-size: 6vh;
-  transition: .5s;
+  transition: color .5s;
 }
 .log_out_button{
   display: flex;
@@ -150,7 +150,7 @@ color:#29BE83;
   border-radius: 2vh;
   margin: 1rem;
   font-size: 6vh;
-  transition: .5s;
+  transition: color .5s;
 }
 
 .log_in_button:hover, .sign_in_button:hover{
