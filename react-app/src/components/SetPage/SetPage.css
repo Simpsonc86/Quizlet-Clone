@@ -156,7 +156,7 @@
     transform-style: preserve-3d;
     box-shadow: 0 0 3px 0;
     margin:1rem 0;
-    perspective:1000px;
+    /* perspective:1000px; */
   }
   .card-flip-carosel-div{
     flex-direction: column;
@@ -168,7 +168,7 @@
     /* padding:2rem 0; */
     align-items: center;
     justify-content: center;
-    perspective:1000px;
+    perspective:2000px;
 
   
     /* box-shadow: 0 0 3px 1px; */
@@ -258,11 +258,11 @@
   }
 
   .shuffle{
-    transform: rotateX(-360deg);
-    transition: transform .15s;
+    transform: rotateY(-360deg);
+    transition: transform ease-in .8s;
   }
   .no{
-    transform: rotateZ(0deg);
-    transition: transform .15s;
+    transform: rotateY(0deg);
+    transition: transform ease-in .8s;
     
   }

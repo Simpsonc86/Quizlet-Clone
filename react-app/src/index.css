@@ -17,9 +17,9 @@ input, textarea{
     /* width: 50%; */
     border-radius: .5rem;
     border:none;
-    background-color: #e6e6e6;
+    /* background-color:grey; */
     border-bottom: 2px solid #101010;
-    font-size: 200%;
+    font-size: 4vh;
 
 }
 body{
