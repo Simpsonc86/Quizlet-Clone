@@ -1,7 +1,7 @@
 .profile-dropdown {
   position: absolute;
-  transform:translate(-1rem, 14rem) ;
-  /* transform:translateY(12rem); */
+  /* transform:translate(-1rem, 14rem) ; */
+  transform:translateY(35vh);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,16 +10,17 @@
   color: #ffffff;
   border-radius: 1rem;
   padding: 1rem;
-  line-height: 1.5rem;
+  line-height: 3vh;
   /* opacity: 95%; */
   font-weight: bolder;
   z-index: 10;
   box-shadow: 0 0 3px 0px #101010;
+  transition: 1s;
 
 }
 .create-assets-profile-dropdown {
-  position: absolute;
-  transform:translate(-13rem, -7rem) ;
+  position: relative;
+  /* transform:translate(-30vh) ; */
   /* transform:translateY(12rem); */
   display: flex;
   flex-direction: column;

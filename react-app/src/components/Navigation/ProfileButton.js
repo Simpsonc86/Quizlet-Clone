@@ -56,11 +56,11 @@ function ProfileButton({ user }) {
           </button>
           <div className={ulClassName} ref={ulRef}>
             <div className="create-assets-profile-dropdown">
-              <NavLink className="nav-link" id="ca" to="/new-folder">Create a folder</NavLink>
+              <NavLink className="nav-link set-text-small" id="ca" to="/new-folder">Create a folder</NavLink>
               {/* <NavLink className="nav-link" id="ca"to="/new-set">Create a Set</NavLink> */}
             </div>
-            <p>Username : {user.username}</p>
-            <p>Email : {user.email}</p>
+            <p className="set-text-small">Username : {user.username}</p>
+            <p className="set-text-small">Email : {user.email}</p>
             <p>
               <button className="nav-button log_out_button" onClick={handleLogout}>Log Out</button>
             </p>
