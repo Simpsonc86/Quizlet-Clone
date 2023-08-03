@@ -121,6 +121,8 @@ color:#29BE83;
   border:none;
   background-color: transparent;
   border-radius: .8rem;
+  font-size: 10vh;
+  transition: .5s;
 }
 .log_out_button{
   display: flex;
@@ -142,6 +144,12 @@ color:#29BE83;
   color:#101010;
   border-radius: .8rem;
   margin: 1rem;
+  font-size: 10vh;
+  transition: .5s;
+}
+
+.log_in_button:hover, .sign_in_button:hover{
+  color:white
 }
 .right-nav-buttons{
   display: flex;
