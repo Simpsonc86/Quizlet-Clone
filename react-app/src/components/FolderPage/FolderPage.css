@@ -82,6 +82,7 @@
     /* padding: 1rem; */
     font-weight: bolder;
     transition: color .5s;
+    font-size: 10vh;
   }
   .nav-link-green:hover{
     color:#101010;

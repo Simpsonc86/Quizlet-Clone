@@ -59,7 +59,10 @@ export default function FolderPage() {
                     </div>
                 </div>
                 <div className="set-cards-container-div">
-                    {folder?.sets.length && `Total sets in folder: ${folder.sets.length}`}
+                    <p className="set-text-small">
+                        {folder?.sets.length && `Total sets in folder: ${folder.sets.length}`}
+                        
+                        </p>
                     <div className="set-cards-inner-div">
                         {filteredSets.map((set, idx) => (
                             <div className="set-card-container" key={idx}>
@@ -67,8 +70,8 @@ export default function FolderPage() {
                                     <Link className="nav-link-green bigger" exact to={`/folders/${folder_id}/sets/${set.id}`}>
                                         {set.title}
                                     </Link>
-                                    <p>{set.description}</p>
-                                    <p>Total Questions: {set.questions.length}</p>
+                                    <p className="set-text-small">{set.description}</p>
+                                    <p className="set-text-small">Total Questions: {set.questions.length}</p>
                                     {/* Created by {folder.user.username} */}
                                     {sessionUser?.id === folder?.user_id &&
                                         <>

@@ -28,7 +28,7 @@
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
-    max-width: 240px;
+    max-width: 20vw;
     /* height: 80%; */
     width: 100%;
     /* transform: translateX(100%); */
@@ -44,7 +44,7 @@
     /* margin-top: 10%; */
     /* padding: 15%; */
     /* opacity: 95%; */
-    border-radius: 1rem;
+    border-radius: 4vh;
     box-shadow: 0 0 3px 0px #101010;
     
    

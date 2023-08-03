@@ -70,7 +70,7 @@
     margin: 0;
     padding: 0;
     font-weight: bolder;
-    font-size: 3rem;
+    font-size: 4vh;
     letter-spacing: 0;
     word-wrap: break-word;
   }
@@ -104,9 +104,19 @@
     max-width: 91%;
     /* width:; */
   }
+  .question-text,.answer-text{
+    font-size: 3vh;
+  }
+  .set-text{
+    font-size: 5vh;
+  }
+  .set-text-small{
+    font-size: 3vh;
+  }
   .answer-text{
     /* display: flex; */
     /* opacity: 0%; */
+    font-size: 3vh;
     color:transparent;
     transition: color .5s;
     /* flex-direction: column; */
@@ -140,12 +150,13 @@
     justify-content: center;
     box-shadow: 0 0 3px 1px;
     padding:1rem 3rem;
-    border-radius: 2rem;
+    border-radius: 10vh;
     position: relative;
-    transition: transform .5s;
+    transition: transform .2s;
     transform-style: preserve-3d;
     box-shadow: 0 0 3px 0;
     margin:1rem 0;
+    perspective:1000px;
   }
   .card-flip-carosel-div{
     flex-direction: column;
@@ -164,7 +175,7 @@
   }
 
   .card-flip-carosel-div:hover .card-flip-carosel{
-    transform: rotateX(180deg);
+    transform: rotateX(-180deg);
     transition-delay: 3s;
   }
   .card-text{
@@ -183,34 +194,57 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* font-size: 1.5rem; */
+    font-size: 7vh;
     font-weight: bolder;
     text-shadow: 0 0 1rem #101010;
     box-shadow:0 0 3px;
-
+    cursor:help;
     background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
 
     color: white;
-    border-radius: 2rem;
+    border-radius: 10vh;
+    border:1px solid #118c5b;
+
 
   }
   .answer{
     background-image: linear-gradient(0deg, #118c5b 0%, #49e9aa 100%);
 
     color: white;
-    transform: rotateX(180deg);
-    border-radius: 2rem;
+    transform: rotateX(-180deg);
+    /* border-radius: 2rem; */
 
   }
   .carousel-btn-left{
     background-image: linear-gradient(270deg, #118c5b 0%, #49e9aa 100%);
     border-radius: 50%;
     border: 0px;
+    font-size: 5vh;
+    padding: 1rem 2rem;
+    margin-right: 1rem;
+    border:1px solid #118c5b;
   }
   .carousel-btn-right{
+    padding: 1rem 2rem;
     border: 0px;
     background-image: linear-gradient(90deg, #118c5b 0%, #49e9aa 100%);
     border-radius: 50%;
+    font-size: 5vh;
+    margin-left: 1rem;
+    border:1px solid #118c5b;
+  }
+
+  .carousel-btn-left:hover{
+    background-image: none;
+    background-color: #e6e6e6;
+    color: #118c5b;
+    border:1px solid #118c5b;
+  }
+  .carousel-btn-right:hover{
+    background-image: none;
+    background-color: #e6e6e6;
+    color: #118c5b;
+    border:1px solid #118c5b;
   }
 
   .set-card-div{
@@ -220,5 +254,15 @@
   .card-counter, .carousel-btns{
     display: flex;
     justify-content: center;
-    padding:1rem 0;
+    padding:3vh 0;
+  }
+
+  .shuffle{
+    transform: rotateX(-360deg);
+    transition: transform .15s;
+  }
+  .no{
+    transform: rotateZ(0deg);
+    transition: transform .15s;
+    
   }
