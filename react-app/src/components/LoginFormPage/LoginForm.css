@@ -52,9 +52,13 @@
     font-size: 4vh;
     font-weight: bolder;
     color: white;
+    margin-top:4vh;
     
 }
 .login-buttons:hover{
     color: black;
 }
-
+#redirect{
+    background-color: white;
+    color: #29BE83;
+}
