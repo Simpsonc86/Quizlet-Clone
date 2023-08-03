@@ -54,6 +54,7 @@ color:#29BE83;
   width:100%;
   flex-wrap:wrap;
   align-items: center;
+  box-shadow: 0 0 3px 1px;
 }
 
 .nav-div-container{
@@ -65,6 +66,7 @@ color:#29BE83;
   margin:0;
   /* max-height: 80px; */
   flex-wrap:wrap;
+  /* box-shadow: 0 0 3px 1px; */
 
   background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
   /* color:#ffffff; */
@@ -93,6 +95,7 @@ color:#29BE83;
   z-index: 6;
   font-size: 5vh;
   transition: color .5s;
+  text-shadow: 0 0 .1rem #101010;
 
 }
 .nav-link:hover{
@@ -118,6 +121,7 @@ color:#29BE83;
   line-height: 0%;
   display: flex;
   transition: color .5s;
+  text-shadow: 0 0 .1rem #101010;
  }
  .create_button:hover{
   color:#101010;

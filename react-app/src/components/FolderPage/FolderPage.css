@@ -72,9 +72,9 @@
     
 }
 
-.bigger{
-    font-size: 150%;
-}
+/* .bigger{
+    font-size: 4vh;
+} */
 
 .nav-link-green,#delete-btn{
     text-decoration: none;
@@ -87,6 +87,7 @@
     font-weight: bolder;
     transition: color .5s;
     font-size: 10vh;
+    text-shadow: 0 0 .1rem #101010;
     
   }
   .nav-link-green:hover{

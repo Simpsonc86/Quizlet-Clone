@@ -54,10 +54,10 @@ export default function Library() {
                                         <h4>Total Sets: {folder?.sets.length}</h4>
                                     </NavLink>                               
                                   <button className="log_out_button nav-buttons"onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                                    &nbsp;
+                                   
                                     <br/>
                                     <button className="log_out_button nav-buttons"onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
-                                    &nbsp;
+                                   
                                     <br/>
                                     
                                     <OpenModalButton className="" id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />

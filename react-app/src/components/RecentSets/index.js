@@ -28,9 +28,9 @@ export default function RecentSets() {
     const manageSet = (set) => {
         return ((sessionUser?.id === set.user_id) &&
             <div className="folder-card-div">
-                    <button className="log_out_button nav-button" ><OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={set.folder_id} set={set} />} /></button>
-                &nbsp;
-                <button className="log_out_button nav-button"><OpenModalButton id='delete-btn' buttonText='Delete set' modalComponent={<DeleteSetModal setId={set.id} />} /></button>
+                    <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={set.folder_id} set={set} />} />
+                
+                <OpenModalButton id='delete-btn' buttonText='Delete set' modalComponent={<DeleteSetModal setId={set.id} />} />
                 {/* <button onClick={()=>dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
             </div>
         )
