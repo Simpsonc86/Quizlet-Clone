@@ -56,7 +56,7 @@ export default function CreateQuestionModal({ setId, folderId }) {
                         {errors.answer && <p className="validation-errors">{errors.answer}</p>}
                     </ul>
                     <div className="form-inputs">
-                        <label>
+                        <label className="form-label">
                             Question
                         </label>
 
@@ -65,12 +65,13 @@ export default function CreateQuestionModal({ setId, folderId }) {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             required
+                            rows={2}
                         />
                     </div>
                     <br />
                     <div className="form-inputs">
 
-                        <label>
+                        <label className="form-label">
                             Answer
                         </label>
                         <textarea
@@ -78,6 +79,7 @@ export default function CreateQuestionModal({ setId, folderId }) {
                             value={answer}
                             onChange={(e) => setAnswer(e.target.value)}
                             required
+                            rows={2}
                         />
                     </div>
                     <br />

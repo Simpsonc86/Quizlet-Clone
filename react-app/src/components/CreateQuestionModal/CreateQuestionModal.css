@@ -6,8 +6,9 @@
     display: flex;
     justify-content: center;
     /* border: 3px solid red; */
-    border-radius: 20%;
+    /* border-radius: 20%; */
     padding:1rem;
+    width: 40vw;
 }
 .create-form{
     /* position: absolute; */
@@ -20,17 +21,23 @@
     justify-content: center;
     padding:1rem;
     /* align-items: center; */
+    word-wrap: normal;
 
 }
 
 .form-inputs{
     display: flex;
-    /* width:100% ; */
+    width:100% ;
     justify-content: space-between;
     font-weight: bolder;
+    /* font-size: 4vh; */
+    flex-direction: column;
 }
 .form-inputs-public{
     display: flex;
     /* flex-direction: ; */
     justify-content: right;
+}
+.form-label{
+    font-size: 3vh;
 }

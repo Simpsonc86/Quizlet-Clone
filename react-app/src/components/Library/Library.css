@@ -39,7 +39,7 @@
     max-width: fit-content;
     height: fit-content;
     box-shadow: 0 0 3px ;
-    border-radius: 1rem;
+    border-radius: 4vh;
     background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
     gap:1rem;
     text-overflow: clip;
