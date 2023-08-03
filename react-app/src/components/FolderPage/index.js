@@ -49,7 +49,7 @@ export default function FolderPage() {
                         <div className="folder-page-header-info">
                             {/* <NavLink to="/new-set">Create a Set</NavLink> */}
                             <button className="log_out_button nav-button" onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                            <button className="log_out_button nav-button"><OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} /></button>
+                            <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
                             <button className="log_out_button nav-button" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
                             <button className="log_out_button nav-button" onClick={() => history.push(`/library`)}>Return to library</button>
                         </div>
@@ -77,9 +77,9 @@ export default function FolderPage() {
                                         <>
                                         
                                             <div className="set-btns">
-                                                <button className="log_out_button nav-button" ><OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} /></button>
+                                                <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
                                                
-                                                <button className="log_out_button nav-button" ><OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} /></button>
+                                                <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
                                             </div>
                                         </>
                                     }

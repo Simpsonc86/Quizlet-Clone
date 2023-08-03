@@ -142,6 +142,7 @@ color:#29BE83;
 }
 .log_out_button:hover{
   color: #ffffff;
+  background-color: lightgray;
 }
 .sign_in_button{
   border:none;
@@ -199,10 +200,20 @@ color:#29BE83;
 }
 .modal-button{
   border: none;
-  background-color: transparent;
+  background-color:  #e6e6e6;
   font-size: 4vh;
   color:#118c5b;
   transition: color .5s;
+  border:1px solid #118c5b;
+  border-radius: 2vh;
+  padding:.5rem 2vh;
+  margin:2vh;
+  text-decoration: none;
+  width:fit-content;
+  height: fit-content;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 
 
 }
@@ -210,6 +221,10 @@ color:#29BE83;
 .modal-button:hover{
   /* color:#ffffff */
   color:#101010;
+  background-color: lightgrey;
+}
+#delete-btn{
+  background-color: #e6e6e6;
 }
 #modal{
   overflow-y: scroll;

@@ -60,7 +60,7 @@
     width: 100%;
     /* max-width:50%; */
     box-shadow: 0 0 3px 1px;
-    border-radius: 1rem;
+    border-radius: 2vh;
     padding: 1rem 3rem;
     /* margin: 1rem 3rem; */
     display: flex;
@@ -68,6 +68,7 @@
     flex-direction: column;
     align-items: center;
     /* flex-wrap: wrap; */
+    border:1px solid #118c5b;
     
 }
 
@@ -86,6 +87,7 @@
     font-weight: bolder;
     transition: color .5s;
     font-size: 10vh;
+    
   }
   .nav-link-green:hover{
     color:#101010;
