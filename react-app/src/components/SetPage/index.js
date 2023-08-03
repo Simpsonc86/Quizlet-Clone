@@ -81,10 +81,10 @@ export default function SetPage() {
                     </p>
                     <div className="card-carousel-container">
 
-                        <div className="card-flip-carosel-div">
                             <div className="card-counter set-text-small">
                                 {`Question ${questionArrayIndex + 1} of ${setQuestions.length}`}
                             </div>
+                        <div className="card-flip-carosel-div">
                             <div className={`card-flip-carosel ${shuffle}`}>
                                 <div className="card-text question">
                                     {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].description}

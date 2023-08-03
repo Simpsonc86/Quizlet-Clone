@@ -44,6 +44,7 @@
     width: 100%;
     /* max-width: 25%; */
     justify-content: center; 
+    margin-bottom: 10vh;
 }
 .set-card-container{
     display: flex;
