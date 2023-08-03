@@ -118,12 +118,12 @@ export default function SetPage() {
                         
                         <div className="card-flip-carosel-div">
                             <div className={`card-flip-carosel ${shuffle}`}>
-                            {setQuestions[questionArrayIndex]?.description.length>500?qlen="long":setQuestions[questionArrayIndex]?.description.length>50?qlen="med":qlen="short"}
+                            {setQuestions[questionArrayIndex]?.description.length>1000?qlen="long":setQuestions[questionArrayIndex]?.description.length>200?qlen="med":qlen="short"}
                             {/* {setQuestions[questionArrayIndex]?.description.length>50?qlen="med":qlen="short"} */}
                                 <div className={`card-text question ${qlen}`}>
                                     {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].description}
                                 </div>
-                            {setQuestions[questionArrayIndex]?.answer.length>500?alen="long":setQuestions[questionArrayIndex]?.answer.length>50?alen="med":alen="short"}
+                            {setQuestions[questionArrayIndex]?.answer.length>1000?alen="long":setQuestions[questionArrayIndex]?.answer.length>200?alen="med":alen="short"}
                             {/* {setQuestions[questionArrayIndex]?.answer.length>50?alen="med":alen="short"} */}
                                 <div className={`card-text answer ${alen}`}>
                                     Answer: {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].answer}
