@@ -87,7 +87,7 @@
     font-weight: bolder;
     transition: color .5s;
     font-size: 10vh;
-    text-shadow: 0 0 .1rem #101010;
+    text-shadow: 0 0 1rem darkgrey;
     
   }
   .nav-link-green:hover{

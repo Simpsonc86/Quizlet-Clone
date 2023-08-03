@@ -60,6 +60,7 @@
     /* margin-bottom: 5vh; */
     margin-top:4vh;
     transition: color .5s;
+    box-shadow: 0 0 3px 0px #101010;
     
 }
 .signup-buttons:hover{
