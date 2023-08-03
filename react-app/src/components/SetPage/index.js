@@ -25,18 +25,20 @@ export default function SetPage() {
     const folders = useSelector((state) => state.folders.allFolders)
     const folder = folders[Number(folder_id)]
     const sets = useSelector((state) => state.sets.allSets)
-    console.log(sets);
+    // console.log(sets);
     const set = sets[Number(set_id)]
     const questions = useSelector((state) => Object.values(state.questions.allQuestions))
     const setQuestions = questions.filter((question) => question.set_id === Number(set_id))
-    console.log('questions array', setQuestions[0], ":    set id from params", set_id);
+    // console.log('questions array', setQuestions[0], ":    set id from params", set_id);
     // console.log("Set from the store",set);
     const history = useHistory();
     const [questionArrayIndex, setQuestionArrayIndex] = useState(0);
     const [shuffle, setShuffle] = useState("shuffle");
+    // const [qLength, setQlength] = useState("long");
+    // const [aLength, setAlength] = useState("long");
 
     useEffect(() => {
-        console.log("Hitting useEffect here");
+        // console.log("Hitting useEffect here");
         dispatch(getAllFoldersThunk())
             .then(dispatch(getAllSetsThunk()))
             .then(dispatch(getOneFolderThunk(folder_id)))
@@ -56,6 +58,35 @@ export default function SetPage() {
             setShuffle("no")
         }
     }
+
+    let qlen=''
+    let alen=''
+    // const cardFontSize = (array, index) =>{
+
+    //     console.log("array is ", array);
+    //     console.log("index is ", index);
+    //     console.log("object is ", array[index]);
+
+    //     const arrQLength = array[index].description.length
+    //     const arrALength = array[index].answer.length
+
+    //     console.log("length of properties qlength and alength", arrQLength, arrALength);
+
+    //     let qlen =""
+    //     let alen =""
+    //     if(arrQLength<50){qlen = "short"}
+    //     else if(arrQLength >=50&& arrQLength < 500){qlen = "med"}
+    //     else if(arrQLength>=500&& arrQLength<2000)qlen = "long"
+
+    //     if(arrALength<50){alen = "short"}
+    //     else if(arrALength >=50&& arrALength < 500){alen = "med"}
+    //     else if(arrALength >=500&& arrALength < 2000){alen = "long"}
+        
+
+    //     setQlength(qlen)
+    //     setAlength(alen)
+    //     return  console.log("Question Length:",qLength, "Answer Length",aLength);
+    // }
 
     return (
         <>
@@ -84,12 +115,17 @@ export default function SetPage() {
                             <div className="card-counter set-text-small">
                                 {`Question ${questionArrayIndex + 1} of ${setQuestions.length}`}
                             </div>
+                        
                         <div className="card-flip-carosel-div">
                             <div className={`card-flip-carosel ${shuffle}`}>
-                                <div className="card-text question">
+                            {setQuestions[questionArrayIndex]?.description.length>500?qlen="long":setQuestions[questionArrayIndex]?.description.length>50?qlen="med":qlen="short"}
+                            {/* {setQuestions[questionArrayIndex]?.description.length>50?qlen="med":qlen="short"} */}
+                                <div className={`card-text question ${qlen}`}>
                                     {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].description}
                                 </div>
-                                <div className="card-text answer">
+                            {setQuestions[questionArrayIndex]?.answer.length>500?alen="long":setQuestions[questionArrayIndex]?.answer.length>50?alen="med":alen="short"}
+                            {/* {setQuestions[questionArrayIndex]?.answer.length>50?alen="med":alen="short"} */}
+                                <div className={`card-text answer ${alen}`}>
                                     Answer: {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].answer}
                                 </div>
                             </div>
