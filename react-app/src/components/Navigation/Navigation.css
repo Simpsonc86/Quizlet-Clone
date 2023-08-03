@@ -15,6 +15,7 @@
   font-weight: bolder;
   z-index: 10;
   box-shadow: 0 0 1rem 0px darkgrey;
+
   /* text-shadow: 0 0 1rem darkgrey; */
 
   transition: 1s;
@@ -178,6 +179,7 @@ color:#29BE83;
   font-size: 15vh;
   padding: 0;
   margin:0 1rem;
+  
 }
 
 .user-logo{
@@ -192,6 +194,7 @@ color:#29BE83;
   padding:2vh 5vh;
   box-shadow: 0 0 3px 0px #101010;
   margin:1rem 0;
+  /* padding-right:1rem; */
 }
 #user-btn,.log_out_button:hover{
   cursor: pointer;
@@ -201,6 +204,7 @@ color:#29BE83;
   display: flex;
   align-items: center;
   gap:0 2rem;
+  padding-right:1rem;
 }
 
 .new-assets{
