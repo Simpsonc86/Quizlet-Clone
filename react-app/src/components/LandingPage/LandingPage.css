@@ -4,7 +4,7 @@
     object-fit: cover;
     /* opacity: 75%; */
     background-color: #118c5b;
-    height: 100vh;
+    height: 150vh;
     overflow: hidden;
     /* object-position: bottom; */
     /* border: 3px dotted blue;  */
@@ -32,7 +32,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 45%;
+    max-width: 50%;
     /* height: 80%; */
     width: 100%;
     /* transform: translateX(100%); */
