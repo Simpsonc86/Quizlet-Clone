@@ -28,7 +28,7 @@
     align-items: center;
     /* flex-direction: column; */
     flex-wrap: wrap;
-    gap:1rem;
+    gap:2vh;
 }
 .folder-card-container{
     height:20rem ;
