@@ -14,7 +14,9 @@
   /* opacity: 95%; */
   font-weight: bolder;
   z-index: 10;
-  box-shadow: 0 0 3px 0px #101010;
+  box-shadow: 0 0 1rem 0px darkgrey;
+  /* text-shadow: 0 0 1rem darkgrey; */
+
   transition: 1s;
 
 }
@@ -54,6 +56,8 @@ color:#29BE83;
   width:100%;
   flex-wrap:wrap;
   align-items: center;
+  box-shadow: 0 0 3px 1px;
+  z-index: 5;
 }
 
 .nav-div-container{
@@ -65,6 +69,7 @@ color:#29BE83;
   margin:0;
   /* max-height: 80px; */
   flex-wrap:wrap;
+  /* box-shadow: 0 0 3px 1px; */
 
   background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
   /* color:#ffffff; */
@@ -93,6 +98,7 @@ color:#29BE83;
   z-index: 6;
   font-size: 5vh;
   transition: color .5s;
+  text-shadow: 0 0 1rem darkgrey;
 
 }
 .nav-link:hover{
@@ -118,6 +124,8 @@ color:#29BE83;
   line-height: 0%;
   display: flex;
   transition: color .5s;
+  text-shadow: 0 0 1rem darkgrey;
+
  }
  .create_button:hover{
   color:#101010;
@@ -126,7 +134,7 @@ color:#29BE83;
   border:none;
   background-color: transparent;
   border-radius: .8rem;
-  font-size: 6vh;
+  font-size: 5vh;
   transition: color .5s;
 }
 .log_out_button{
@@ -142,6 +150,7 @@ color:#29BE83;
 }
 .log_out_button:hover{
   color: #ffffff;
+  background-color: lightgray;
 }
 .sign_in_button{
   border:none;
@@ -149,7 +158,7 @@ color:#29BE83;
   color:#101010;
   border-radius: 2vh;
   margin: 1rem;
-  font-size: 6vh;
+  font-size: 5vh;
   transition: color .5s;
 }
 
@@ -199,10 +208,20 @@ color:#29BE83;
 }
 .modal-button{
   border: none;
-  background-color: transparent;
+  background-color:  #e6e6e6;
   font-size: 4vh;
   color:#118c5b;
   transition: color .5s;
+  border:1px solid #118c5b;
+  border-radius: 2vh;
+  padding:.5rem 2vh;
+  margin:2vh;
+  text-decoration: none;
+  width:fit-content;
+  height: fit-content;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 
 
 }
@@ -210,6 +229,10 @@ color:#29BE83;
 .modal-button:hover{
   /* color:#ffffff */
   color:#101010;
+  background-color: lightgrey;
+}
+#delete-btn{
+  background-color: #e6e6e6;
 }
 #modal{
   overflow-y: scroll;
