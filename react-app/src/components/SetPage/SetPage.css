@@ -144,8 +144,9 @@
   .card-flip-carosel{
     display: flex;
     /* max-width: 80vw; */
-    width: 100%;
-    /* max-height: 50%; */
+    width: 95%;
+    max-height: fit-content;
+
     height:50vh;
     align-items: center;
     justify-content: center;
@@ -232,7 +233,7 @@
 
   }
   .long{
-    font-size: 1.5vh;
+    font-size: 1.3vh;
   }
   .carousel-btn-left{
     background-image: linear-gradient(270deg, #118c5b 0%, #49e9aa 100%);
