@@ -15,6 +15,7 @@
   font-weight: bolder;
   z-index: 10;
   box-shadow: 0 0 1rem 0px darkgrey;
+
   /* text-shadow: 0 0 1rem darkgrey; */
 
   transition: 1s;
@@ -50,14 +51,14 @@ color:#29BE83;
 }
 .nav-div-inner{
   display: flex;
-  padding: 0 2rem;
+  /* padding: 0 2rem; */
   justify-content: space-between;
   max-width: 100%;
   width:100%;
   flex-wrap:wrap;
   align-items: center;
   box-shadow: 0 0 3px 1px;
-  z-index: 5;
+  z-index: 2;
 }
 
 .nav-div-container{
@@ -177,7 +178,8 @@ color:#29BE83;
 .home-logo{
   font-size: 15vh;
   padding: 0;
-  margin:0;
+  margin:0 1rem;
+  
 }
 
 .user-logo{
@@ -192,6 +194,7 @@ color:#29BE83;
   padding:2vh 5vh;
   box-shadow: 0 0 3px 0px #101010;
   margin:1rem 0;
+  /* padding-right:1rem; */
 }
 #user-btn,.log_out_button:hover{
   cursor: pointer;
@@ -201,6 +204,7 @@ color:#29BE83;
   display: flex;
   align-items: center;
   gap:0 2rem;
+  padding-right:1rem;
 }
 
 .new-assets{
