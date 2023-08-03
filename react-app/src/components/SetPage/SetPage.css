@@ -123,6 +123,14 @@
       /* background-color: #29BE83; */
     width: 100%;
   }
+
+  .card-carousel-container{
+    display: flex;
+    width: 100%;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-direction: column;
+  }
   .card-flip-carosel{
     display: flex;
     width: 70%;
@@ -133,6 +141,11 @@
     box-shadow: 0 0 3px 1px;
     padding:1rem 3rem;
     border-radius: 2rem;
+    position: relative;
+    transition: transform .5s;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 3px 0;
+    margin:1rem 0;
   }
   .card-flip-carosel-div{
     flex-direction: column;
@@ -141,19 +154,71 @@
     max-height: 50%;
     /* height:100%; */
     width: auto;
-    padding:2rem 0;
+    /* padding:2rem 0; */
     align-items: center;
     justify-content: center;
+    perspective:1000px;
+
   
     /* box-shadow: 0 0 3px 1px; */
+  }
+
+  .card-flip-carosel-div:hover .card-flip-carosel{
+    transform: rotateX(180deg);
+    transition-delay: 3s;
   }
   .card-text{
     display: flex;
     justify-content: center;
     align-items: center;
+    /* font-size: 1rem; */
+    word-wrap: break-word;
+    padding:1rem;
+  }
+  .answer, .question{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 1.5rem; */
+    font-weight: bolder;
+    text-shadow: 0 0 1rem #101010;
+    box-shadow:0 0 3px;
+
+    background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
+
+    color: white;
+    border-radius: 2rem;
+
+  }
+  .answer{
+    background-image: linear-gradient(0deg, #118c5b 0%, #49e9aa 100%);
+
+    color: white;
+    transform: rotateX(180deg);
+    border-radius: 2rem;
+
+  }
+  .carousel-btn-left{
+    background-image: linear-gradient(270deg, #118c5b 0%, #49e9aa 100%);
+    border-radius: 50%;
+    border: 0px;
+  }
+  .carousel-btn-right{
+    border: 0px;
+    background-image: linear-gradient(90deg, #118c5b 0%, #49e9aa 100%);
+    border-radius: 50%;
   }
 
   .set-card-div{
     width: 100%;
     word-wrap: break-word;
+  }
+  .card-counter, .carousel-btns{
+    display: flex;
+    justify-content: center;
+    padding:1rem 0;
   }

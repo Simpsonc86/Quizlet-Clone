@@ -28,8 +28,8 @@ export default function SetPage() {
     console.log(sets);
     const set = sets[Number(set_id)]
     const questions = useSelector((state) => Object.values(state.questions.allQuestions))
-    console.log('questions array', questions[0], ":    set id from params", set_id);
-    const setQuestions = questions.filter((question)=>question.set_id === Number(set_id))
+    const setQuestions = questions.filter((question) => question.set_id === Number(set_id))
+    console.log('questions array', setQuestions[0], ":    set id from params", set_id);
     // console.log("Set from the store",set);
     const history = useHistory();
     const [questionArrayIndex, setQuestionArrayIndex] = useState(0);
@@ -66,26 +66,33 @@ export default function SetPage() {
                     </div>
                     <hr />
                     {set.questions.length && `Total Questions in Set: ${set.questions.length}`}
-                    <div className="card-flip-carosel-div">
-                        <div className="card-flip-carosel">
-                            <div className="card-text question">
-                                Question: {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].description}
+                    <div className="card-carousel-container">
+
+                            <div className="card-counter">
+                                {`Question ${questionArrayIndex + 1} of ${setQuestions.length}`}
                             </div>
-                            <div className="card-text answer">
-                                Answer: {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].answer}
+                        <div className="card-flip-carosel-div">
+                            <div className="card-flip-carosel">
+                                <div className="card-text question">
+                                    Question {questionArrayIndex+1}: {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].description}
+                                </div>
+                                <div className="card-text answer">
+                                    Answer: {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].answer}
+                                </div>
                             </div>
                         </div>
-                        <span>
+                            <span className="carousel-btns">
 
-                            <button onClick={() => {
-                                console.log("value of questionArrayIndex:", questionArrayIndex);
-                                questionArrayIndex <= 0 ? setQuestionArrayIndex(0) : setQuestionArrayIndex(questionArrayIndex - 1)
-                            }}>{"<"}</button>
-                            <button onClick={() => {
-                                console.log("value of questionArrayIndex:", questionArrayIndex);
-                                questionArrayIndex >= setQuestions.length - 1 ? setQuestionArrayIndex(setQuestions.length - 1) : setQuestionArrayIndex(questionArrayIndex + 1)
-                            }}>{">"}</button>
-                        </span>
+                                <button className="carousel-btn-left" onClick={() => {
+                                    console.log("value of questionArrayIndex:", questionArrayIndex);
+                                    questionArrayIndex <= 0 ? setQuestionArrayIndex(0) : setQuestionArrayIndex(questionArrayIndex - 1)
+                                }}>{"<"}</button>
+                                &nbsp;
+                                <button className="carousel-btn-right" onClick={() => {
+                                    console.log("value of questionArrayIndex:", questionArrayIndex);
+                                    questionArrayIndex >= setQuestions.length - 1 ? setQuestionArrayIndex(setQuestions.length - 1) : setQuestionArrayIndex(questionArrayIndex + 1)
+                                }}>{">"}</button>
+                            </span>
                     </div>
                     <hr />
                     <ol className="questions-inner-div">
