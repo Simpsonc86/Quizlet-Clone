@@ -4,11 +4,11 @@ import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
 import validator from 'validator'
-// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
 
@@ -149,6 +149,8 @@ function SignupFormPage() {
               Confirm Password
             </label>
             <button className="signup-buttons" type="submit" >Sign Up</button>
+            <button className="signup-buttons" id="redirect" onClick={()=>history.push('/login')}>Already Have an Account?</button>
+
           </form>
 
         </div>

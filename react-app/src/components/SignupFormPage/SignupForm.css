@@ -51,19 +51,30 @@
     justify-content: center;
     border:none;
     background-color: #29BE83;
-    border-radius: .5rem;
+    border-radius: 2vh;
     padding:.5rem 1rem;
     font-size: 4vh;
     font-weight: bolder;
     color: white;
-    margin-bottom: 5vh;
+    /* margin-bottom: 5vh; */
+    margin-top:4vh;
+    transition: color .5s;
     
 }
 .signup-buttons:hover{
-    color: black;
+    color: #101010;
 }
 
 .signup-title{
     padding: 0%;
     margin-top: 2vh;
+}
+#redirect{
+    background-color: white;
+    color: #29BE83;
+    margin-bottom: 6vh;
+    transition: color .5s;
+}
+#redirect:hover{
+    color:#101010
 }

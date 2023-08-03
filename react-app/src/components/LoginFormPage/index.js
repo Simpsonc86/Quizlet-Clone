@@ -68,9 +68,8 @@ function LoginFormPage() {
           Password
           </label>
           <button className="login-buttons" type="submit">Log In</button>
-          <button className="login-buttons" onClick={loginDemoUser}>Demo User
-
-          </button>
+          <button className="login-buttons" onClick={loginDemoUser}>Demo User</button>
+          <button className="login-buttons" id="redirect" onClick={()=>history.push('/signup')}>Need to Register?</button>
         </form>
       </div>
     </div>
