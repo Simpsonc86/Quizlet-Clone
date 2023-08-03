@@ -81,6 +81,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    font-size: 4vh;
   }
   .nav-link:hover{
     color:#101010;
@@ -94,7 +95,7 @@
     /* background-color: transparent; */
     border-radius: .5rem;
     padding:.5rem 1rem;
-    font-size: 1.5rem;
+    font-size: 4vh;
     color:#118c5b;
     word-wrap: normal;
   }

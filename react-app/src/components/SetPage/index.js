@@ -33,6 +33,7 @@ export default function SetPage() {
     // console.log("Set from the store",set);
     const history = useHistory();
     const [questionArrayIndex, setQuestionArrayIndex] = useState(0);
+    const [shuffle, setShuffle] = useState("shuffle");
 
     useEffect(() => {
         console.log("Hitting useEffect here");
@@ -46,6 +47,15 @@ export default function SetPage() {
     if (!Object.values(sets).length || !Object.values(folders).length) {
         return <h1>Set details are loading...</h1>
     }
+    // let shuffle="no";
+    const shuffleCard = ()=>{
+
+        if(shuffle === "no"){
+            setShuffle("shuffle")
+        }else{
+            setShuffle("no")
+        }
+    }
 
     return (
         <>
@@ -55,7 +65,7 @@ export default function SetPage() {
 
                     <div className="set-page-header">
 
-                        <h1>{set.title} Set</h1>
+                        <h1 className="set-text">{set.title} Set</h1>
                         {/* {console.log("folder from above",folder)} */}
                         {sessionUser?.id === set?.user_id && <div className="set-btns-div">
                             <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
@@ -65,16 +75,19 @@ export default function SetPage() {
                         </div>}
                     </div>
                     <hr />
+                    <p className="set-text-small">
+
                     {set.questions.length && `Total Questions in Set: ${set.questions.length}`}
+                    </p>
                     <div className="card-carousel-container">
 
-                            <div className="card-counter">
+                        <div className="card-flip-carosel-div">
+                            <div className="card-counter set-text-small">
                                 {`Question ${questionArrayIndex + 1} of ${setQuestions.length}`}
                             </div>
-                        <div className="card-flip-carosel-div">
-                            <div className="card-flip-carosel">
+                            <div className={`card-flip-carosel ${shuffle}`}>
                                 <div className="card-text question">
-                                    Question {questionArrayIndex+1}: {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].description}
+                                    {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].description}
                                 </div>
                                 <div className="card-text answer">
                                     Answer: {setQuestions[questionArrayIndex] && setQuestions[questionArrayIndex].answer}
@@ -82,15 +95,18 @@ export default function SetPage() {
                             </div>
                         </div>
                             <span className="carousel-btns">
+      
 
-                                <button className="carousel-btn-left" onClick={() => {
-                                    console.log("value of questionArrayIndex:", questionArrayIndex);
-                                    questionArrayIndex <= 0 ? setQuestionArrayIndex(0) : setQuestionArrayIndex(questionArrayIndex - 1)
+                                <button className={`carousel-btn-left`} onClick={() => {
+                                    shuffleCard();
+                                    // console.log("value of questionArrayIndex:", questionArrayIndex);
+                                    questionArrayIndex <= 0 ? setQuestionArrayIndex(setQuestions.length-1) : setQuestionArrayIndex(questionArrayIndex - 1)
                                 }}>{"<"}</button>
                                 &nbsp;
-                                <button className="carousel-btn-right" onClick={() => {
-                                    console.log("value of questionArrayIndex:", questionArrayIndex);
-                                    questionArrayIndex >= setQuestions.length - 1 ? setQuestionArrayIndex(setQuestions.length - 1) : setQuestionArrayIndex(questionArrayIndex + 1)
+                                <button className={`carousel-btn-right`}onClick={() => {
+                                    // console.log("value of questionArrayIndex:", questionArrayIndex);
+                                    shuffleCard();
+                                    questionArrayIndex >= setQuestions.length - 1 ? setQuestionArrayIndex(0) : setQuestionArrayIndex(questionArrayIndex + 1)
                                 }}>{">"}</button>
                             </span>
                     </div>
@@ -101,8 +117,8 @@ export default function SetPage() {
 
                                 return (
 
-                                    <li key={idx}>
-                                        <p className="question-card-div">
+                                    <li className="set-text-small"key={idx}>
+                                        <div className="question-card-div">
                                             <div className="question-text-div">
                                                 <div className="question-info-div">
 
@@ -114,16 +130,16 @@ export default function SetPage() {
                                                     &nbsp;
                                                     <div>
 
-                                                        <span >{"Hover to Reveal Answer --->"}</span>
+                                                        <span className="question-text">{"Hover to Reveal Answer --->"}</span>
                                                         <span className="answer-text" >{"     "}{"   " + question.answer + "   "} </span>
-                                                        <span>{"<---"}</span>
+                                                        <span className="question-text">{"<---"}</span>
                                                     </div>
                                                 </div>
 
                                                 <div className="question-btns">
                                                     {(sessionUser?.id === set?.user_id) &&
                                                         <>
-                                                            <span>
+                                                            <span className="set-text-small">
                                                                 <OpenModalButton id='edit-question-btn' buttonText='Edit' modalComponent={<EditQuestionModal question={question} folderId={folder.id} set={set} />} />
                                                             </span>
                                                             <span>
@@ -134,7 +150,7 @@ export default function SetPage() {
                                                 </div>
                                             </div>
 
-                                        </p>
+                                        </div>
                                     </li>
                                 )
                             } else return null

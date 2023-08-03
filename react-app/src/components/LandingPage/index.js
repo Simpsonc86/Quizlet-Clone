@@ -20,8 +20,8 @@ export default function LandingPage() {
         <div className="landing-page-container">
             <div className="landing-page-inner">
                 <div className="landing-page-info">
-                    <h1>The best digital flashcards and study tools</h1>
-                    <p>Join a growing list of students using Wizlet's science-backed flashcards, practice tests and expert solutions to improve their grades and reach their goals.</p>
+                    <h1 className="set-text">The best digital flashcards and study tools</h1>
+                    <p className="set-text-small">Join a growing list of students using Wizlet's science-backed flashcards, practice tests and expert solutions to improve their grades and reach their goals.</p>
                     <NavLink className="nav-link get-started" to="/signup">Get Started</NavLink>
                 </div>
                 <img className="landing-page-img" alt="home-logo" src="AF_3125X1586_1-min_2_2-3124x1562.png" />
