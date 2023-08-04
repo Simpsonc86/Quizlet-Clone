@@ -58,7 +58,7 @@ color:#29BE83;
   flex-wrap:wrap;
   align-items: center;
   box-shadow: 0 0 3px 1px;
-  z-index: 2;
+  z-index: 1;
 }
 
 .nav-div-container{
@@ -244,6 +244,7 @@ color:#29BE83;
   width: 100%;
   height: 90vh;
   padding: 5vh;
+  z-index: 5;
 }
 
 .home-link{
