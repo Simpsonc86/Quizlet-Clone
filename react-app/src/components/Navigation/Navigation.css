@@ -13,7 +13,7 @@
   /* line-height: 3vh; */
   /* opacity: 95%; */
   font-weight: bolder;
-  z-index: 10;
+  z-index: 8;
   box-shadow: 0 0 1rem 0px darkgrey;
 
   /* text-shadow: 0 0 1rem darkgrey; */
@@ -118,7 +118,7 @@ color:#29BE83;
   background-color: #e6e6e6;
   color:#ffffff;
   padding: 0;
-  margin:0;
+  margin-left:5vh;
   border-radius: 50%;
   /* text-size-adjust: 300%; */
   font-size: 8vh;
