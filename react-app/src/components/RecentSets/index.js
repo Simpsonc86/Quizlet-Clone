@@ -30,7 +30,7 @@ export default function RecentSets() {
             <div className="folder-card-div">
                     <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={set.folder_id} set={set} />} />
                 
-                <OpenModalButton id='delete-btn' buttonText='Delete set' modalComponent={<DeleteSetModal setId={set.id} />} />
+                <OpenModalButton id='delete-btn' buttonText='Delete set' modalComponent={<DeleteSetModal folderId={set.folder_id}setId={set.id} />} />
                 {/* <button onClick={()=>dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
             </div>
         )

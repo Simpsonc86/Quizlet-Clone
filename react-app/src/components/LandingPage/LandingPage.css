@@ -1,6 +1,6 @@
 .landing-page-img {
     /* width: 100%; */
-    max-width: 3840px;
+    /* max-width: 3840px; */
     width: 100%;
     object-fit: cover;
     /* opacity: 75%; */
@@ -71,8 +71,8 @@
 
 .get-started{
     background-color: #29BE83;
-    padding:.5rem;
-    margin:.5em;
+    padding:2vh;
+    margin:1vh;
     border-radius: 2vh;
     /* opacity: 100%; */
     /* z-index: 3; */
