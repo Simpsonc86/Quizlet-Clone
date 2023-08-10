@@ -69,7 +69,7 @@ color:#29BE83;
   justify-content: center;
   /* margin:0 2rem; */
   margin:0;
-  /* max-height: 80px; */
+  /* max-height: 100px; */
   flex-wrap:wrap;
   /* box-shadow: 0 0 3px 1px; */
 
@@ -111,7 +111,7 @@ color:#29BE83;
 .nav-button{
   font-size: 3vh;
   text-decoration: none;
-  padding:1.5rem;
+  padding:1.5vh;
   cursor: pointer;
 }
 .create_button{
@@ -159,7 +159,7 @@ color:#29BE83;
   background-color: #f9cc05;
   color:#101010;
   border-radius: 2vh;
-  margin: 1rem;
+  margin-right: 1rem;
   font-size: 3vh;
   transition: color .5s;
 }

@@ -108,7 +108,7 @@ export default function SetPage() {
                     <hr />
                     <p className="set-text-small">
 
-                    {set?.questions.length && set?.questions.length!==0?`Total Questions in Set: ${set.questions.length}`:<span className="no-sets">"There are no questions in this set"</span>}
+                    {set?.questions.length && set?.questions.length!==0?`Total Questions in Set: ${set.questions.length}`:<span className="no-sets">"There are no questions in this set"</span>}    
                     </p>
                    { set.questions.length!==0 && <div className="card-carousel-container">
 

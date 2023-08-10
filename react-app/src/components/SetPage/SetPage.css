@@ -204,10 +204,11 @@
   
     /* box-shadow: 0 0 3px 1px; */
   }
-
+  
   .card-flip-carosel-div:hover .card-flip-carosel{
-    transform: rotateX(-180deg);
     transition-delay: 3s;
+    transform: rotateX(-180deg);
+    /* overflow-y: scroll; */
   }
   .card-text{
     display: flex;
@@ -235,10 +236,22 @@
     background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
     /* overflow-y: scroll; */
     color: white;
-    border-radius: 5vh;
+    border-radius: 4vh;
     border:1px solid #118c5b;
-
-
+  }
+  @media screen and (max-width: 768px){
+    .long,.med,.short{
+      overflow-y: scroll;
+      /* z-index: 2; */
+      
+    }
+  }
+  @media screen and (max-width: 1024px){
+    .long{
+      overflow-y: scroll;
+      /* z-index: 2; */
+      
+    }
   }
   .answer{
     background-image: linear-gradient(0deg, #118c5b 0%, #49e9aa 100%);
@@ -250,15 +263,23 @@
   }
   .short{
     font-size: 4.4vh;
+    /* overflow-y: scroll; */
+    padding-top:3vh;
+    flex-wrap: wrap;
     
   }
   .med{
     font-size: 3.2vh;
+    /* overflow-y: scroll; */
+    padding-top:3vh;
+    flex-wrap: wrap;
 
   }
   .long{
-    overflow-y: scroll;
-    font-size: 3.3vh;
+    padding:3vh;
+    /* overflow-y: scroll; */
+    flex-wrap:wrap ;
+    font-size: 2.3vh;
   }
   .carousel-btn-left{
     background-image: linear-gradient(270deg, #118c5b 0%, #49e9aa 100%);
@@ -311,6 +332,7 @@
   .no{
     transform: rotateY(0deg);
     transition: transform ease-in .3s;
+    /* overflow-y: scroll; */
     
   }
   .add-question-btn{
