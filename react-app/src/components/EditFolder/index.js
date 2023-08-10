@@ -107,7 +107,7 @@ export default function EditFolder() {
                             onClick={(e) => {
                                 const checkbox = document.querySelector('#isPublicCheckbox')
                                 checkbox.checked ? setIsPublic("yes") : setIsPublic("no")
-                                console.log("Value of checkbox variable", checkbox.checked);
+                                // console.log("Value of checkbox variable", checkbox.checked);
                             }}
                         /> : <input
                             type="checkbox"
@@ -117,11 +117,11 @@ export default function EditFolder() {
                             onClick={(e) => {
                                 const checkbox = document.querySelector('#isPublicCheckbox')
                                 checkbox.checked ? setIsPublic("yes") : setIsPublic("no")
-                                console.log("Value of checkbox variable", checkbox.checked);
+                                // console.log("Value of checkbox variable", checkbox.checked);
                             }}
                         />}
                     </div>
-                    {console.log("value of isPublic----->", is_public)}
+                    {/* {console.log("value of isPublic----->", is_public)} */}
                     {/* &nbsp; */}
                     <div className="flex-div">
 

@@ -45,7 +45,7 @@ export default function Library() {
                     </div>
                         <h2>{sessionUser.username}'s Folders</h2>
                     <div className="folder-user-details-div">
-                        {userFolders.reverse().map((folder, index) => (
+                        {userFolders?.length?userFolders.reverse().map((folder, index) => (
                             <div className="folder-card-container" key={index}>
                                 <div className="folder-card-div">
                                     <NavLink className="nav-link"to={`/folders/${folder.id}`}>
@@ -65,7 +65,7 @@ export default function Library() {
                                     
                                 </div>
                             </div>
-                        ))}
+                        )):<div className="no-sets">You have no folders to view!</div>}
                     </div>
                 </div>
             </div>
