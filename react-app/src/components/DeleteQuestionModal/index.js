@@ -16,7 +16,7 @@ export default function DeleteQuestionModal({question}){
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        dispatch(deleteQuestionThunk(question.id))
+        await dispatch(deleteQuestionThunk(question.id))
         .then(dispatch(getAllSetsThunk()))
         .then(closeModal())
         // history.push(`/folders/${folderId}/sets/${set.id}`)

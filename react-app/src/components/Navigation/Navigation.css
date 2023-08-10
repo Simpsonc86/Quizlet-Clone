@@ -66,6 +66,7 @@ color:#29BE83;
   max-width: 100%;
   width:100%;
   align-items: center;
+  justify-content: center;
   /* margin:0 2rem; */
   margin:0;
   /* max-height: 80px; */
@@ -97,7 +98,7 @@ color:#29BE83;
   font-weight: bolder;
   word-wrap: normal;
   z-index: 6;
-  font-size: 5vh;
+  font-size: 3vh;
   transition: color .5s;
   text-shadow: 0 0 1rem darkgrey;
 
@@ -108,7 +109,7 @@ color:#29BE83;
 }
 
 .nav-button{
-  font-size: 4vh;
+  font-size: 3vh;
   text-decoration: none;
   padding:1.5rem;
   cursor: pointer;
@@ -121,7 +122,7 @@ color:#29BE83;
   margin-left:5vh;
   border-radius: 50%;
   /* text-size-adjust: 300%; */
-  font-size: 8vh;
+  font-size: 4vh;
   line-height: 0%;
   display: flex;
   transition: color .5s;
@@ -135,7 +136,7 @@ color:#29BE83;
   border:none;
   background-color: transparent;
   border-radius: .8rem;
-  font-size: 5vh;
+  font-size: 3vh;
   transition: color .5s;
 }
 .log_out_button{
@@ -145,7 +146,7 @@ color:#29BE83;
   /* background-color: #29BE83; */
   border-radius: .5rem;
   padding:.5rem 1rem;
-  font-size: 4vh;
+  font-size: 3vh;
   transition: color .5s;
 
 }
@@ -159,7 +160,7 @@ color:#29BE83;
   color:#101010;
   border-radius: 2vh;
   margin: 1rem;
-  font-size: 5vh;
+  font-size: 3vh;
   transition: color .5s;
 }
 
@@ -176,22 +177,22 @@ color:#29BE83;
   flex-wrap: wrap;
 }
 .home-logo{
-  font-size: 15vh;
+  font-size: 8vh;
   padding: 0;
   margin:0 1rem;
   
 }
 
 .user-logo{
-  font-size: 10vh;
+  font-size: 4vh;
   color: #29BE83;
   /* margin: 1rem 0; */
 }
 #user-btn{
-  font-size: 10vh;
+  font-size: 4vh;
   border: none;
   border-radius: 50%;
-  padding:2vh 5vh;
+  padding:2vh 3vh;
   box-shadow: 0 0 3px 0px #101010;
   margin:1rem 0;
   /* padding-right:1rem; */
@@ -213,7 +214,7 @@ color:#29BE83;
 .modal-button{
   border: none;
   background-color:  #e6e6e6;
-  font-size: 4vh;
+  font-size: 2vh;
   color:#118c5b;
   transition: color .5s;
   border:1px solid #118c5b;
@@ -256,8 +257,8 @@ color:#29BE83;
   display: flex;
 }
 h1{
-  font-size: 6vh;
+  font-size: 4vh;
 }
 h2{
-  font-size: 5vh;
+  font-size: 3vh;
 }

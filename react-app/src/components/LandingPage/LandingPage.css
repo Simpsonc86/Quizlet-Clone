@@ -1,12 +1,13 @@
 .landing-page-img {
     /* width: 100%; */
-    max-width: 100%;
+    max-width: 3840px;
+    width: 100%;
     object-fit: cover;
     /* opacity: 75%; */
     background-color: #118c5b;
-    height: 150vh;
+    height: 100vh;
     overflow: hidden;
-    /* object-position: bottom; */
+    /* object-position:     bottom; */
     /* border: 3px dotted blue;  */
 
     

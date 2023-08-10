@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal"
 // import { useHistory } from "react-router-dom";
-// import {getAllSetsThunk } from "../../store/sets";
+import {getAllSetsThunk } from "../../store/sets";
 import { createQuestionThunk } from "../../store/questions";
 import "./CreateQuestionModal.css"
 
@@ -37,7 +37,7 @@ export default function CreateQuestionModal({ setId, folderId }) {
 
             // console.log("This is the created folder", folder)
             await dispatch(createQuestionThunk(question))
-                // .then(await dispatch(getAllSetsThunk()))
+                .then(await dispatch(getAllSetsThunk()))
                 .then(closeModal())
 
             // history.push(`/folders/${folderId}/set/${setId}`)

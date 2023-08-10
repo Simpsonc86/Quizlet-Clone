@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders"
+import { getOneFolderThunk } from "../../store/folders"
 import { useEffect } from "react"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../OpenModalButton";
@@ -28,10 +28,10 @@ export default function FolderPage() {
 
     useEffect(() => {
         // console.log("Hitting useEffect here");
-        dispatch(getAllFoldersThunk())
-            .then(dispatch(getOneFolderThunk(folder_id)))
+        // dispatch(getAllFoldersThunk())
+        dispatch(getOneFolderThunk(folder_id))
             .then(dispatch(getAllSetsThunk()))
-    }, [dispatch, folder_id])
+    }, [dispatch, folder_id, sets.length])
 
     if (!Object.values(folder).length) {
         return <h3>Loading...</h3>
@@ -42,17 +42,17 @@ export default function FolderPage() {
             <div className="folder-page-container-div">
                 <div className="folder-page-inner-div">
                     <div className="folder-page-header">
-                            <h1>{folder.title} Sets</h1>
-                            <h2>Folder Description: {folder.description}</h2>
+                        <h1>{folder.title} Sets</h1>
+                        <h2>Folder Description: {folder.description}</h2>
                         {/* {console.log("folder from above",folder)} */}
                         {sessionUser?.id === folder?.user_id && <div className="folder-btns-div">
-                        <div className="folder-page-header-info">
-                            {/* <NavLink to="/new-set">Create a Set</NavLink> */}
-                            <button className="log_out_button nav-button" onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
-                            <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
-                            <button className="log_out_button nav-button" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
-                            <button className="log_out_button nav-button" onClick={() => history.push(`/library`)}>Return to library</button>
-                        </div>
+                            <div className="folder-page-header-info">
+                                {/* <NavLink to="/new-set">Create a Set</NavLink> */}
+                                <button className="log_out_button nav-button" onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                                <OpenModalButton id='delete-btn' buttonText='Delete Folder' modalComponent={<DeleteFormModal folderId={folder.id} />} />
+                                <button className="log_out_button nav-button" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                                <button className="log_out_button nav-button" onClick={() => history.push(`/library`)}>Return to library</button>
+                            </div>
 
                         </div>}
                         <hr />
@@ -60,14 +60,23 @@ export default function FolderPage() {
                 </div>
                 <div className="set-cards-container-div">
                     <p className="set-text-small">
-                        {folder?.sets.length && `Total sets in folder: ${folder.sets.length}`}
-                        
-                        </p>
+                        {folder?.sets.length && folder?.sets.length !== 0 ? `Total sets in folder: ${folder?.sets.length}` :
+
+                            <>
+                                <span className="no-sets">
+                                    There are no sets in this folder...
+                                </span>
+                                <button className="log_out_button nav-button" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                            </>
+                        }
+
+
+                    </p>
                     <div className="set-cards-inner-div">
                         {filteredSets.map((set, idx) => (
                             <div className="set-card-container" key={idx}>
                                 <div className="set-card-div">
-                                    <Link className="nav-link-green bigger" exact to={`/folders/${folder_id}/sets/${set.id}`}>
+                                    <Link className="nav-link-green bigger" to={`/folders/${folder_id}/sets/${set.id}`}>
                                         {set.title}
                                     </Link>
                                     <p className="set-text-small">{set.description}</p>
@@ -75,10 +84,10 @@ export default function FolderPage() {
                                     {/* Created by {folder.user.username} */}
                                     {sessionUser?.id === folder?.user_id &&
                                         <>
-                                        
+
                                             <div className="set-btns">
                                                 <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
-                                               
+
                                                 <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
                                             </div>
                                         </>
@@ -88,7 +97,7 @@ export default function FolderPage() {
                         ))}
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }
