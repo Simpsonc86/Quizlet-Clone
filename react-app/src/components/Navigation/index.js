@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
 						<NavLink className="nav-link" exact to="/">
 							<h2 className="home-logo" src="/Homelogo.png">Wizlet</h2>
 						</NavLink>
-					</div>&nbsp;&nbsp;
+					</div>
 					{sessionUser &&
 						<div className='library'>
 							<NavLink className="nav-link" exact to="/library">Library</NavLink>

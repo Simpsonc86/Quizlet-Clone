@@ -18,7 +18,7 @@ input, textarea{
     border-radius: 2vh;
     border:none;
     /* background-color:grey; */
-    border-bottom: 2px solid #101010;
+    border-bottom: .5vh solid #101010;
     font-size: 2vh;
 
 }
