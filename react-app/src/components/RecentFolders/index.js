@@ -45,7 +45,7 @@ export default function RecentFolders() {
                             <NavLink className="nav-link" to={`/folders/${folder.id}`}>
                                 <h2>{folder.title}</h2>
                                 <p>{folder.description}</p>
-                                <p>Sets in Folder:{folder.sets.length}</p>
+                                <p>Sets in Folder:{folder?.sets.length===0?<span className="no-sets">&nbsp;None</span>:folder?.sets.length}</p>
                             </NavLink>
                             <br />
                             {manageFolder(folder)}

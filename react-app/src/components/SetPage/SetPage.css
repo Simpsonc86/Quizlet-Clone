@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #e6e6e6;
-    padding: 3rem 0;
+    padding: 4vh 0;
 }
 .set-page-inner-div{
     max-width: 80%;
@@ -281,18 +281,21 @@
     flex-wrap:wrap ;
     font-size: 2.3vh;
   }
+  .carousel-btns{
+    margin-top: 1vh;
+  }
   .carousel-btn-left{
     background-image: linear-gradient(270deg, #118c5b 0%, #49e9aa 100%);
     border-radius: 50%;
     border: 0px;
     font-size: 5vh;
-    /* padding: 1rem 2rem; */
+    padding: 1vh 2vh;
     margin-right: 1rem;
     border:1px solid #118c5b;
     z-index: 3;
   }
   .carousel-btn-right{
-    /* padding: 1rem 2rem; */
+    padding: 1vh 2vh;
     border: 0px;
     background-image: linear-gradient(90deg, #118c5b 0%, #49e9aa 100%);
     border-radius: 50%;
@@ -337,4 +340,9 @@
   }
   .add-question-btn{
     margin-bottom: 10vh;
+  }
+
+  .set-description{
+    display: flex;
+    justify-content: space-between;
   }

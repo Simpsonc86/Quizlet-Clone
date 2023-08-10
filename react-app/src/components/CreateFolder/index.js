@@ -50,14 +50,15 @@ export default function CreateFolder() {
             <div className="create-form-container">
                 <form className="create-form" onSubmit={handleSubmit}>
                     <h1>Create a Folder</h1>
-                    <ul >
-                        {errors.title && <p className="validation-errors">{errors.title}</p>}
+                    {errors.title || errors.description &&
+                        <ul >
+                            {errors.title && <p className="validation-errors">{errors.title}</p>}
 
-                        {errors.description && <p className="validation-errors"   >{errors.description}</p>}
-                    </ul>
+                            {errors.description && <p className="validation-errors"   >{errors.description}</p>}
+                        </ul>}
                     <div className="form-inputs">
 
-                        <label>
+                        <label className="form-label">
                             Title
                         </label>
                         <textarea
@@ -70,7 +71,7 @@ export default function CreateFolder() {
                     <br />
                     <div className="form-inputs">
 
-                        <label>
+                        <label className="form-label">
                             Description
                         </label>
                         <textarea
@@ -83,7 +84,7 @@ export default function CreateFolder() {
                     <br />
                     <div className="form-inputs-public">
 
-                        <label>
+                        <label className="form-label">
                             Public Folder?
                         </label>
                         <input
@@ -99,8 +100,12 @@ export default function CreateFolder() {
                         />
                     </div>
                     {/* {console.log("value of isPublic----->",is_public)} */}
-                    <br/>
-                    <button className="log_out_button submit nav-link"type="submit">Submit</button>
+                    <br />
+                    <div className="flex-div">
+                        <button className="log_out_button submit nav-link" type="submit">Submit (Create Folder))</button>
+                        <button className="log_out_button nav-button" onClick={() => history.push(`/library`)}>Return to library</button>
+
+                    </div>
 
                 </form>
             </div>

@@ -44,6 +44,7 @@ export default function FolderPage() {
                     <div className="folder-page-header">
                         <h1>{folder.title} Sets</h1>
                         <h2>Folder Description: {folder.description}</h2>
+                        <div className="set-text">Public Folder? {folder.is_public.charAt(0).toUpperCase() + folder.is_public.slice(1)}</div>
                         {/* {console.log("folder from above",folder)} */}
                         {sessionUser?.id === folder?.user_id && <div className="folder-btns-div">
                             <div className="folder-page-header-info">
@@ -66,6 +67,7 @@ export default function FolderPage() {
                                 <span className="no-sets">
                                     There are no sets in this folder...
                                 </span>
+                                &nbsp;
                                 <button className="log_out_button nav-button" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
                             </>
                         }
@@ -73,14 +75,14 @@ export default function FolderPage() {
 
                     </p>
                     <div className="set-cards-inner-div">
-                        {filteredSets.map((set, idx) => (
+                        {filteredSets.reverse().map((set, idx) => (
                             <div className="set-card-container" key={idx}>
                                 <div className="set-card-div">
                                     <Link className="nav-link-green bigger" to={`/folders/${folder_id}/sets/${set.id}`}>
                                         {set.title}
                                     </Link>
                                     <p className="set-text-small">{set.description}</p>
-                                    <p className="set-text-small">Total Questions: {set.questions.length}</p>
+                                    <p className="set-text-small">Total Questions: {set?.questions.length===0?<span className="no-sets">&nbsp;None</span>:set?.questions.length}</p>
                                     {/* Created by {folder.user.username} */}
                                     {sessionUser?.id === folder?.user_id &&
                                         <>

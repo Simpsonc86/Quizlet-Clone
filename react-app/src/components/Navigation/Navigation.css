@@ -1,7 +1,7 @@
 .profile-dropdown {
   position: absolute;
   /* transform:translate(-1rem, 14rem) ; */
-  transform:translateY(35vh);
+  transform:translateY(30vh);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,16 +9,17 @@
   background-color:  #101010;
   color: #ffffff;
   border-radius: 2vh;
-  padding: 1rem;
+  padding: 1vh;
   /* line-height: 3vh; */
   /* opacity: 95%; */
   font-weight: bolder;
   z-index: 8;
   box-shadow: 0 0 1rem 0px darkgrey;
+  /* margin-right:2vh; */
 
   /* text-shadow: 0 0 1rem darkgrey; */
 
-  transition: 1s;
+  transition: color 1s;
 
 }
 .create-assets-profile-dropdown {
@@ -32,7 +33,7 @@
   background-color:  #101010;
   color: #ffffff;
   border-radius: 1rem;
-  padding: 1rem;  
+  padding: 1vh;  
   /* line-height: 1.5rem; */
   /* opacity: 95%; */
   font-weight: bolder;
@@ -113,6 +114,7 @@ color:#29BE83;
   text-decoration: none;
   padding:1.5vh;
   cursor: pointer;
+  background-color: #f0f0f0;
 }
 .create_button{
   border:none;
@@ -143,10 +145,11 @@ color:#29BE83;
   display: flex;
   justify-content: center;
   border:none;
+  align-items: center;
   /* background-color: #29BE83; */
-  border-radius: .5rem;
-  padding:.5rem 1rem;
-  font-size: 3vh;
+  /* border-radius: .5rem; */
+  /* padding:.5rem 1rem; */
+  /* font-size: 3vh; */
   transition: color .5s;
 
 }
@@ -217,13 +220,13 @@ color:#29BE83;
 }
 .modal-button{
   border: none;
-  background-color:  #e6e6e6;
+  background-color:  #f0f0f0;
   font-size: 2vh;
   color:#118c5b;
   transition: color .5s;
   border:1px solid #118c5b;
   border-radius: 2vh;
-  padding:.5rem 2vh;
+  padding:1vh 2vh;
   margin:2vh;
   text-decoration: none;
   width:fit-content;
@@ -231,8 +234,8 @@ color:#29BE83;
   display:flex;
   justify-content: center;
   align-items: center;
-
-
+  
+  
 }
 
 .modal-button:hover{
@@ -244,12 +247,15 @@ color:#29BE83;
   background-color: #e6e6e6;
 }
 #modal{
+  /* position: absolute; */
+  flex: auto;
   overflow-y: scroll;
   margin:5vh;
-  width: 100%;
-  height: 90vh;
+  /* width: 100%; */
+  /* height: 90vh; */
   padding: 5vh;
   z-index: 5;
+  border-radius: 2vh;
 }
 
 .home-link{

@@ -10,18 +10,18 @@ export default function EditFolder() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user)
-    const {folder_id} = useParams()
+    const { folder_id } = useParams()
     const folders = useSelector((state) => {
         // console.log("all folder from the store:=========>", state.folders.allFolders);
         return state.folders.allFolders ? Object.values(state.folders.allFolders) : {}
     })
 
-    const oneFolder = Object.values(folders).find((folder)=>folder.id===Number(folder_id))
+    const oneFolder = Object.values(folders).find((folder) => folder.id === Number(folder_id))
 
     // console.log("folder from the filter's title is =====>", oneFolder.title);
-    const [title, setTitle] = useState(oneFolder.title);
-    const [description, setDescription] = useState(oneFolder.description);
-    const [is_public, setIsPublic] = useState(oneFolder.is_public);
+    const [title, setTitle] = useState(oneFolder?.title);
+    const [description, setDescription] = useState(oneFolder?.description);
+    const [is_public, setIsPublic] = useState(oneFolder?.is_public);
     const [errors, setErrors] = useState([]);
 
 
@@ -33,15 +33,15 @@ export default function EditFolder() {
         e.preventDefault();
 
         const errObj = {};
-        if (!title.length|| title.length<3) errObj.title = "Title length of 3 or more is required"
-        if (title.length>49) errObj.title = "Title length less than 50 characters is required"
+        if (!title.length || title.length < 3) errObj.title = "Title length of 3 or more is required"
+        if (title.length > 49) errObj.title = "Title length less than 50 characters is required"
         if (!description.length || description.length < 10) errObj.description = "Description length of 10 or more is required"
-        if (description.length>1999) errObj.description = "Description length less than 2000 characters is required"
-        
+        if (description.length > 1999) errObj.description = "Description length less than 2000 characters is required"
+
         if (!Object.values(errObj).length) {
             const folder = {
-                id:oneFolder.id,
-                user_id:sessionUser.id,
+                id: oneFolder.id,
+                user_id: sessionUser.id,
                 title,
                 description,
                 is_public
@@ -51,7 +51,7 @@ export default function EditFolder() {
             await dispatch(editFolderThunk(folder));
 
 
-           
+
             history.push(`/library`)
         } else setErrors(errObj)
 
@@ -59,17 +59,18 @@ export default function EditFolder() {
 
     return (
         <>
-             <div className="create-form-container">
+            <div className="create-form-container">
                 <form className="create-form" onSubmit={handleSubmit}>
-                    <h1>Edit your Folder</h1>
-                    <ul >
-                        {errors.title && <p className="validation-errors">{errors.title}</p>}
+                    <h1>Edit the Folder: {title}</h1>
+                    {errors.title || errors.description &&
+                        <ul >
+                            {errors.title && <p className="validation-errors">{errors.title}</p>}
 
-                        {errors.description && <p className="validation-errors"   >{errors.description}</p>}
-                    </ul>
+                            {errors.description && <p className="validation-errors"   >{errors.description}</p>}
+                        </ul>}
                     <div className="form-inputs">
 
-                        <label>
+                        <label className="form-label">
                             Title
                         </label>
                         <textarea
@@ -82,7 +83,7 @@ export default function EditFolder() {
                     <br />
                     <div className="form-inputs">
 
-                        <label>
+                        <label className="form-label">
                             Description
                         </label>
                         <textarea
@@ -92,10 +93,10 @@ export default function EditFolder() {
                             required
                         />
                     </div>
-                    <br />
+                    {/* &nbsp; */}
                     <div className="form-inputs-public">
 
-                        <label>
+                        <label className="form-label">
                             Public Folder?
                         </label>
                         <input
@@ -111,8 +112,12 @@ export default function EditFolder() {
                         />
                     </div>
                     {/* {console.log("value of isPublic----->",is_public)} */}
-                    &nbsp;
-                    <button className="log_out_button submit nav-button"type="submit">Submit</button>
+                    {/* &nbsp; */}
+                    <div className="flex-div">
+
+                        <button className="log_out_button submit nav-button" type="submit">Submit (Edit Folder)</button>
+                        <button className="log_out_button nav-button" onClick={() => history.push(`/folders/${folder_id}`)}>Return to Folder</button>
+                    </div>
 
                 </form>
             </div>

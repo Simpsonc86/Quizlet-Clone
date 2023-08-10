@@ -49,14 +49,15 @@ export default function EditSet({set,folderId}) {
                       <div className="create-form-container">
 
 <form className="create-form" onSubmit={handleSubmit}>
-    <h1>Edit your Set</h1>
+    <h1>Edit the Set: {title}</h1>
+   { errors.title || errors.description &&
     <ul>
         {errors.title && <p className="validation-errors">{errors.title}</p>}
         {errors.description && <p className="validation-errors">{errors.description}</p>}
-    </ul>
+    </ul>}
     <div className="form-inputs">
 
-        <label>
+        <label className="form-label">
             Title
         </label>
         <textarea
@@ -69,7 +70,7 @@ export default function EditSet({set,folderId}) {
     <br />
     <div className="form-inputs">
 
-        <label>
+        <label className="form-label">
             Description
         </label>
         <textarea
@@ -79,8 +80,12 @@ export default function EditSet({set,folderId}) {
             required
         />
     </div>
-    &nbsp;
-    <button className="log_out_button nav-button" type="submit">Submit</button>
+    {/* &nbsp; */}
+    <div className="flex-div">
+
+    <button className="log_out_button nav-button" type="submit">Submit (Edit Set)</button>
+    <button className="log_out_button nav-button" onClick={()=>closeModal()}>Back to Set</button>
+    </div>
 </form>
 </div>
         </>
