@@ -34,7 +34,7 @@
     /* width: 100%; */
     /* max-width: 25%; */
     justify-content: center; 
-    gap:1rem;
+    gap:2vh;
     /* padding:2rem; */
     flex-wrap: wrap;
 }
@@ -86,7 +86,7 @@
     /* padding: 1rem; */
     font-weight: bolder;
     transition: color .5s;
-    font-size: 10vh;
+    font-size: 4vh;
     text-shadow: 0 0 1rem darkgrey;
     
   }

@@ -51,7 +51,7 @@ export default function Library() {
                                     <NavLink className="nav-link"to={`/folders/${folder.id}`}>
                                         <h3>{folder?.title}</h3>
                                         <h4 >{folder?.description}</h4>
-                                        <h4>Total Sets: {folder?.sets.length}</h4>
+                                        <h4>Total Sets: {folder?.sets.length===0?<span className="no-sets">No sets added!</span>:folder?.sets.length}</h4>
                                     </NavLink>                               
                                   <button className="log_out_button nav-buttons"onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
                                    

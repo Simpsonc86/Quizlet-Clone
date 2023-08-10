@@ -30,7 +30,7 @@
     align-items: center;
     /* padding-left:15rem; */
     /* border: 3px solid red; */
-    font-size: 5vh;
+    font-size: 2vh;
     
 }
 .validation-error{
@@ -52,7 +52,7 @@
     background-color: #29BE83;
     border-radius: 2vh;
     padding:.5rem 1rem;
-    font-size: 4vh;
+    font-size: 2vh;
     font-weight: bolder;
     color: white;
     margin-top:4vh;

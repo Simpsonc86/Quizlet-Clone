@@ -96,10 +96,10 @@ export default function SetPage() {
 
                     <div className="set-page-header">
 
-                        <h1 className="set-text">{set.title} Set</h1>
+                        <h1 className="set-text">{set?.title} Set</h1>
                         {/* {console.log("folder from above",folder)} */}
                         {sessionUser?.id === set?.user_id && <div className="set-btns-div">
-                            <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set} />} />
+                            <OpenModalButton id='edit-set-btn' buttonText='Edit Set' modalComponent={<EditSet folderId={folder.id} set={set?set:null} />} />
                             <OpenModalButton id='delete-set-btn' buttonText='Delete Set' modalComponent={<DeleteSetModal folderId={folder.id} setId={set.id} />} />
                             <button className="log_out_button nav-button" onClick={() => history.push(`/folders/${folder.id}`)}>Back to folder</button>
                             {/* <button onClick={() => dispatch(getOneSetThunk(set.id)).then(history.push(`/new-set`))}>Create a Set</button> */}
@@ -172,16 +172,16 @@ export default function SetPage() {
                                                     </div>
                                                 </div>
 
-                                                <div className="question-btns">
+                                                <div className="qustion-btns-div">
                                                     {(sessionUser?.id === set?.user_id) &&
-                                                        <>
+                                                        <div className="question-btns">
                                                             <span className="set-text-small">
                                                                 <OpenModalButton id='edit-question-btn' buttonText='Edit' modalComponent={<EditQuestionModal question={question} folderId={folder.id} set={set} />} />
                                                             </span>
                                                             <span>
                                                                 <OpenModalButton id='delete-question-btn' buttonText='Delete' modalComponent={<DeleteQuestionModal question={question} folderId={folder.id} set={set} />} />
                                                             </span>
-                                                        </>
+                                                        </div>
                                                     }
                                                 </div>
                                             </div>

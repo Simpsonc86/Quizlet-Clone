@@ -86,7 +86,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    font-size: 4vh;
+    font-size: 2vh;
   }
   .nav-link:hover{
     color:#101010;
@@ -105,7 +105,7 @@
     border-radius: 2vh;
     padding:.5rem 2vh;
     margin:2vh;
-    font-size: 4vh;
+    font-size: 2vh;
     color:#118c5b;
     word-wrap: normal;
     border:1px solid #118c5b;
@@ -113,5 +113,8 @@
   .log_out_button:hover{
     /* color: #ffffff; */
     color:#101010;
+  }
+  .no-sets{
+    color:red;
   }
 

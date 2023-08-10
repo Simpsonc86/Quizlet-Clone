@@ -24,6 +24,7 @@ const editSet = (set) => ({
 
 const deleteSet = (set_id) => ({
     type: DELETE_SET,
+    payload: set_id
 
 })
 
@@ -101,7 +102,7 @@ export const deleteSetThunk = (set_id) => async (dispatch) => {
         method: "DELETE"
     })
     if (res.ok) {
-        return dispatch(deleteSet())
+        return dispatch(deleteSet(set_id))
     } else {
         const error = await res.json();
         console.log("bad data======>", error);
@@ -122,7 +123,7 @@ export default function reducer(state = initialState, action) {
             return { ...state, allSets:{...state.allSets,[action.payload.id]:action.payload},set: { ...action.payload } };
         case DELETE_SET:
             const currSet = state.allSets;
-            delete currSet[action.payload]
+            delete currSet[action.payload];
             return { ...state, allSets:{...currSet}, set: {} };
         default:
             return state;
