@@ -53,10 +53,10 @@ export default function Library() {
                                         <h4 >{folder?.description}</h4>
                                         <h4>Total Sets: {folder?.sets.length===0?<span className="no-sets">No sets added!</span>:folder?.sets.length}</h4>
                                     </NavLink>                               
-                                  <button className="log_out_button nav-buttons"onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
+                                  <button className="log_out_button nav-button"onClick={() => history.push(`/edit-folder/${folder.id}`)}>Edit Folder</button>
                                    
                                     <br/>
-                                    <button className="log_out_button nav-buttons"onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
+                                    <button className="log_out_button nav-button"onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
                                    
                                     <br/>
                                     

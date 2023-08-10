@@ -115,6 +115,7 @@ color:#29BE83;
   padding:1.5vh;
   cursor: pointer;
   background-color: #f0f0f0;
+  font-weight: bolder;
 }
 .create_button{
   border:none;
@@ -234,6 +235,7 @@ color:#29BE83;
   display:flex;
   justify-content: center;
   align-items: center;
+  font-weight: bolder;
   
   
 }
