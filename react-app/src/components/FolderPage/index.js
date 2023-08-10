@@ -61,7 +61,7 @@ export default function FolderPage() {
                 </div>
                 <div className="set-cards-container-div">
                     <p className="set-text-small">
-                        {folder?.sets.length && folder?.sets.length !== 0 ? `Total sets in folder: ${folder?.sets.length}` :
+                        {folder?.sets?.length && folder?.sets.length !== 0 ? `Total sets in folder: ${folder?.sets.length}` :
 
                             <>
                                 <span className="no-sets">
