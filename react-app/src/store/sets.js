@@ -104,7 +104,7 @@ export const deleteSetThunk = (set_id) => async (dispatch) => {
     if (res.ok) {
         return dispatch(deleteSet(set_id))
     } else {
-        const error = await res.json();
+        // const error = await res.json();
         // console.log("bad data======>", error);
     }
 }

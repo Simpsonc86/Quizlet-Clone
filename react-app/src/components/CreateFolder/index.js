@@ -50,7 +50,7 @@ export default function CreateFolder() {
             <div className="create-form-container">
                 <form className="create-form" onSubmit={handleSubmit}>
                     <h1>Create a Folder</h1>
-                    {errors.title || errors.description &&
+                    {(errors.title || errors.description) &&
                         <ul >
                             {errors.title && <p className="validation-errors">{errors.title}</p>}
 

@@ -48,7 +48,7 @@ export default function CreateSet() {
 
                 <form className="create-form" onSubmit={handleSubmit}>
                     <h1>Create a Set</h1>
-                 {   errors.title||errors.description&&<ul>
+                 {   (errors.title||errors.description)&&<ul>
                         {errors.title && <p className="validation-errors">{errors.title}</p>}
                         {errors.description && <p className="validation-errors">{errors.description}</p>}
                     </ul>}

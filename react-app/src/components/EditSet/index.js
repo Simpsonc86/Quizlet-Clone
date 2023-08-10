@@ -50,7 +50,7 @@ export default function EditSet({set,folderId}) {
 
 <form className="create-form" onSubmit={handleSubmit}>
     <h1>Edit the Set: {title}</h1>
-   { errors.title || errors.description &&
+   { (errors.title || errors.description) &&
     <ul>
         {errors.title && <p className="validation-errors">{errors.title}</p>}
         {errors.description && <p className="validation-errors">{errors.description}</p>}

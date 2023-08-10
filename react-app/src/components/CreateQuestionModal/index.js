@@ -51,7 +51,7 @@ export default function CreateQuestionModal({ setId, folderId }) {
 
                 <form className="create-form" onSubmit={handleSubmit}>
                     <h1>Type a Question and Answer</h1>
-                    {errors.description || errors.answer &&
+                    {(errors.description || errors.answer) &&
                         <ul>
                             {errors.description && <p className="validation-errors">{errors.description}</p>}
                             {errors.answer && <p className="validation-errors">{errors.answer}</p>}
