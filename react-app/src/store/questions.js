@@ -79,7 +79,7 @@ export const deleteQuestionThunk = (question_id) => async (dispatch) => {
     if (res.ok) {
         return dispatch(deleteQuestion(question_id))
     } else {
-        const error = await res.json();
+        // const error = await res.json();
         // console.log("bad data======>", error);
     }
 }

@@ -62,7 +62,7 @@ export default function EditFolder() {
             <div className="create-form-container">
                 <form className="create-form" onSubmit={handleSubmit}>
                     <h1>Edit the Folder: {title}</h1>
-                    {errors.title || errors.description &&
+                    {(errors.title || errors.description) &&
                         <ul >
                             {errors.title && <p className="validation-errors">{errors.title}</p>}
 
