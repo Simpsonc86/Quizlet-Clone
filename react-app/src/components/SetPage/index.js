@@ -25,7 +25,7 @@ export default function SetPage() {
     const folders = useSelector((state) => state.folders.allFolders)
     const folder = folders[Number(folder_id)]
     const sets = useSelector((state) => state.sets.allSets)
-    console.log(folder);
+    // console.log(folder);
     const set = sets[Number(set_id)]
     const questions = useSelector((state) => Object.values(state.questions.allQuestions))
     const setQuestions = questions.filter((question) => question.set_id === Number(set_id))
