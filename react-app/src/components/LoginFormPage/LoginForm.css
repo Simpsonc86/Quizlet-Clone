@@ -56,7 +56,7 @@
     font-weight: bolder;
     color: white;
     margin-top:4vh;
-    box-shadow: 0 0 3px 0px #101010;
+    box-shadow: 0 0 1vh 0px #101010;
     
 }
 .login-buttons:hover{

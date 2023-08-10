@@ -41,13 +41,13 @@
     justify-content: center;
     max-width: fit-content;
     height: fit-content;
-    box-shadow: 0 0 3px 1px;
+    box-shadow: 0 0 1vh 0px;
     border-radius: 4vh;
     background-image: linear-gradient(-180deg, #118c5b 0%, #49e9aa 100%);
     gap:2vh;
     text-overflow: clip;
     transition-duration: .5;
-    border:1px solid #118c5b;
+    border:.3vh solid #118c5b;
   }
   
   .folder-card-container:hover{
@@ -108,7 +108,7 @@
     font-size: 2vh;
     color:#118c5b;
     word-wrap: normal;
-    border:1px solid #118c5b;
+    border:.3vh solid #118c5b;
   }
   .log_out_button:hover{
     /* color: #ffffff; */
