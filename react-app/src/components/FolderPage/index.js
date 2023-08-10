@@ -73,14 +73,14 @@ export default function FolderPage() {
 
                     </p>
                     <div className="set-cards-inner-div">
-                        {filteredSets.map((set, idx) => (
+                        {filteredSets.reverse().map((set, idx) => (
                             <div className="set-card-container" key={idx}>
                                 <div className="set-card-div">
                                     <Link className="nav-link-green bigger" to={`/folders/${folder_id}/sets/${set.id}`}>
                                         {set.title}
                                     </Link>
                                     <p className="set-text-small">{set.description}</p>
-                                    <p className="set-text-small">Total Questions: {set.questions.length}</p>
+                                    <p className="set-text-small">Total Questions: {set?.questions.length===0?<span className="no-sets">&nbsp;None</span>:set?.questions.length}</p>
                                     {/* Created by {folder.user.username} */}
                                     {sessionUser?.id === folder?.user_id &&
                                         <>

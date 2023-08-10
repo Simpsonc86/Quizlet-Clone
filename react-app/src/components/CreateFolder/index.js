@@ -57,7 +57,7 @@ export default function CreateFolder() {
                     </ul>
                     <div className="form-inputs">
 
-                        <label>
+                        <label className="form-label">
                             Title
                         </label>
                         <textarea
@@ -70,7 +70,7 @@ export default function CreateFolder() {
                     <br />
                     <div className="form-inputs">
 
-                        <label>
+                        <label className="form-label">
                             Description
                         </label>
                         <textarea
@@ -83,7 +83,7 @@ export default function CreateFolder() {
                     <br />
                     <div className="form-inputs-public">
 
-                        <label>
+                        <label className="form-label">
                             Public Folder?
                         </label>
                         <input

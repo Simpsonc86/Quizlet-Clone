@@ -9,12 +9,13 @@
     /* overflow-y: scroll; */
     flex-direction: column;
     /* border: 3px solid red; */
+    /* width: 100%; */
+    /* max-width: 50%; */
 }
 .create-form{
     /* position: absolute; */
     /* transform: translateX(40vw); */
     /* margin:2rem 4rem;  */
-    /* max-width: 500px; */
     display: flex;
     flex-direction: column;
     justify-content: center;

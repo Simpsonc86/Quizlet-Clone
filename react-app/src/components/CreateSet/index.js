@@ -54,7 +54,7 @@ export default function CreateSet() {
                     </ul>
                     <div className="form-inputs">
 
-                        <label>
+                        <label className="form-label">
                             Title
                         </label>
                         <textarea
@@ -67,7 +67,7 @@ export default function CreateSet() {
                     <br />
                     <div className="form-inputs">
 
-                        <label>
+                        <label className="form-label">
                             Description
                         </label>
                         <textarea

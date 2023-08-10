@@ -45,7 +45,7 @@ export default function Library() {
                     </div>
                         <h2>{sessionUser.username}'s Folders</h2>
                     <div className="folder-user-details-div">
-                        {userFolders.map((folder, index) => (
+                        {userFolders.reverse().map((folder, index) => (
                             <div className="folder-card-container" key={index}>
                                 <div className="folder-card-div">
                                     <NavLink className="nav-link"to={`/folders/${folder.id}`}>

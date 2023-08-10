@@ -113,6 +113,7 @@ color:#29BE83;
   text-decoration: none;
   padding:1.5vh;
   cursor: pointer;
+  background-color: #f0f0f0;
 }
 .create_button{
   border:none;
@@ -143,6 +144,7 @@ color:#29BE83;
   display: flex;
   justify-content: center;
   border:none;
+  align-items: center;
   /* background-color: #29BE83; */
   border-radius: .5rem;
   padding:.5rem 1rem;
@@ -217,13 +219,13 @@ color:#29BE83;
 }
 .modal-button{
   border: none;
-  background-color:  #e6e6e6;
+  background-color:  #f0f0f0;
   font-size: 2vh;
   color:#118c5b;
   transition: color .5s;
   border:1px solid #118c5b;
   border-radius: 2vh;
-  padding:.5rem 2vh;
+  padding:1vh 2vh;
   margin:2vh;
   text-decoration: none;
   width:fit-content;

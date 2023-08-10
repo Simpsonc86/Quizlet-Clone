@@ -15,11 +15,11 @@
     /* transform: translateX(40vw); */
     /* margin:2rem 4rem;  */
     width: 100%;
-    max-width: 500px;
+    max-width: 30vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding:1rem;
+    padding:1vh;
     /* align-items: center; */
     word-wrap: normal;
 

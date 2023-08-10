@@ -25,7 +25,7 @@ export default function DeleteQuestionModal({question}){
     return(
         <div className="create-form-container">
             <h1>Confirm Delete?</h1>
-            <p>Are you sure you want to delete this question?</p>
+            <p className="form-label">Are you sure you want to delete this question?</p>
             <form className="create-form" onSubmit={handleSubmit}>
                 <button className="log_out_button nav-button" type="submit">Yes (Delete Question)</button>
                 &nbsp;
