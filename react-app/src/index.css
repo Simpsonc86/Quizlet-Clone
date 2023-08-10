@@ -18,9 +18,9 @@ input, textarea{
     /* max-width: fit-content; */
     border-radius: 2vh;
     border:none;
-    /* background-color:grey; */
+    background-color:lightgray;
     border-bottom: .5vh solid #101010;
-    font-size: 2vh;
+    font-size: 3vh;
 
 }
 body{
