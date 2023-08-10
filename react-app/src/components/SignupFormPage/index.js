@@ -77,7 +77,11 @@ function SignupFormPage() {
   return (
     <>
       <div className="signup-page-container">
-        <img className="signup-img" src="concept-student.jpg" alt=""></img>
+        <img className="signup-img" src="college-girls-studying-together_23-2149038414.png" alt=""></img>
+        <div className="landing-page-info sign">
+          <h3 className="set-text">Join today to get access to a user Library!</h3>
+          <p className="set-text-small">The Library is the place to gain access<br/> to create your very own folders and sets to share<br/> publicly with others around the world, <br/>or privately for your own learning experience!</p>
+        </div>
         <div className="signup-form-div">
 
           <h1 className="signup-title">Sign Up</h1>

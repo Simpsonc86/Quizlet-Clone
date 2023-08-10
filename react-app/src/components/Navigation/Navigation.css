@@ -179,7 +179,7 @@ color:#29BE83;
 }
 .right-nav-div{
   display: flex;
-  padding: 0 0 1vh 3vh;
+  padding: 0 0 1vh 0vh;
   /* height:100%; */
 }
 .right-nav-buttons{
@@ -270,7 +270,7 @@ color:#29BE83;
 }
 
 .home-link{
-  padding: 0;
+  padding: 0 4vh;
   margin: 0;
 }
 

@@ -22,7 +22,8 @@ function Navigation({ isLoaded }) {
 						<div className='library'>
 							<NavLink className="nav-link" exact to="/library">Library</NavLink>
 						</div>}
-						&nbsp;
+						{/* &nbsp; */}
+						<br/>
 					<div className='recent-folders'>
 						<NavLink className="nav-link" to="/folders/recent">Recent Folders</NavLink>
 					</div>
