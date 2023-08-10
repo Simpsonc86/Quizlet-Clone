@@ -100,7 +100,7 @@ export const deleteFolderThunk = (folder_id) => async(dispatch)=>{
         return dispatch(deleteFolder())
     }else{
         const error = await res.json();
-        console.log("bad data======>", error);
+        // console.log("bad data======>", error);
     }
 }
 
