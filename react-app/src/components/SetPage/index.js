@@ -7,8 +7,8 @@ import { useEffect } from "react"
 import OpenModalButton from "../OpenModalButton";
 import DeleteSetModal from "../DeleteSetModal"
 import EditSet from "../EditSet"
-import { getAllSetsThunk, getOneSetThunk } from "../../store/sets"
-import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders";
+import { getAllSetsThunk} from "../../store/sets"
+import { getAllFoldersThunk} from "../../store/folders";
 import CreateQuestionModal from "../CreateQuestionModal";
 import EditQuestionModal from "../EditQuestionModal";
 import DeleteQuestionModal from "../DeleteQuestionModal";
@@ -41,10 +41,10 @@ export default function SetPage() {
         // console.log("Hitting useEffect here");
         dispatch(getAllFoldersThunk())
             .then(dispatch(getAllSetsThunk()))
-            .then(dispatch(getOneFolderThunk(folder_id)))
-            .then(dispatch(getOneSetThunk(set_id)))
+            // .then(dispatch(getOneFolderThunk(folder_id)))
+            // .then(dispatch(getOneSetThunk(set_id)))
             .then(dispatch(getAllQuestionsThunk()))
-    }, [dispatch, folder_id, set_id])
+    }, [dispatch, folder_id, set_id, set?.questions.length])
 
     if (!Object.values(sets).length || !Object.values(folders).length) {
         return <h1>Set details are loading...</h1>
@@ -108,9 +108,9 @@ export default function SetPage() {
                     <hr />
                     <p className="set-text-small">
 
-                    {set.questions.length && `Total Questions in Set: ${set.questions.length}`}
+                    {set?.questions.length && set?.questions.length!==0?`Total Questions in Set: ${set.questions.length}`:<span className="no-sets">"There are no questions in this set"</span>}
                     </p>
-                    <div className="card-carousel-container">
+                   { set.questions.length!==0 && <div className="card-carousel-container">
 
                             <div className="card-counter set-text-small">
                                 {`Question ${questionArrayIndex + 1} of ${setQuestions.length}`}
@@ -145,8 +145,9 @@ export default function SetPage() {
                                     questionArrayIndex >= setQuestions.length - 1 ? setQuestionArrayIndex(0) : setQuestionArrayIndex(questionArrayIndex + 1)
                                 }}>{">"}</button>
                             </span>
-                    </div>
+                    </div>}
                     <hr />
+                    { set.questions.length!==0 && 
                     <ol className="questions-inner-div">
                         {questions?.map((question, idx) => {
                             if (question.set_id === set.id) {
@@ -192,6 +193,7 @@ export default function SetPage() {
                             } else return null
                         })}
                     </ol>
+                    }
                     {sessionUser?.id === set?.user_id &&
                         <div className="add-question-btn">
                             <OpenModalButton id='add-question-btn' buttonText='Add a Question' modalComponent={<CreateQuestionModal folderId={folder.id} setId={set.id} />} />

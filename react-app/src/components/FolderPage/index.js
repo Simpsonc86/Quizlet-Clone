@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import { getAllFoldersThunk, getOneFolderThunk } from "../../store/folders"
+import { getOneFolderThunk } from "../../store/folders"
 import { useEffect } from "react"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../OpenModalButton";
@@ -29,7 +29,7 @@ export default function FolderPage() {
     useEffect(() => {
         // console.log("Hitting useEffect here");
         // dispatch(getAllFoldersThunk())
-            dispatch(getOneFolderThunk(folder_id))
+        dispatch(getOneFolderThunk(folder_id))
             .then(dispatch(getAllSetsThunk()))
     }, [dispatch, folder_id, sets.length])
 
@@ -63,7 +63,9 @@ export default function FolderPage() {
                         {folder?.sets.length && folder?.sets.length !== 0 ? `Total sets in folder: ${folder?.sets.length}` :
 
                             <>
-                            There are no sets in this folder...
+                                <span className="no-sets">
+                                    There are no sets in this folder...
+                                </span>
                                 <button className="log_out_button nav-button" onClick={() => dispatch(getOneFolderThunk(folder.id)).then(history.push(`/new-set`))}>Create a Set</button>
                             </>
                         }
