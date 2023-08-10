@@ -99,7 +99,17 @@ export default function EditFolder() {
                         <label className="form-label">
                             Public Folder?
                         </label>
-                        <input
+                        {is_public === "yes" ? <input
+                            type="checkbox"
+                            id="isPublicCheckbox"
+                            name="isPublicCheckbox"
+                            defaultChecked
+                            onClick={(e) => {
+                                const checkbox = document.querySelector('#isPublicCheckbox')
+                                checkbox.checked ? setIsPublic("yes") : setIsPublic("no")
+                                console.log("Value of checkbox variable", checkbox.checked);
+                            }}
+                        /> : <input
                             type="checkbox"
                             id="isPublicCheckbox"
                             name="isPublicCheckbox"
@@ -107,11 +117,11 @@ export default function EditFolder() {
                             onClick={(e) => {
                                 const checkbox = document.querySelector('#isPublicCheckbox')
                                 checkbox.checked ? setIsPublic("yes") : setIsPublic("no")
-                                // console.log("Value of checkbox variable",checkbox.checked);
+                                console.log("Value of checkbox variable", checkbox.checked);
                             }}
-                        />
+                        />}
                     </div>
-                    {/* {console.log("value of isPublic----->",is_public)} */}
+                    {console.log("value of isPublic----->", is_public)}
                     {/* &nbsp; */}
                     <div className="flex-div">
 
