@@ -39,7 +39,11 @@ function LoginFormPage() {
   }
   return (
     <div className="login-page-container">
-      <img className="login-img" src="concept-student.jpg" alt=""></img>
+      <img className="login-img" src="close-up-hand-taking-notes_23-2148888827.png" alt=""></img>
+      <div className="landing-page-info log">
+        <h3 className="set-text">Need to Study?</h3>
+        <p className="set-text-small">Log back in  <br/> Pick up where you left off <br/> Or explore some of the Recent Folders and Sets</p>
+      </div>
       <div className="login-form-div">
 
         <h1>Log In</h1>
