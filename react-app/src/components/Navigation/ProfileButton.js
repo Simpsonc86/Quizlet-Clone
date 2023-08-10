@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
       {user ? (
         <div className="loggedin-nav-container">
 
-          <button className="nav-button create_button" onClick={openMenu}>+</button>
+          {/* <button className="nav-button create_button" onClick={openMenu}>+</button> */}
           <button id="user-btn" onClick={openMenu}>
             {/* <i className="fas fa-user-circle" /> */}
             <div className="user-logo">
@@ -81,7 +81,7 @@ function ProfileButton({ user }) {
             /> */}
 
           <div className="right-nav-buttons">
-            <button className="nav-button create_button" onClick={() => history.push('/login')}>+</button>
+            {/* <button className="nav-button create_button" onClick={() => history.push('/login')}>+</button> */}
             <button className="nav-button log_in_button" onClick={() => history.push('/login')}>LOG IN</button>
             <button className="nav-button sign_in_button" onClick={() => history.push('/signup')}>SIGN UP</button>
           </div>
