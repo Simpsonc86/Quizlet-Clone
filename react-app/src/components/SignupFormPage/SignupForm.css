@@ -29,7 +29,7 @@
     /* padding-left:15rem; */
     /* border: 3px solid red; */
     /* flex-shrink: 1; */
-    font-size: 4vh;
+    font-size: 2vh;
     
 }
 .validation-error{
@@ -43,7 +43,7 @@
     flex-direction: column;
     width: 100%;
 
-    gap:1rem;
+    gap:2vh;
 }
 
 
@@ -53,8 +53,8 @@
     border:none;
     background-color: #29BE83;
     border-radius: 2vh;
-    padding:.5rem 1rem;
-    font-size: 4vh;
+    padding:1vh 2vh;
+    font-size: 2vh;
     font-weight: bolder;
     color: white;
     /* margin-bottom: 5vh; */
