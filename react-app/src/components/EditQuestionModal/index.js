@@ -62,7 +62,7 @@ export default function EditQuestionModal({ question,set, folderId }) {
                         {errors.answer && <p className="validation-errors">{errors.answer}</p>}
                     </ul>
                     <div className="form-inputs">
-                        <label>
+                        <label className="form-label">
                             Question
                         </label>
 
@@ -76,7 +76,7 @@ export default function EditQuestionModal({ question,set, folderId }) {
                     <br />
                     <div className="form-inputs">
 
-                        <label>
+                        <label className="form-label">
                             Answer
                         </label>
                         <textarea
@@ -86,13 +86,16 @@ export default function EditQuestionModal({ question,set, folderId }) {
                             required
                         />
                     </div>
-                    &nbsp;
-                    <button className="log_out_button nav-button" type="submit">Yes (Create Question)</button>
-                    &nbsp;
+                    <div className="flex-div">
+
+                    {/* &nbsp; */}
+                    <button className="log_out_button nav-button" type="submit">Yes (Edit Question)</button>
+                    {/* &nbsp; */}
                     <br />
                     <button className="log_out_button nav-button" onClick={closeModal}>No (Back to Set)</button>
-                    &nbsp;
+                    {/* &nbsp; */}
                     <br />
+                    </div>
 
                     {/* </div> */}
                 </form>

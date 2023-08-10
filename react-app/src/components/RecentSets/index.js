@@ -45,7 +45,7 @@ export default function RecentSets() {
                             <NavLink className="nav-link " to={`/folders/${set.folder_id}/sets/${set.id}`}>
                                 <h2>{set.title}</h2>
                                 <p>{set.description}</p>
-                                <p>Total Questions: {set.questions.length}</p>
+                                <p>Total Questions: {set?.questions.length===0?<span className="no-sets">&nbsp;None</span>:set?.questions.length}</p>
                             </NavLink>
                             {manageSet(set)}
                         </div>

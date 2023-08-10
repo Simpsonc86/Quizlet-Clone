@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal"
 // import { useHistory } from "react-router-dom";
-import {getAllSetsThunk } from "../../store/sets";
+import { getAllSetsThunk } from "../../store/sets";
 import { createQuestionThunk } from "../../store/questions";
 import "./CreateQuestionModal.css"
 
@@ -48,13 +48,14 @@ export default function CreateQuestionModal({ setId, folderId }) {
         <div>
             <div className="create-form-container">
 
-             
+
                 <form className="create-form" onSubmit={handleSubmit}>
                     <h1>Type a Question and Answer</h1>
-                    <ul>
-                        {errors.description && <p className="validation-errors">{errors.description}</p>}
-                        {errors.answer && <p className="validation-errors">{errors.answer}</p>}
-                    </ul>
+                    {errors.description || errors.answer &&
+                        <ul>
+                            {errors.description && <p className="validation-errors">{errors.description}</p>}
+                            {errors.answer && <p className="validation-errors">{errors.answer}</p>}
+                        </ul>}
                     <div className="form-inputs">
                         <label className="form-label">
                             Question
@@ -83,9 +84,12 @@ export default function CreateQuestionModal({ setId, folderId }) {
                         />
                     </div>
                     <br />
-                    <button className="log_out_button nav-link" type="submit">Yes (Create Question)</button>
-                    <br />
-                    <button className="log_out_button nav-link" onClick={closeModal}>No (Back to Set)</button>
+                    <div className="flex-div">
+
+                        <button className="log_out_button nav-link" type="submit">Yes (Create Question)</button>
+                        <br />
+                        <button className="log_out_button nav-link" onClick={closeModal}>No (Back to Set)</button>
+                    </div>
                     <br />
 
                     {/* </div> */}

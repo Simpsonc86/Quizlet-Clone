@@ -61,7 +61,7 @@ function ProfileButton({ user }) {
             </div>
             <p className="set-text-small">Username : {user.username}</p>
             <p className="set-text-small">Email : {user.email}</p>
-            <p>
+            <p className="set-text-small">
               <button className="nav-button log_out_button" onClick={handleLogout}>Log Out</button>
             </p>
           </div>

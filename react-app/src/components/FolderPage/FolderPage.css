@@ -54,14 +54,14 @@
     max-width: 100%;
     flex-wrap: wrap;
     justify-content: center; 
-    gap:1rem;
+    gap:2vh;
 }
 .set-card-div{
     width: 100%;
     /* max-width:50%; */
     box-shadow: 0 0 3px 1px;
     border-radius: 2vh;
-    padding: 1rem 3rem;
+    padding: 3vh;
     /* margin: 1rem 3rem; */
     display: flex;
     justify-content: center;

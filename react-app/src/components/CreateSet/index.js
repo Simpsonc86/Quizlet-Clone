@@ -48,10 +48,10 @@ export default function CreateSet() {
 
                 <form className="create-form" onSubmit={handleSubmit}>
                     <h1>Create a Set</h1>
-                    <ul>
+                 {   errors.title||errors.description&&<ul>
                         {errors.title && <p className="validation-errors">{errors.title}</p>}
                         {errors.description && <p className="validation-errors">{errors.description}</p>}
-                    </ul>
+                    </ul>}
                     <div className="form-inputs">
 
                         <label className="form-label">
@@ -77,8 +77,13 @@ export default function CreateSet() {
                             required
                         />
                     </div>
-                    <br />
-                    <button className="log_out_button nav-link" type="submit">Submit</button>
+                    {/* &nbsp; */}
+                    <div className="flex-div">
+
+                        <button className="log_out_button nav-link" type="submit">Submit (Create Set)</button>
+                        <button className="log_out_button nav-button" onClick={() => history.push(`/folders/${folder.id}`)}>Return to Folder</button>
+                    </div>
+
                 </form>
             </div>
         </>
