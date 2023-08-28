@@ -11,7 +11,7 @@
   - [Contact](#contact)
 
 ## About
-Wizlet is an application for booking some very unique chairs located in various spots in the United States, that centers on bringing people back to relaxing away from the hustle and bustle of busy city lives. My site is live on https://wizlet.onrender.com/
+Wizlet is an application for learning through the proven method of flashcards. Reinforce your learning with Wizlet's Card Carousel and take your learning experience to the next level! Save a set of questions as public, or save it to private to keep your Folder's details confidential. Study Hard! My site is live on https://wizlet.onrender.com/
 
 ## Technologies
 React/Redux CSS
