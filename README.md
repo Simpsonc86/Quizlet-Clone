@@ -1,27 +1,20 @@
-# Wizlet (Quizlet Clone)
+# Wizlet
 
-This Project is a clone for Quizlet learning platform. The three full CRUD features are Folders, Sets, and Questions. CSS is used for flashcard animation.
+## Table of Contents
+- [Wizlet](#Wizlet)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Technologies](#technologies)
+  - [Frontend](#frontend)
+  - [Features](#features)
+  - [Database Schema](#database-schema-design)
+  - [Contact](#contact)
 
+## About
+Wizlet is an application for booking some very unique chairs located in various spots in the United States, that centers on bringing people back to relaxing away from the hustle and bustle of busy city lives. My site is live on https://wizlet.onrender.com/
 
-Link to live site [Wizlet](https://wizlet.onrender.com)
-
-Check out the Wiki for more info [Wiki](https://github.com/Simpsonc86/Quizlet-Clone/wiki)
-
-# Project Features
-## Folder CRUD
-
-The project includes a feature for the user to have a list of created Folders displayed in a user page called library. The library tab can be accessed once the account is created or logged in. From there, a user can see options for managing their folders or to create a set within a Folder.
-
-## Sets CRUD
-
-The project also includes Sets functionality. A set is basically a quiz, or a set of questions rather. Each set has its own functionality to manage or an option to create a new question
-
-## Questions CRUD
-The questions are maintained in a Set created by the user. The questions can be managed from the individual Set page and update immediately for other users. The set questions are accessible from the card carousel, animated for front and back flipping actions of each Q/A in the set.
-
-
-
-## Technologies used
+## Technologies
+React/Redux CSS
 Python 3.9,
 Flask,
 SQLAlchemy,
@@ -29,60 +22,48 @@ React JS 17,
 Redux,
 Validator JS
 
-#Project Goals
+<!--!!END -->
+<!--!!ADD -->
+<!-- # `<name of application here>` -->
+<!--!!END_ADD -->
 
-The primary goals of this project are as follows:
+## Frontend
 
-   * To create a user-friendly and intuitive interface for flashcards and Set storage.
-   * To implement a Folder system that allows users to easily view their own Sets and recently listed public folders and recently listed sets.
-   * To ensure data security and privacy by employing best practices in authentication and authorization.
-   * To deliver a functional and reliable Quizlet clone that provides value to its users.
-   * Have daily SCRUM meetings.
+### Library
+![Screenshot](./react-app/public/wizlet-library.PNG)
 
-Feel free to explore the project further and provide feedback on any additional features or improvements you'd like to see.
-
-Happy learning!
-
-# Getting Started
-
-1. Clone the repository and from main branch on GitHub.
-
-2. Install dependencies.
-
-      ```bash
-      pipenv install -r requirements.txt
-      ```
-
-3. Create a **.env** file based on the example with proper settings for your
-   development environment.
-
-4. Make sure the SQLite3 database connection URL is in the **.env** file.
-
-5. Get into your pipenv, migrate your database, seed your database, and run your Flask app
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+### Card Carousel
+![Screenshot](./react-app/public/wizlet-cardcarousel.PNG)
 
 
-# DB Schema
+## Features
+- Logged in users can perform the following actions:
+  - Create, view, update and delete folders
+  - Create, view, update and delete sets
+  - Create, view, update and delete questions
+  
+## Database Schema Design
 
-![DB Schema](254628535-da3602ec-d307-4374-9032-0160ffb138b6.png)
+<!--!!START SILENT -->
+![wizlet-db-schema](./254628535-da3602ec-d307-4374-9032-0160ffb138b6.png)
+<!--!!END -->
+<!--!!ADD -->
+<!-- `<insert database schema design here>` -->
+<!--!!END_ADD -->
+## Future Features
+### Saved Favorites
+Logged in Users can
+* Save their favorite sets and questions from each set.
 
-# API Routes
+### User Avatar
+Logged in Users can
+* Upload a single profile image for each User's Avatar.
 
-Comming soon
+## API Documentation
+- [API Documentation](./oldREADME.md)
+
+## Contact
+
+* Christopher Simpson:
+    * LinkedIn: https://www.linkedin.com/in/christopher-simpson-sc/
+    * GitHub: https://github.com/simpsonc86
