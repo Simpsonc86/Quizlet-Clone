@@ -204,9 +204,17 @@
   
     /* box-shadow: 0 0 3px 1px; */
   }
+  .set-heading{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    width: 100%;
+    padding: 0;
+    margin: 0; 
+  }
   
   .card-flip-carosel-div:hover .card-flip-carosel{
-    transition-delay: 3s;
+    transition-delay: .5s;
     transform: rotateX(-180deg);
     /* overflow-y: scroll; */
   }

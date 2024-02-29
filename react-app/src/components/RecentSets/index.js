@@ -59,7 +59,7 @@ export default function RecentSets() {
         <>
             <div className="library-container-div">
                 <div className="library-inner-div">
-                    <h1>Most Recent Sets</h1>
+                    <h1><b>6</b> Most Recent Sets</h1>
                     <div className="header">
                         {renderMap()}
                     </div>
